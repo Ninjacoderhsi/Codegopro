@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<android.inputmethodservice.KeyboardView xmlns:android="http://schemas.android.com/apk/res/android" 
+android:background="@drawable/theme" 
+android:keyBackground="@drawable/mrramin" 
+android:keyPreviewLayout="@layout/preview" />

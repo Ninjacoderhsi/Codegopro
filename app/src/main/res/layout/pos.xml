@@ -1,0 +1,157 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<LinearLayout
+		android:id="@+id/mybg"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="8dp"
+		android:background="#424242"
+		android:gravity="center_horizontal"
+		android:orientation="vertical">
+		<LinearLayout
+			android:id="@+id/linear2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="8dp"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+			<ImageView
+				android:id="@+id/imageview1"
+				android:focusable="false"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:src="@drawable/codegol"
+				android:scaleType="centerInside" />
+			<TextView
+				android:id="@+id/textview1"
+				android:focusable="false"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:text="یکی از فعالیت های زیرا انتخاب کنید"
+				android:textSize="18sp"
+				android:textColor="#FF9800" />
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/linear4"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="3dp"
+			android:layout_marginBottom="3dp"
+			android:orientation="horizontal">
+			<LinearLayout
+				android:id="@+id/makefile"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="horizontal"
+				android:layout_weight="1">
+				<ImageView
+					android:id="@+id/imageview3"
+					android:focusable="false"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:src="@drawable/file"
+					android:scaleType="centerInside" />
+				<TextView
+					android:id="@+id/makefile1"
+					android:focusable="false"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:text="ایجاد فایل"
+					android:textSize="16sp"
+					android:textColor="#FFFFFF" />
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/makefolder"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="horizontal"
+				android:layout_weight="1">
+				<ImageView
+					android:id="@+id/imageview2"
+					android:focusable="false"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:src="@drawable/folder"
+					android:scaleType="centerInside" />
+				<TextView
+					android:id="@+id/makefolder1"
+					android:focusable="false"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:text="ایجاد پوشه"
+					android:textSize="18sp"
+					android:textColor="#FFFFFF" />
+			</LinearLayout>
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/linear7"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="3dp"
+			android:layout_marginBottom="3dp"
+			android:orientation="horizontal">
+			<LinearLayout
+				android:id="@+id/projectCo"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:padding="8dp"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="horizontal"
+				android:layout_weight="1">
+				<ImageView
+					android:id="@+id/imageview4"
+					android:focusable="false"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:src="@drawable/project"
+					android:scaleType="centerInside" />
+				<TextView
+					android:id="@+id/projectCo1"
+					android:focusable="false"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:text="ایجاد پروژه"
+					android:textSize="18sp"
+					android:textColor="#FFFFFF" />
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/soon"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:padding="8dp"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="horizontal"
+				android:layout_weight="1">
+				<ImageView
+					android:id="@+id/imageview5"
+					android:focusable="false"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:src="@drawable/swt"
+					android:scaleType="centerInside" />
+				<TextView
+					android:id="@+id/soon1"
+					android:focusable="false"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:text="بزودی......."
+					android:textSize="18sp"
+					android:textColor="#FFFFFF" />
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>
