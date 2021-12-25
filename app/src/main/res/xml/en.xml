@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android" android:keyWidth="10.000002%p" android:keyHeight="60.0dip" android:horizontalGap="0.0px" android:verticalGap="0.0px" iconsThemeRes="@null">
+	<Row android:keyWidth="16.000002%p">
+		<Key android:isSticky="true" android:keyLabel="(" />
+		<Key android:isSticky="true" android:keyLabel=")" />
+		<Key android:isSticky="true" android:keyLabel="&lt;" />
+		<Key android:isSticky="true" android:keyLabel=">" />
+		<Key android:isSticky="true" android:keyLabel="{" />
+		<Key android:isSticky="true" android:keyLabel="}" />
+		<Key android:isSticky="true" android:keyLabel="[" />
+		<Key android:isSticky="true" android:keyLabel="]" />
+		<Key android:isSticky="true" android:keyLabel="\@" />
+		<Key android:isSticky="true" android:keyLabel="&quot;" />
+        <Key android:isSticky="true" android:keyLabel="_" />
+        <Key android:isSticky="true" android:keyLabel=";" />
+	</Row>
+	<Row >
+		<Key android:keyLabel="q" />
+		<Key android:keyLabel="w" />
+		<Key android:keyLabel="e" />
+		<Key android:keyLabel="r" />
+		<Key android:keyLabel="t" />
+		<Key android:keyLabel="y" />
+		<Key android:keyLabel="u" />
+		<Key android:keyLabel="i" />
+		<Key android:keyLabel="o" />
+		<Key android:keyLabel="p" />
+	</Row>
+	<Row >
+		<Key android:keyEdgeFlags="left" android:horizontalGap="4.5%p" android:keyLabel="a" />
+		<Key android:keyLabel="s" />
+		<Key android:keyLabel="d" />
+		<Key android:keyLabel="f" />
+		<Key android:keyLabel="g" />
+		<Key android:keyLabel="h" />
+		<Key android:keyLabel="j" />
+		<Key android:keyLabel="k" />
+		<Key android:keyEdgeFlags="right" android:keyLabel="l" />
+	</Row>
+	<Row >
+		<Key android:keyWidth="14.999998%p" android:codes="-1" android:isSticky="true" android:keyLabel="♤" />
+		<Key android:keyLabel="z" />
+		<Key android:keyLabel="x" />
+		<Key android:keyLabel="c" />
+		<Key android:keyLabel="v" />
+		<Key android:keyLabel="b" />
+		<Key android:keyLabel="n" />
+		<Key android:keyLabel="m" />
+		<Key android:keyWidth="14.999998%p" android:codes="-5" android:isSticky="true" android:isRepeatable="true" android:keyLabel="‌‌╳" />
+	</Row>
+	<Row android:rowEdgeFlags="bottom">
+		<Key android:keyWidth="15.000002%p" android:codes="3" android:isSticky="true" android:keyLabel="!#1" />
+		<Key android:keyWidth="9.999998%p" android:isSticky="true" android:keyLabel="." />
+		<Key android:keyWidth="50.000000%p" android:codes="32" android:isSticky="true" android:keyLabel="Code Go bord" />
+		<Key android:keyWidth="9.999998%p" android:isSticky="true" android:keyLabel="." />
+		<Key android:keyWidth="15.000002%p" android:codes="10" android:isSticky="true" android:keyLabel="برو" />
+	</Row>
+</Keyboard>
