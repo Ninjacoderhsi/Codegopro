@@ -1,0 +1,135 @@
+
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.codego.ninjacoder">
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_INSTALL_SESSIONS" />
+	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+	<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+	<uses-permission android:name="android.permission.INSTALL_LOCATION_PROVIDER" />
+	<uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+	<application
+		android:allowBackup="true"
+		android:icon="@drawable/app_icon"
+		android:label="@string/app_name"
+		android:name=".Codego"
+		android:requestLegacyExternalStorage="true"
+		android:usesCleartextTraffic="true"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name=".MainActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".CodegomainActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".CodeeditorActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".HtmlrunerActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".JsrunerActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".PyrunerActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".CodActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".ViewActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".SvgActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".HtmlviewerActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true" />
+		<activity
+			android:name=".LuamjActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".FastwebserisActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".SettingsActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".ImageviewActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".KeystoneActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".DebugActivity"
+			android:screenOrientation="portrait" />
+		<uses-library
+			android:name="org.apache.http.legacy"
+			android:required="false" />
+        <service 
+            android:label="@string/app_name"
+            android:name=".KibMi"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <meta-data 
+             android:name="android.view.im" android:resource="@xml/method" />
+            <intent-filter>
+                <action 
+                    android:name="android.view.InputMethod" />
+            </intent-filter> 
+            </service>
+            <provider
+			android:name="androidx.core.content.FileProvider"
+			android:authorities="org.codego.ninjacoder.provider"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/classpath" />
+		</provider>
+	</application>
+</manifest>
