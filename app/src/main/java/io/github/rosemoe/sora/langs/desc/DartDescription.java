@@ -39,7 +39,16 @@ public class DartDescription implements LanguageDescription {
         //noinspection SpellCheckingInspection
         return new String[]{
             
-			"abstract","assert","async","await","bool","break","case","class","const","continue","default","deferred","do","double","extends ","enum","external","factory","false","finally","for","get","if","implements","native","new","null","num","this","throw","true","try","var","void"
+			  "break","case","continue","default","do","else","for","goto","if","_Pragma",  
+             "return","switch","while","catch","operator","try","throw","using",
+             "asm","__asm__","auto","bool","_Bool","char","_Complex","double","enum","float", 
+             "_Imaginary","int","long","short","signed","struct","typedef","union","unsigned","void", 
+             "class","wchar_t","template","char16_t","char32_t",
+             "const","extern","register","restrict","static","volatile","inline","private",  
+             "protected","public","friend","explicit","virtual","export","mutable","typename",    
+             "constexpr","new","delete","alignas","alignof","decltype","noexcept","thread_local",
+             "and","and_eq","bitand","bitor","compl","not","not_eq","or","or_eq","typeid","xor","xor_eq",    
+             "const_cast","dynamic_cast","reinterpret_cast","static_cast","sizeof","namespace","false","true"
         };
     }
 
