@@ -27,7 +27,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:padding="12dp"
-			android:background="#9E9E9E"
+			android:background="#212121"
 			android:gravity="center_horizontal"
 			android:orientation="vertical"
 			android:layout_weight="1">
@@ -45,9 +45,10 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="16sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="alias"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout2"
@@ -63,9 +64,11 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="keyPassword"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:inputType="textPassword"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout3"
@@ -81,9 +84,11 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="storePassword"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:inputType="textPassword"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout4"
@@ -99,9 +104,10 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="commonName"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout5"
@@ -117,9 +123,10 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="OrganizationUnit"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout6"
@@ -135,9 +142,10 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="OrganizationName"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout7"
@@ -153,9 +161,10 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="stateName"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout8"
@@ -171,9 +180,10 @@
 					android:padding="8dp"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="CountryCode"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout9"
@@ -187,12 +197,12 @@
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:padding="8dp"
-					android:background="@android:color/transparent"
 					android:gravity="left|top"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="city"
-					android:textColorHint="#FFFFFF" />
+					android:textColorHint="#FFFFFF"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<com.google.android.material.textfield.TextInputLayout
 				android:id="@+id/textinputlayout10"
@@ -209,10 +219,11 @@
 					android:gravity="left|top"
 					android:text="100"
 					android:textSize="14sp"
-					android:textColor="#FF9800"
+					android:textColor="#FFFFFF"
 					android:hint="expire"
 					android:textColorHint="#FFFFFF"
-					android:inputType="phone" />
+					android:inputType="phone"
+					android:imeOptions="actionNext" />
 			</com.google.android.material.textfield.TextInputLayout>
 			<EditText
 				android:id="@+id/edittext11"
@@ -225,7 +236,7 @@
 				android:textColor="#FFFFFF"
 				android:hint="name+path"
 				android:textColorHint="#FFFFFF" />
-			<com.google.android.material.button.MaterialButton
+			<Button
 				android:id="@+id/mtn"
 				android:layout_width="250dp"
 				android:layout_height="wrap_content"
@@ -236,10 +247,7 @@
 				android:text="Save key"
 				android:textSize="16sp"
 				android:textStyle="bold|italic"
-				android:textColor="#000000"
-				android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-				app:cornerRadius="8dp"
-				style="@style/Widget.MaterialComponents.Button" />
+				android:textColor="#000000" />
 		</LinearLayout>
 	</LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

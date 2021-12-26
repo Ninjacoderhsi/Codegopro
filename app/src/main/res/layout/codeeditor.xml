@@ -124,7 +124,7 @@
 		android:layout_marginLeft="16dp"
 		android:layout_marginTop="16dp"
 		android:layout_marginRight="16dp"
-		android:layout_marginBottom="60dp"
+		android:layout_marginBottom="65dp"
 		android:layout_gravity="right|bottom"
 		app:srcCompat="@drawable/cutting_6" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

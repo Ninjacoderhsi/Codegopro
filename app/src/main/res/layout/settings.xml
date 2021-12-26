@@ -62,8 +62,14 @@
 						android:layout_marginTop="1dp"
 						android:layout_marginBottom="2dp"
 						android:padding="8dp"
-						android:gravity="right"
 						android:orientation="horizontal">
+						<Switch
+							android:id="@+id/switch1"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="8dp"
+							android:textSize="12sp"
+							android:textColor="#000000" />
 						<TextView
 							android:id="@+id/textview2"
 							android:layout_width="wrap_content"
@@ -72,13 +78,6 @@
 							android:text="نمایش اعداد خاموش"
 							android:textSize="16sp"
 							android:textColor="#FF5722" />
-						<Switch
-							android:id="@+id/switch1"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:padding="8dp"
-							android:textSize="12sp"
-							android:textColor="#000000" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear5"
@@ -87,8 +86,14 @@
 						android:layout_marginTop="2dp"
 						android:layout_marginBottom="2dp"
 						android:padding="8dp"
-						android:gravity="right"
 						android:orientation="horizontal">
+						<Switch
+							android:id="@+id/switch2"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="8dp"
+							android:textSize="12sp"
+							android:textColor="#000000" />
 						<TextView
 							android:id="@+id/textview3"
 							android:layout_width="wrap_content"
@@ -97,21 +102,20 @@
 							android:text="ثابت کردن متن خاموش"
 							android:textSize="16sp"
 							android:textColor="#FF5722" />
-						<Switch
-							android:id="@+id/switch2"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:padding="8dp"
-							android:textSize="12sp"
-							android:textColor="#000000" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear6"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:padding="8dp"
-						android:gravity="right"
 						android:orientation="horizontal">
+						<Switch
+							android:id="@+id/switch3"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="8dp"
+							android:textSize="12sp"
+							android:textColor="#000000" />
 						<TextView
 							android:id="@+id/textview4"
 							android:layout_width="wrap_content"
@@ -120,21 +124,20 @@
 							android:text="پایداری اسکرول بار خاموش"
 							android:textSize="16sp"
 							android:textColor="#FF5722" />
-						<Switch
-							android:id="@+id/switch3"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:padding="8dp"
-							android:textSize="12sp"
-							android:textColor="#000000" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear7"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:padding="8dp"
-						android:gravity="right"
 						android:orientation="horizontal">
+						<Switch
+							android:id="@+id/switch4"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="8dp"
+							android:textSize="12sp"
+							android:textColor="#000000" />
 						<TextView
 							android:id="@+id/textview5"
 							android:layout_width="wrap_content"
@@ -143,13 +146,6 @@
 							android:text="تنظیم خط اول همیشه نشان می دهد خاموش"
 							android:textSize="16sp"
 							android:textColor="#FF5722" />
-						<Switch
-							android:id="@+id/switch4"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:padding="8dp"
-							android:textSize="12sp"
-							android:textColor="#000000" />
 					</LinearLayout>
 				</LinearLayout>
 			</ScrollView>

@@ -75,7 +75,7 @@
 						android:padding="8dp"
 						android:text="کد های اماده جاوا"
 						android:textSize="16sp"
-						android:textColor="#FF5722" />
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/websya"
@@ -99,7 +99,7 @@
 						android:padding="8dp"
 						android:text="fast web sy"
 						android:textSize="14sp"
-						android:textColor="#FF5722" />
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/bord"
@@ -123,12 +123,14 @@
 						android:padding="8dp"
 						android:text="کیبورد GO"
 						android:textSize="14sp"
-						android:textColor="#FF5722" />
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/likey"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
 					android:padding="8dp"
 					android:gravity="center_vertical"
 					android:orientation="horizontal">
@@ -145,10 +147,10 @@
 						android:padding="8dp"
 						android:text="کلید طلایی"
 						android:textSize="16sp"
-						android:textColor="#FF5722" />
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 				<LinearLayout
-					android:id="@+id/rubikalinear"
+					android:id="@+id/mygithub"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="2dp"
@@ -157,19 +159,19 @@
 					android:gravity="center_vertical"
 					android:orientation="horizontal">
 					<ImageView
-						android:id="@+id/myicon"
+						android:id="@+id/imageview1"
 						android:layout_width="40dp"
 						android:layout_height="40dp"
-						android:src="@drawable/rubika"
+						android:src="@drawable/github"
 						android:scaleType="centerInside" />
 					<TextView
-						android:id="@+id/rubikatextview1"
+						android:id="@+id/textview1"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:padding="8dp"
-						android:text="پشتیبانی"
-						android:textSize="16sp"
-						android:textColor="#FF5722" />
+						android:text="github view me"
+						android:textSize="14sp"
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/myket"
@@ -193,7 +195,31 @@
 						android:padding="8dp"
 						android:text="ثبت نظر در مایکت"
 						android:textSize="16sp"
-						android:textColor="#FF5722" />
+						android:textColor="#FFFFFF" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/rubikalinear"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/myicon"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/rubika"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/rubikatextview1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="پشتیبانی"
+						android:textSize="16sp"
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/sting"
@@ -217,7 +243,7 @@
 						android:padding="8dp"
 						android:text="تنظیمات"
 						android:textSize="16sp"
-						android:textColor="#FF5722" />
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/exit"
@@ -241,7 +267,7 @@
 						android:padding="8dp"
 						android:text="خروج از برنامه"
 						android:textSize="16sp"
-						android:textColor="#FF5722" />
+						android:textColor="#FFFFFF" />
 				</LinearLayout>
 			</LinearLayout>
 		</ScrollView>
