@@ -94,6 +94,8 @@ import io.github.rosemoe.sora.langs.desc.LuaDescription;
 import io.github.rosemoe.sora.langs.vue.VueLanguage;
 import io.github.rosemoe.sora.langs.desc.DartDescription;
 import io.github.rosemoe.sora.langs.desc.FuntomDescription;
+import io.github.rosemoe.sora.langs.desc.RubyDescription;
+import io.github.rosemoe.sora.langs.desc.PasDescription;
 import android.content.pm.PackageManager;
 import io.github.rosemoe.sora.widget.CodeEditor;
 import org.codego.ninjacoders.SchemeAndroidXml;
@@ -419,7 +421,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 						else {
 							if (getIntent().getStringExtra("path").contains(".svg")) {
 								intent.setClass(getApplicationContext(), HtmlrunerActivity.class);
-								run.edit().putString("run", editor.getText().toString().trim()).commit();
+								intent.putExtra("send", getIntent().getStringExtra("path"));
 								startActivity(intent);
 								_fab.setImageResource(R.drawable.play);
 							}
@@ -1055,21 +1057,21 @@ public class CodeeditorActivity extends AppCompatActivity {
 											}
 											else {
 												if (getIntent().getStringExtra("title").contains(".svg")) {
-													StringBuilder androidsvg = new StringBuilder();
+													_fab.setImageResource(R.drawable.play);
+													editor.setColorScheme(new HtmlDrak());
+													icon.setImageResource(R.drawable.greadliconpack_4);
+													StringBuilder mainsvg = new StringBuilder();
 													
 													try {
 														
 														Scanner scanner = new Scanner(new java.io.File(getIntent().getStringExtra("path"))).useDelimiter("\\Z");
 														while (scanner.hasNext()) {
-															androidsvg .append(scanner.next());
+															mainsvg .append(scanner.next());
 														}
-														editor.setText(androidsvg );
+														editor.setText(mainsvg );
 													} catch (Exception rt) {
 														rt.printStackTrace();
 													}
-													_fab.setImageResource(R.drawable.play);
-													icon.setImageResource(R.drawable.greadliconpack_4);
-													editor.setColorScheme(new HtmlDrak());
 												}
 												else {
 													if (getIntent().getStringExtra("title").contains(".java")) {
@@ -1140,8 +1142,8 @@ public class CodeeditorActivity extends AppCompatActivity {
 																		rt.printStackTrace();
 																	}
 																	editor.setColorScheme(new SchemeAndroidXml());
-																	icon.setImageResource(R.drawable.greadliconpack_1);
 																	editor.setEditorLanguage(new UniversalLanguage(new FuntomDescription()));	
+																	icon.setImageResource(R.drawable.greadliconpack_1);
 																}
 																else {
 																	if (getIntent().getStringExtra("title").contains(".c")) {
@@ -1180,7 +1182,45 @@ public class CodeeditorActivity extends AppCompatActivity {
 																			editor.setEditorLanguage(new UniversalLanguage(new GoDescription()));	
 																		}
 																		else {
-																			
+																			if (getIntent().getStringExtra("title").contains(".rb")) {
+																				StringBuilder androidruby = new StringBuilder();
+																				
+																				try {
+																					
+																					Scanner scanner = new Scanner(new java.io.File(getIntent().getStringExtra("path"))).useDelimiter("\\Z");
+																					while (scanner.hasNext()) {
+																						androidruby .append(scanner.next());
+																					}
+																					editor.setText(androidruby );
+																				} catch (Exception rt) {
+																					rt.printStackTrace();
+																				}
+																				editor.setColorScheme(new SchemeAndroidXml());
+																				icon.setImageResource(R.drawable.ruby_1);
+																				editor.setEditorLanguage(new UniversalLanguage(new RubyDescription()));	
+																			}
+																			else {
+																				if (getIntent().getStringExtra("title").contains(".pas")) {
+																					StringBuilder androidpas = new StringBuilder();
+																					
+																					try {
+																						
+																						Scanner scanner = new Scanner(new java.io.File(getIntent().getStringExtra("path"))).useDelimiter("\\Z");
+																						while (scanner.hasNext()) {
+																							androidpas .append(scanner.next());
+																						}
+																						editor.setText(androidpas );
+																					} catch (Exception rt) {
+																						rt.printStackTrace();
+																					}
+																					editor.setColorScheme(new SchemeAndroidXml());
+																					icon.setImageResource(R.drawable.pascal_1);
+																					editor.setEditorLanguage(new UniversalLanguage(new PasDescription()));	
+																				}
+																				else {
+																					
+																				}
+																			}
 																		}
 																	}
 																}

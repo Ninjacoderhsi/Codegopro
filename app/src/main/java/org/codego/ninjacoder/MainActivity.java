@@ -123,6 +123,7 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
 		}
+		imageview1.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 	}
 	
 	@Override

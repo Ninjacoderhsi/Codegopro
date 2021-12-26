@@ -30,7 +30,7 @@ import org.json.*;
 import android.widget.LinearLayout;
 import com.google.android.material.textfield.*;
 import android.widget.EditText;
-import com.google.android.material.button.*;
+import android.widget.Button;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
@@ -93,7 +93,7 @@ public class KeystoneActivity extends AppCompatActivity {
 	private TextInputLayout textinputlayout9;
 	private TextInputLayout textinputlayout10;
 	private EditText edittext11;
-	private MaterialButton mtn;
+	private Button mtn;
 	private EditText edittext1;
 	private EditText edittext2;
 	private EditText edittext3;
@@ -208,27 +208,17 @@ public class KeystoneActivity extends AppCompatActivity {
 	
 	private void initializeLogic() {
 		FileUtil.writeFile("######", "####");
-		textinputlayout1.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout2.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout3.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout4.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout5.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout6.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout7.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout8.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout9.setBoxStrokeColor(0xFFFF9800);
-		textinputlayout10.setBoxStrokeColor(0xFFFF9800);
+		textinputlayout1.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout2.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout3.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout4.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout5.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout6.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout7.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout8.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout9.setBoxStrokeColor(0xFFE91E63);
+		textinputlayout10.setBoxStrokeColor(0xFFE91E63);
 		dialogmain = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
-		textinputlayout1.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout2.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout3.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout4.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout5.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout6.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout7.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout8.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout9.setBoxBackgroundColor(0xFFFF9800);
-		textinputlayout10.setBoxBackgroundColor(0xFFFF9800);
 		{
 			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
 			SketchUi.setColor(0xFF00BCD4);SketchUi.setCornerRadius(getDip(20));
@@ -247,6 +237,17 @@ public class KeystoneActivity extends AppCompatActivity {
 		textinputlayout9.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
 		textinputlayout10.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
 		textinputlayout7.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
+		edittext11.setHintTextColor(0xFFFFFFFF);
+		edittext1.setHintTextColor(0xFFFFFFFF);
+		edittext2.setHintTextColor(0xFFFFFFFF);
+		edittext3.setHintTextColor(0xFFFFFFFF);
+		edittext4.setHintTextColor(0xFFFFFFFF);
+		edittext5.setHintTextColor(0xFFFFFFFF);
+		edittext6.setHintTextColor(0xFFFFFFFF);
+		edittext7.setHintTextColor(0xFFFFFFFF);
+		edittext8.setHintTextColor(0xFFFFFFFF);
+		edittext9.setHintTextColor(0xFFFFFFFF);
+		edittext10.setHintTextColor(0xFFFFFFFF);
 	}
 	
 	

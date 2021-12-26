@@ -72,14 +72,14 @@ public class SettingsActivity extends AppCompatActivity {
 	private LinearLayout linear6;
 	private LinearLayout linear7;
 	private TextView textview1;
-	private TextView textview2;
 	private Switch switch1;
-	private TextView textview3;
+	private TextView textview2;
 	private Switch switch2;
-	private TextView textview4;
+	private TextView textview3;
 	private Switch switch3;
-	private TextView textview5;
+	private TextView textview4;
 	private Switch switch4;
+	private TextView textview5;
 	
 	private SharedPreferences n;
 	private SharedPreferences b;
@@ -118,14 +118,14 @@ public class SettingsActivity extends AppCompatActivity {
 		linear6 = findViewById(R.id.linear6);
 		linear7 = findViewById(R.id.linear7);
 		textview1 = findViewById(R.id.textview1);
-		textview2 = findViewById(R.id.textview2);
 		switch1 = findViewById(R.id.switch1);
-		textview3 = findViewById(R.id.textview3);
+		textview2 = findViewById(R.id.textview2);
 		switch2 = findViewById(R.id.switch2);
-		textview4 = findViewById(R.id.textview4);
+		textview3 = findViewById(R.id.textview3);
 		switch3 = findViewById(R.id.switch3);
-		textview5 = findViewById(R.id.textview5);
+		textview4 = findViewById(R.id.textview4);
 		switch4 = findViewById(R.id.switch4);
+		textview5 = findViewById(R.id.textview5);
 		n = getSharedPreferences("n", Activity.MODE_PRIVATE);
 		b = getSharedPreferences("b", Activity.MODE_PRIVATE);
 		myweb = getSharedPreferences("myweb", Activity.MODE_PRIVATE);
@@ -139,11 +139,11 @@ public class SettingsActivity extends AppCompatActivity {
 				final boolean _isChecked = _param2;
 				if (_isChecked) {
 					n.edit().putString("lin", "1").commit();
-					textview2.setText("نمایش اعداد روشن");
+					textview2.setText(getResources().getString(R.string.lineshowON));
 				}
 				else {
 					n.edit().putString("lin", "2").commit();
-					textview2.setText("نمایش اعداد خاموش");
+					textview2.setText(getResources().getString(R.string.lineshowOFF));
 				}
 			}
 		});
@@ -153,12 +153,12 @@ public class SettingsActivity extends AppCompatActivity {
 			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
 				final boolean _isChecked = _param2;
 				if (_isChecked) {
-					textview3.setText("ثابت کردن متن روشن");
+					textview3.setText(getResources().getString(R.string.Textstyle1ON));
 					f.edit().putString("lin1", "3").commit();
 				}
 				else {
 					f.edit().putString("lin1", "4").commit();
-					textview3.setText("ثابت کردن متن خاموش");
+					textview3.setText(getResources().getString(R.string.Textstyle1OFF));
 				}
 			}
 		});
@@ -168,12 +168,12 @@ public class SettingsActivity extends AppCompatActivity {
 			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
 				final boolean _isChecked = _param2;
 				if (_isChecked) {
-					textview4.setText("پایداری اسکرول بار روشن");
+					textview4.setText(getResources().getString(R.string.FixScrollBarON));
 					c.edit().putString("lin2", "5").commit();
 				}
 				else {
 					c.edit().putString("lin2", "6").commit();
-					textview4.setText("پایداری اسکرول بار خاموش");
+					textview4.setText(getResources().getString(R.string.FixScrollBarOFF));
 				}
 			}
 		});
@@ -183,12 +183,12 @@ public class SettingsActivity extends AppCompatActivity {
 			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
 				final boolean _isChecked = _param2;
 				if (_isChecked) {
-					textview5.setText("تنظیم خط اول همیشه نشان می دهد روشن");
 					d.edit().putString("lin3", "7").commit();
+					textview5.setText(getResources().getString(R.string.WARPCORPON));
 				}
 				else {
-					textview5.setText("تنظیم خط اول همیشه نشان می دهد خاموش");
 					d.edit().putString("lin3", "8").commit();
+					textview5.setText(getResources().getString(R.string.WARPCORPOFF));
 				}
 			}
 		});
@@ -243,6 +243,11 @@ public class SettingsActivity extends AppCompatActivity {
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
 		}
+		textview1.setText(getResources().getString(R.string.publics));
+		textview2.setText(getResources().getString(R.string.lineshowOFF));
+		textview3.setText(getResources().getString(R.string.Textstyle1OFF));
+		textview4.setText(getResources().getString(R.string.FixScrollBarOFF));
+		textview5.setText(getResources().getString(R.string.WARPCORPOFF));
 	}
 	
 	@Deprecated

@@ -121,8 +121,9 @@ public class CodegomainActivity extends AppCompatActivity {
 	private LinearLayout _drawer_websya;
 	private LinearLayout _drawer_bord;
 	private LinearLayout _drawer_likey;
-	private LinearLayout _drawer_rubikalinear;
+	private LinearLayout _drawer_mygithub;
 	private LinearLayout _drawer_myket;
+	private LinearLayout _drawer_rubikalinear;
 	private LinearLayout _drawer_sting;
 	private LinearLayout _drawer_exit;
 	private DigitalClock _drawer_digitalclock1;
@@ -134,10 +135,12 @@ public class CodegomainActivity extends AppCompatActivity {
 	private TextView _drawer_key;
 	private ImageView _drawer_iconkey;
 	private TextView _drawer_key11;
-	private ImageView _drawer_myicon;
-	private TextView _drawer_rubikatextview1;
+	private ImageView _drawer_imageview1;
+	private TextView _drawer_textview1;
 	private ImageView _drawer_googlep;
 	private TextView _drawer_myket1;
+	private ImageView _drawer_myicon;
+	private TextView _drawer_rubikatextview1;
 	private ImageView _drawer_stingicon;
 	private TextView _drawer_stingtext;
 	private ImageView _drawer_myexit;
@@ -167,6 +170,7 @@ public class CodegomainActivity extends AppCompatActivity {
 	private TimerTask thistimerindexmain;
 	private AlertDialog.Builder Assasssincreed;
 	private Intent mykey = new Intent();
+	private Intent intentmygithub = new Intent();
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -224,8 +228,9 @@ public class CodegomainActivity extends AppCompatActivity {
 		_drawer_websya = _nav_view.findViewById(R.id.websya);
 		_drawer_bord = _nav_view.findViewById(R.id.bord);
 		_drawer_likey = _nav_view.findViewById(R.id.likey);
-		_drawer_rubikalinear = _nav_view.findViewById(R.id.rubikalinear);
+		_drawer_mygithub = _nav_view.findViewById(R.id.mygithub);
 		_drawer_myket = _nav_view.findViewById(R.id.myket);
+		_drawer_rubikalinear = _nav_view.findViewById(R.id.rubikalinear);
 		_drawer_sting = _nav_view.findViewById(R.id.sting);
 		_drawer_exit = _nav_view.findViewById(R.id.exit);
 		_drawer_digitalclock1 = _nav_view.findViewById(R.id.digitalclock1);
@@ -237,10 +242,12 @@ public class CodegomainActivity extends AppCompatActivity {
 		_drawer_key = _nav_view.findViewById(R.id.key);
 		_drawer_iconkey = _nav_view.findViewById(R.id.iconkey);
 		_drawer_key11 = _nav_view.findViewById(R.id.key11);
-		_drawer_myicon = _nav_view.findViewById(R.id.myicon);
-		_drawer_rubikatextview1 = _nav_view.findViewById(R.id.rubikatextview1);
+		_drawer_imageview1 = _nav_view.findViewById(R.id.imageview1);
+		_drawer_textview1 = _nav_view.findViewById(R.id.textview1);
 		_drawer_googlep = _nav_view.findViewById(R.id.googlep);
 		_drawer_myket1 = _nav_view.findViewById(R.id.myket1);
+		_drawer_myicon = _nav_view.findViewById(R.id.myicon);
+		_drawer_rubikatextview1 = _nav_view.findViewById(R.id.rubikatextview1);
 		_drawer_stingicon = _nav_view.findViewById(R.id.stingicon);
 		_drawer_stingtext = _nav_view.findViewById(R.id.stingtext);
 		_drawer_myexit = _nav_view.findViewById(R.id.myexit);
@@ -351,22 +358,30 @@ public class CodegomainActivity extends AppCompatActivity {
 					if (liststring.get((int)(_position)).endsWith(".svg")) {
 						dialog.setTitle("SVG ");
 						dialog.setIcon(R.drawable.greadliconpack_4);
-						dialog.setMessage("عمل کرد را مشخص کنید");
-						dialog.setPositiveButton("مشاهده", new DialogInterface.OnClickListener() {
+						dialog.setMessage(getResources().getString(R.string.dialog_svgTitle1));
+						dialog.setPositiveButton(getResources().getString(R.string.svgview), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface _dialog, int _which) {
-								intent.setClass(getApplicationContext(), SvgActivity.class);
-								intent.putExtra("path", FileUtil.readFile(liststring.get((int)(_position))));
-								intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
-								startActivity(intent);
+								try {
+									intent.setClass(getApplicationContext(), CodeeditorActivity.class);
+									intent.putExtra("path", liststring.get((int)(_position)));
+									intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+									startActivity(intent);
+								} catch (Exception e) {
+									 
+								}
 							}
 						});
-						dialog.setNeutralButton("ویرایش", new DialogInterface.OnClickListener() {
+						dialog.setNeutralButton(getResources().getString(R.string.svgNo), new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface _dialog, int _which) {
-								hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-								hhhh.putExtra("path", liststring.get((int)(_position)));
-								hhhh.putExtra("save", liststring.get((int)(_position)));
+								try {
+									intent.setClass(getApplicationContext(), CodeeditorActivity.class);
+									intent.putExtra("path", liststring.get((int)(_position)));
+									intent.putExtra("save", liststring.get((int)(_position)));
+								} catch (Exception e) {
+									 
+								}
 							}
 						});
 						dialog.create().show();
@@ -783,6 +798,20 @@ public class CodegomainActivity extends AppCompatActivity {
 							showMessage (rr.toString());
 						}
 					}
+					if (liststring.get((int)(_position)).endsWith(".rb")) {
+						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
+						hhhh.putExtra("path", liststring.get((int)(_position)));
+						hhhh.putExtra("save", liststring.get((int)(_position)));
+						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						startActivity(hhhh);
+					}
+					if (liststring.get((int)(_position)).endsWith(".pas")) {
+						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
+						hhhh.putExtra("path", liststring.get((int)(_position)));
+						hhhh.putExtra("save", liststring.get((int)(_position)));
+						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						startActivity(hhhh);
+					}
 				}
 			}
 		});
@@ -938,6 +967,24 @@ public class CodegomainActivity extends AppCompatActivity {
 			}
 		});
 		
+		_drawer_mygithub.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				intentmygithub.setAction(Intent.ACTION_VIEW);
+				intentmygithub.setData(Uri.parse("https://github.com/Ninjacoderhsi/Codegopro"));
+				startActivity(intentmygithub);
+			}
+		});
+		
+		_drawer_myket.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				hhhh.setAction(Intent.ACTION_VIEW);
+				hhhh.setData(Uri.parse("myket://comment?id=org.codego.ninjacoder"));
+				startActivity(hhhh);
+			}
+		});
+		
 		_drawer_rubikalinear.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
@@ -958,15 +1005,6 @@ public class CodegomainActivity extends AppCompatActivity {
 					}
 				});
 				rubikajoined.create().show();
-			}
-		});
-		
-		_drawer_myket.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				hhhh.setAction(Intent.ACTION_VIEW);
-				hhhh.setData(Uri.parse("myket://comment?id=org.codego.ninjacoder"));
-				startActivity(hhhh);
 			}
 		});
 		
@@ -1148,6 +1186,18 @@ public class CodegomainActivity extends AppCompatActivity {
 			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
 			_drawer_likey.setBackground(SketchUi_RD);
 		}
+		{
+			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
+			SketchUi.setColor(0xFF424242);float lt = getDip(0);
+			float rt = getDip(12);
+			float rb = getDip(12);
+			float lb = getDip(0);
+			SketchUi.setCornerRadii(new float[]{
+					lt,lt,rt ,rt,rb,rb ,lb,lb });
+			_drawer_mygithub.setElevation(getDip(5));
+			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
+			_drawer_mygithub.setBackground(SketchUi_RD);
+		}
 		linear1.setBackgroundColor(0xFF424242);
 		dialogmain = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		dialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
@@ -1157,14 +1207,15 @@ public class CodegomainActivity extends AppCompatActivity {
 		Assasssincreed = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		_fab.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("0xFFE65100".replace("0xFF" , "#"))));
 		_drawer_linear1.setBackgroundColor(0xFF212121);
-		_drawer_jaricon.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
-		_drawer_googlep.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
-		_drawer_myexit.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
-		_drawer_myicon.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
-		_drawer_fastweb.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
-		_drawer_keyicon.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
-		_drawer_stingicon.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
-		_drawer_iconkey.setColorFilter(0xFF2196F3, PorterDuff.Mode.MULTIPLY);
+		_drawer_jaricon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_googlep.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_myexit.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_myicon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_fastweb.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_keyicon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_stingicon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_iconkey.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_drawer_imageview1.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 	}
 	
 	@Override
@@ -1196,38 +1247,43 @@ public class CodegomainActivity extends AppCompatActivity {
 		_drawer_javacode1.setText(getResources().getString(R.string.myjava));
 		_drawer_fastweb1.setText(getResources().getString(R.string.web));
 		_drawer_key11.setText(getResources().getString(R.string.key11));
+		_drawer_textview1.setText(getResources().getString(R.string.github));
 	}
 	
 	public void _RefreshData() {
-		listview1.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); listview1.setItemsCanFocus(false);
-		File_map.clear();
-		subtitle = Folder;
-		
-		FileUtil.listDir(Folder, liststring);
-		Collections.sort(liststring, String.CASE_INSENSITIVE_ORDER);
-		position = 0;
-		for(int _repeat14 = 0; _repeat14 < (int)(liststring.size()); _repeat14++) {
-			{
-				HashMap<String, Object> _item = new HashMap<>();
-				_item.put("file", liststring.get((int)(position)));
-				File_map.add(_item);
-			}
+		try {
+			listview1.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); listview1.setItemsCanFocus(false);
+			File_map.clear();
+			subtitle = Folder;
 			
-			position++;
-		}
-		final class FileComparator implements Comparator<String> {
-			public int compare(String f1, String f2) {
-				if(f1 == f2) return 0;
-				if(FileUtil.isDirectory(f1) && FileUtil.isFile(f2))
-				return -1;
-				if(FileUtil.isFile(f1) && FileUtil.isDirectory(f2))
-				return 1;
-				return f1.compareToIgnoreCase(f2);
+			FileUtil.listDir(Folder, liststring);
+			Collections.sort(liststring, String.CASE_INSENSITIVE_ORDER);
+			position = 0;
+			for(int _repeat14 = 0; _repeat14 < (int)(liststring.size()); _repeat14++) {
+				{
+					HashMap<String, Object> _item = new HashMap<>();
+					_item.put("file", liststring.get((int)(position)));
+					File_map.add(_item);
+				}
+				
+				position++;
 			}
+			final class FileComparator implements Comparator<String> {
+				public int compare(String f1, String f2) {
+					if(f1 == f2) return 0;
+					if(FileUtil.isDirectory(f1) && FileUtil.isFile(f2))
+					return -1;
+					if(FileUtil.isFile(f1) && FileUtil.isDirectory(f2))
+					return 1;
+					return f1.compareToIgnoreCase(f2);
+				}
+			}
+			Collections.sort(liststring, new FileComparator());
+			listview1.setAdapter(new Listview1Adapter(File_map));
+			((BaseAdapter)listview1.getAdapter()).notifyDataSetChanged();
+		} catch (Exception e) {
+			 
 		}
-		Collections.sort(liststring, new FileComparator());
-		listview1.setAdapter(new Listview1Adapter(File_map));
-		((BaseAdapter)listview1.getAdapter()).notifyDataSetChanged();
 	}
 	
 	
@@ -1498,6 +1554,7 @@ public class CodegomainActivity extends AppCompatActivity {
 					CreateFolder = edittext12.getText().toString();
 					if (!FileUtil.isFile(Folder.concat("/".concat(CreateFolder.concat("/"))))) {
 						FileUtil.makeDir(Folder.concat("/".concat(CreateFolder.concat("/"))));
+						FileUtil.writeFile(".nomedia", "");
 						_RefreshData();
 					}
 					else {
@@ -1970,8 +2027,20 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 																										itemback.setBackgroundColor(0xFF00BCD4);
 																									}
 																									else {
-																										itemback.setBackgroundColor(0xFFF44336);
-																										imageview1.setImageResource(R.drawable.file);
+																										if (liststring.get((int)(_position)).endsWith(".rb")) {
+																											imageview1.setImageResource(R.drawable.ruby_2);
+																											itemback.setBackgroundColor(0xFFB71C1C);
+																										}
+																										else {
+																											if (liststring.get((int)(_position)).endsWith(".pas")) {
+																												imageview1.setImageResource(R.drawable.pascal_2);
+																												itemback.setBackgroundColor(0xFF9C27B0);
+																											}
+																											else {
+																												itemback.setBackgroundColor(0xFFF44336);
+																												imageview1.setImageResource(R.drawable.file);
+																											}
+																										}
 																									}
 																								}
 																							}
