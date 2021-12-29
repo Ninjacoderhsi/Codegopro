@@ -13,3 +13,7 @@ int kain(){
   }
   class void static_cast main (){
   fun ();
+  if(int f = 300 == 0 )
+  {
+    @NULL
+  }
