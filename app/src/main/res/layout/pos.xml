@@ -9,7 +9,7 @@
 		android:id="@+id/mybg"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:padding="8dp"
+		android:padding="9dp"
 		android:background="#424242"
 		android:gravity="center_horizontal"
 		android:orientation="vertical">
@@ -23,8 +23,8 @@
 			<ImageView
 				android:id="@+id/imageview1"
 				android:focusable="false"
-				android:layout_width="60dp"
-				android:layout_height="60dp"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
 				android:src="@drawable/codegol"
 				android:scaleType="centerInside" />
 			<TextView
@@ -55,8 +55,8 @@
 				<ImageView
 					android:id="@+id/imageview3"
 					android:focusable="false"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
+					android:layout_width="40dp"
+					android:layout_height="40dp"
 					android:src="@drawable/file"
 					android:scaleType="centerInside" />
 				<TextView
@@ -80,8 +80,8 @@
 				<ImageView
 					android:id="@+id/imageview2"
 					android:focusable="false"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
+					android:layout_width="40dp"
+					android:layout_height="40dp"
 					android:src="@drawable/folder"
 					android:scaleType="centerInside" />
 				<TextView
@@ -113,8 +113,8 @@
 				<ImageView
 					android:id="@+id/imageview4"
 					android:focusable="false"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
+					android:layout_width="40dp"
+					android:layout_height="40dp"
 					android:src="@drawable/project"
 					android:scaleType="centerInside" />
 				<TextView
@@ -138,8 +138,8 @@
 				<ImageView
 					android:id="@+id/imageview5"
 					android:focusable="false"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
+					android:layout_width="40dp"
+					android:layout_height="40dp"
 					android:src="@drawable/swt"
 					android:scaleType="centerInside" />
 				<TextView

@@ -26,7 +26,7 @@
 			android:id="@+id/linear1"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:background="#212121"
+			android:background="#424242"
 			android:orientation="vertical">
 			<ScrollView
 				android:id="@+id/vscroll1"
@@ -36,7 +36,6 @@
 					android:id="@+id/linear4"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="#424242"
 					android:orientation="vertical">
 					<LinearLayout
 						android:id="@+id/linear2"
@@ -129,6 +128,8 @@
 						android:id="@+id/linear7"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_marginTop="2dp"
+						android:layout_marginBottom="2dp"
 						android:padding="8dp"
 						android:orientation="horizontal">
 						<Switch
@@ -145,6 +146,30 @@
 							android:padding="8dp"
 							android:text="تنظیم خط اول همیشه نشان می دهد خاموش"
 							android:textSize="16sp"
+							android:textColor="#FF5722" />
+					</LinearLayout>
+					<LinearLayout
+						android:id="@+id/linear8"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="2dp"
+						android:layout_marginBottom="2dp"
+						android:padding="8dp"
+						android:orientation="horizontal">
+						<Switch
+							android:id="@+id/switch5"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="8dp"
+							android:textSize="12sp"
+							android:textColor="#000000" />
+						<TextView
+							android:id="@+id/textview6"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="8dp"
+							android:text="مخفی کردن بار خاموش"
+							android:textSize="14sp"
 							android:textColor="#FF5722" />
 					</LinearLayout>
 				</LinearLayout>

@@ -1,0 +1,101 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/_coordinator"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<com.google.android.material.appbar.AppBarLayout
+		android:id="@+id/_app_bar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:theme="@style/AppTheme.AppBarOverlay">
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="?attr/actionBarSize"
+			android:background="?attr/colorPrimary"
+			app:popupTheme="@style/AppTheme.PopupOverlay" />
+	</com.google.android.material.appbar.AppBarLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior">
+		<LinearLayout
+			android:id="@+id/linear1"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="8dp"
+			android:background="#424242"
+			android:gravity="center_horizontal"
+			android:orientation="vertical">
+			<LinearLayout
+				android:id="@+id/linear2"
+				android:layout_width="250dp"
+				android:layout_height="250dp"
+				android:orientation="horizontal">
+				<androidx.cardview.widget.CardView
+					android:id="@+id/cardview1"
+					android:layout_width="250dp"
+					android:layout_height="match_parent"
+					app:cardElevation="1dp"
+					app:cardCornerRadius="24dp">
+					<ImageView
+						android:id="@+id/imageview1"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:src="@drawable/mylego"
+						android:scaleType="fitXY" />
+				</androidx.cardview.widget.CardView>
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/linear3"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:padding="8dp"
+				android:orientation="vertical">
+				<LinearLayout
+					android:id="@+id/linear5"
+					android:layout_width="match_parent"
+					android:layout_height="200dp"
+					android:padding="8dp"
+					android:orientation="vertical" />
+				<SeekBar
+					android:id="@+id/seekbar1"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:padding="8dp" />
+				<LinearLayout
+					android:id="@+id/linear4"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:gravity="center_horizontal|center_vertical"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview3"
+						android:layout_width="50dp"
+						android:layout_height="50dp"
+						android:src="@drawable/m_previous"
+						android:scaleType="centerInside"
+						android:layout_weight="1" />
+					<ImageView
+						android:id="@+id/imageview2"
+						android:layout_width="50dp"
+						android:layout_height="50dp"
+						android:src="@drawable/m_play"
+						android:scaleType="centerInside"
+						android:layout_weight="1" />
+					<ImageView
+						android:id="@+id/imageview4"
+						android:layout_width="50dp"
+						android:layout_height="50dp"
+						android:src="@drawable/m_next"
+						android:scaleType="centerInside"
+						android:layout_weight="1" />
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
