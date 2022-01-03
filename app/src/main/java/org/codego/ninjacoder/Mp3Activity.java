@@ -28,7 +28,11 @@ import java.util.regex.*;
 import java.text.*;
 import org.json.*;
 import android.widget.LinearLayout;
+import androidx.cardview.widget.CardView;
 import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.media.MediaPlayer;
+import android.view.View;
 import org.antlr.v4.runtime.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
@@ -51,39 +55,35 @@ import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
-import androidx.core.content.ContextCompat;
-import androidx.core.app.ActivityCompat;
-import android.Manifest;
-import android.content.pm.PackageManager;
 
-public class ImageviewActivity extends AppCompatActivity {
+public class Mp3Activity extends AppCompatActivity {
 	
 	private Toolbar _toolbar;
 	private AppBarLayout _app_bar;
 	private CoordinatorLayout _coordinator;
+	private String pa = "";
+	private boolean mybool = false;
 	
 	private LinearLayout linear1;
+	private LinearLayout linear2;
+	private LinearLayout linear3;
+	private CardView cardview1;
 	private ImageView imageview1;
+	private LinearLayout linear5;
+	private SeekBar seekbar1;
+	private LinearLayout linear4;
+	private ImageView imageview3;
+	private ImageView imageview2;
+	private ImageView imageview4;
+	
+	private MediaPlayer vvv;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
-		setContentView(R.layout.imageview);
+		setContentView(R.layout.mp3);
 		initialize(_savedInstanceState);
-		
-		if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-			ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 1000);
-		} else {
-			initializeLogic();
-		}
-	}
-	
-	@Override
-	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		if (requestCode == 1000) {
-			initializeLogic();
-		}
+		initializeLogic();
 	}
 	
 	private void initialize(Bundle _savedInstanceState) {
@@ -100,28 +100,98 @@ public class ImageviewActivity extends AppCompatActivity {
 			}
 		});
 		linear1 = findViewById(R.id.linear1);
+		linear2 = findViewById(R.id.linear2);
+		linear3 = findViewById(R.id.linear3);
+		cardview1 = findViewById(R.id.cardview1);
 		imageview1 = findViewById(R.id.imageview1);
+		linear5 = findViewById(R.id.linear5);
+		seekbar1 = findViewById(R.id.seekbar1);
+		linear4 = findViewById(R.id.linear4);
+		imageview3 = findViewById(R.id.imageview3);
+		imageview2 = findViewById(R.id.imageview2);
+		imageview4 = findViewById(R.id.imageview4);
+		
+		seekbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar _param1, int _param2, boolean _param3) {
+				final int _progressValue = _param2;
+				for(int _repeat10 = 0; _repeat10 < (int)(vvv.getDuration()); _repeat10++) {
+					if (vvv.isPlaying()) {
+						vvv.seekTo((int)(_progressValue));
+					}
+					else {
+						
+					}
+				}
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar _param1) {
+				
+			}
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar _param2) {
+				
+			}
+		});
+		
+		imageview3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				
+			}
+		});
+		
+		imageview2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				if (mybool) {
+					mybool = false;
+					vvv.pause();
+					imageview2.setImageResource(R.drawable.m_pause);
+				}
+				else {
+					mybool = true;
+					vvv.start();
+					imageview2.setImageResource(R.drawable.m_play);
+				}
+			}
+		});
+		
+		imageview4.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				
+			}
+		});
 	}
 	
 	private void initializeLogic() {
-		setTitle(getIntent().getStringExtra("ti"));
-		imageview1.setImageBitmap(FileUtil.decodeSampleBitmapFromPath(getIntent().getStringExtra("im"), 1024, 1024));
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			Window w =ImageviewActivity.this.getWindow();
-			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+		pa = getIntent().getStringExtra("path");
+		vvv = MediaPlayer.create(getApplicationContext(), Uri.fromFile(new java.io.File(pa)));
+		{
+			final android.media.MediaMetadataRetriever mmr = new android.media.MediaMetadataRetriever();
+			        mmr.setDataSource(getIntent().getStringExtra("title"));
+			
+			        byte [] data = mmr.getEmbeddedPicture();
+			
+			        if(data != null)
+			        {
+				            final Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+				            imageview1.setImageBitmap(bitmap);
+				        }
+			        else
+			        {
+				           
+				        }
+			
+			            imageview1.setAdjustViewBounds(true);
 		}
+		mybool = false;
+		vvv.setLooping(true);
 	}
 	
-	@Override
-	public void onStart() {
-		super.onStart();
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			Window w =this.getWindow();
-			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
-		}
-	}
 	
 	@Deprecated
 	public void showMessage(String _s) {

@@ -66,14 +66,14 @@ import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
 import io.github.rosemoe.sora.langs.python.*;
+import com.android.tools.r8.*;
+import io.reactivex.*;
+import s4u.restore.swb.*;
+import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
 import com.zip4j.*;
-import com.example.myapp.*;
-import s4u.restore.swb.*;
-import io.reactivex.*;
-import com.android.tools.r8.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -105,9 +105,19 @@ public class CodegomainActivity extends AppCompatActivity {
 	private String swb = "";
 	private String fundangocontextError = "";
 	private String Apkinstallermaincontext = "";
+	private String context11 = "";
+	private String getpath = "";
+	private String seris = "";
+	private String getfolderandroid11 = "";
+	private String dddddd = "";
+	private String cold = "";
+	private String aqules = "";
 	
 	private ArrayList<String> liststring = new ArrayList<>();
 	private ArrayList<HashMap<String, Object>> File_map = new ArrayList<>();
+	private ArrayList<String> list = new ArrayList<>();
+	private ArrayList<String> folderList = new ArrayList<>();
+	private ArrayList<String> filelist = new ArrayList<>();
 	
 	private LinearLayout linear1;
 	private ListView listview1;
@@ -171,6 +181,18 @@ public class CodegomainActivity extends AppCompatActivity {
 	private AlertDialog.Builder Assasssincreed;
 	private Intent mykey = new Intent();
 	private Intent intentmygithub = new Intent();
+	private AlertDialog.Builder coproject;
+	private ProgressDialog dialogcompers;
+	private AlertDialog.Builder cofolder;
+	private ProgressDialog cofolder2;
+	private AlertDialog.Builder dismis;
+	private TimerTask g1;
+	private TimerTask g2;
+	private SharedPreferences persefone;
+	private AlertDialog.Builder dialogandroid11;
+	private AlertDialog.Builder android11folderpath;
+	private Intent np3 = new Intent();
+	private Intent apkinstall = new Intent();
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -262,100 +284,79 @@ public class CodegomainActivity extends AppCompatActivity {
 		b = getSharedPreferences("b", Activity.MODE_PRIVATE);
 		mydialog = new AlertDialog.Builder(this);
 		Assasssincreed = new AlertDialog.Builder(this);
+		coproject = new AlertDialog.Builder(this);
+		cofolder = new AlertDialog.Builder(this);
+		dismis = new AlertDialog.Builder(this);
+		persefone = getSharedPreferences("perafone", Activity.MODE_PRIVATE);
+		dialogandroid11 = new AlertDialog.Builder(this);
+		android11folderpath = new AlertDialog.Builder(this);
 		
 		listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> _param1, View _param2, int _param3, long _param4) {
 				final int _position = _param3;
 				position = _position;
-				if (FileUtil.isDirectory(liststring.get((int)(_position)))) {
-					Folder = liststring.get((int)(_position));
+				if (FileUtil.isDirectory(File_map.get((int)_position).get("file").toString())) {
+					Folder = File_map.get((int)_position).get("file").toString();
 					_RefreshData();
 				}
 				else {
-					if (liststring.get((int)(_position)).endsWith(".html")) {
-						cdm.setTitle("Code go");
-						cdm.setIcon(R.drawable.greadliconpack_7);
-						cdm.setMessage("یکی از گزینه های زیر را انتخاب کنید.");
-						cdm.setPositiveButton("ویرایش و مشاهده", new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface _dialog, int _which) {
-								intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-								intent.putExtra("path", liststring.get((int)(_position)));
-								intent.putExtra("save", liststring.get((int)(_position)));
-								intent.putExtra("mypath", FileUtil.readFile(liststring.get((int)(_position))));
-								intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
-								startActivity(intent);
-							}
-						});
-						cdm.setNeutralButton("مشاهده کنید فقط", new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface _dialog, int _which) {
-								hhhh.setClass(getApplicationContext(), HtmlviewerActivity.class);
-								hhhh.putExtra("path", liststring.get((int)(_position)));
-								hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
-								startActivity(hhhh);
-							}
-						});
-						cdm.create().show();
-					}
-					if (liststring.get((int)(_position)).endsWith(".py")) {
+					if (liststring.get((int)(_position)).endsWith(".rjejwiwo")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
 						intent.putExtra("path", liststring.get((int)(_position)));
 						intent.putExtra("save", liststring.get((int)(_position)));
 						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
-						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".lua")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".lua")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-						intent.putExtra("path", liststring.get((int)(_position)));
-						intent.putExtra("save", liststring.get((int)(_position)));
-						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("save", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".js")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".js")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-						intent.putExtra("path", liststring.get((int)(_position)));
-						intent.putExtra("save", liststring.get((int)(_position)));
-						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("save", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".cpp")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".cpp")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-						intent.putExtra("path", liststring.get((int)(_position)));
-						intent.putExtra("save", liststring.get((int)(_position)));
-						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("save", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".sh")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".sh")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-						intent.putExtra("path", liststring.get((int)(_position)));
-						intent.putExtra("save", liststring.get((int)(_position)));
-						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("save", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".css")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".css")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-						intent.putExtra("path", liststring.get((int)(_position)));
-						intent.putExtra("save", liststring.get((int)(_position)));
-						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("save", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".php")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".php")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-						intent.putExtra("path", liststring.get((int)(_position)));
-						intent.putExtra("save", liststring.get((int)(_position)));
-						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("save", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".xml")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".xml")) {
 						intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-						intent.putExtra("path", liststring.get((int)(_position)));
-						intent.putExtra("save", liststring.get((int)(_position)));
-						intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("save", File_map.get((int)_position).get("file").toString());
+						intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(intent);
 					}
-					if (liststring.get((int)(_position)).endsWith(".svg")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".svg")) {
 						dialog.setTitle("SVG ");
 						dialog.setIcon(R.drawable.greadliconpack_4);
 						dialog.setMessage(getResources().getString(R.string.dialog_svgTitle1));
@@ -364,8 +365,8 @@ public class CodegomainActivity extends AppCompatActivity {
 							public void onClick(DialogInterface _dialog, int _which) {
 								try {
 									intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-									intent.putExtra("path", liststring.get((int)(_position)));
-									intent.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+									intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+									intent.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 									startActivity(intent);
 								} catch (Exception e) {
 									 
@@ -376,9 +377,9 @@ public class CodegomainActivity extends AppCompatActivity {
 							@Override
 							public void onClick(DialogInterface _dialog, int _which) {
 								try {
-									intent.setClass(getApplicationContext(), CodeeditorActivity.class);
-									intent.putExtra("path", liststring.get((int)(_position)));
-									intent.putExtra("save", liststring.get((int)(_position)));
+									intent.setClass(getApplicationContext(), SvgActivity.class);
+									intent.putExtra("path", File_map.get((int)_position).get("file").toString());
+									intent.putExtra("save", File_map.get((int)_position).get("file").toString());
 								} catch (Exception e) {
 									 
 								}
@@ -386,49 +387,49 @@ public class CodegomainActivity extends AppCompatActivity {
 						});
 						dialog.create().show();
 					}
-					if (liststring.get((int)(_position)).endsWith(".vue")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".vue")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
-					if (liststring.get((int)(_position)).endsWith(".java")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".java")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
-					if (liststring.get((int)(_position)).endsWith(".dart")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".dart")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
-					if (liststring.get((int)(_position)).endsWith(".fun")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".fun")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
-					if (liststring.get((int)(_position)).endsWith(".c")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".c")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
-					if (liststring.get((int)(_position)).endsWith(".go")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".go")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
-					if (liststring.get((int)(_position)).endsWith(".co")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".co")) {
 						pro = new ProgressDialog(CodegomainActivity.this);
 						pro.setTitle("در حال نصب ....");
 						pro.setCanceledOnTouchOutside(false);
@@ -440,7 +441,7 @@ public class CodegomainActivity extends AppCompatActivity {
 									public void run() {
 										while(true) {
 											try {
-												String fileZip = liststring.get((int)(_position));
+												String fileZip = File_map.get((int)_position).get("file").toString();
 												        java.io.File destDir = new java.io.File("/sdcard/htmlgo/");
 												        byte[]  buffer = new byte[1024] ;
 												        try {
@@ -490,16 +491,16 @@ public class CodegomainActivity extends AppCompatActivity {
 						_timer.schedule(main, (int)(5000));
 						pro.show();
 					}
-					if (liststring.get((int)(_position)).endsWith(".jpg") || (liststring.get((int)(_position)).endsWith(".png") || liststring.get((int)(_position)).endsWith(".bmp"))) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".jpg") || (File_map.get((int)_position).get("file").toString().endsWith(".png") || File_map.get((int)_position).get("file").toString().endsWith(".bmp"))) {
 						img.setClass(getApplicationContext(), ImageviewActivity.class);
-						img.putExtra("im", liststring.get((int)(_position)));
-						img.putExtra("ti", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						img.putExtra("im", File_map.get((int)_position).get("file").toString());
+						img.putExtra("ti", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(img);
 					}
-					if (liststring.get((int)(_position)).endsWith(".swb")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".swb")) {
 						swbpro = new ProgressDialog(CodegomainActivity.this);
 						swbpro.setTitle("در حال نصب پروژه ");
-						swbpro.setMessage("نصب پروژه : ".concat(liststring.get((int)(_position)).concat(" ")));
+						swbpro.setMessage("نصب پروژه : ".concat(File_map.get((int)_position).get("file").toString().concat(" ")));
 						swbpro.setCanceledOnTouchOutside(false);
 						thistimerindexmain = new TimerTask() {
 							@Override
@@ -510,10 +511,27 @@ public class CodegomainActivity extends AppCompatActivity {
 										while(true) {
 											try {
 												FileUtil.writeFile("##this dont edit", "#this swb promision ");
-												swb = liststring.get((int)(_position));
-												
+												swb = File_map.get((int)_position).get("file").toString();
+												SketchwareUtil.showMessage(getApplicationContext(), "install project to : ".concat(swb));
+												if(swb.contains(".swb")){
+															if (FileUtil.isFile(swb)) {
+																			S4U.selecteSWB(swb, getApplicationContext());
+																		
+																		//REMOVE TEMPORARY FILE BECAUSE NOT MARGE TWO PROJECT FILES
+																			while(S4U._is_finish()) {
+																					 FileUtil.deleteFile(FileUtil.getPackageDataDir(getApplicationContext()).concat("/swb_restore/"));
+																							break;
+																			}
+															}
+															else {
+																			SketchwareUtil.showMessage(getApplicationContext(), "INVALID SWB PATH");
+															}
+												} 
+												else {
+															SketchwareUtil.showMessage(getApplicationContext(), "THIS FILE IS NOT SWB");
+												}
 											} catch (Exception e) {
-												fundangocontextError = "Error this  ";
+												fundangocontextError = File_map.get((int)_position).get("file").toString();
 												SketchwareUtil.showMessage(getApplicationContext(), fundangocontextError.concat(e.toString()));
 												((ClipboardManager) getSystemService(getApplicationContext().CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("clipboard", fundangocontextError.concat("خطا مشکلی پیش امده است با سازنده تماس بگرید و مشکل خود را بیان کنید ")));
 											}
@@ -527,289 +545,52 @@ public class CodegomainActivity extends AppCompatActivity {
 						_timer.schedule(thistimerindexmain, (int)(2000));
 						swbpro.show();
 					}
-					if (liststring.get((int)(_position)).endsWith(".mp3")) {
-						try {
-							    media = new MediaPlayer();
-							        media.setDataSource(liststring.get((int)(_position)));
-							        media.prepare();
-							    } catch (java.io.IOException e) {
-							        e.printStackTrace();
-							    }
-						final AlertDialog.Builder alert = new AlertDialog.Builder(CodegomainActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT); 
-						    final Button btn = new Button(getApplicationContext()); 
-						    btn.setText("⏮");
-						    btn.setPadding(0,0,0,0);
-						    btn.setLayoutParams(new LinearLayout.LayoutParams(155, 85));
-						    final Button btn2 = new Button(getApplicationContext()); 
-						    btn2.setText("⏭");
-						    btn2.setPadding(0,0,0,0);
-						    btn2.setLayoutParams(new LinearLayout.LayoutParams(155, 85));
-						    final Button btn3 = new Button(getApplicationContext()); 
-						    btn3.setLayoutParams(new LinearLayout.LayoutParams(110, 85));
-						    btn3.setText("▶️");
-						    btn3.setPadding(0,0,0,0);
-						    alert.setTitle("play : ".concat(liststring.get((int)(_position)).concat(" ")));
-						    
-						    final SeekBar seek = new SeekBar(getApplicationContext()); 
-						    LinearLayout parent = new LinearLayout(getApplicationContext()); parent.setLayoutParams(new android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 250)); parent.setOrientation(LinearLayout.VERTICAL); 
-						    LinearLayout parent2 = new LinearLayout(getApplicationContext()); parent2.setLayoutParams(new android.widget.LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)); parent.setOrientation(LinearLayout.VERTICAL); 
-						    parent.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-						    
-						    parent.addView(seek);
-						    parent2.addView(btn);
-						    parent2.addView(btn2);
-						    parent2.addView(btn3);
-						    parent.addView(parent2);
-						    alert.setCancelable(false);
-						    
-						    seek.setMax((int)media.getDuration()/90); 
-						    
-						    final Handler mHandler = new Handler();
-						    runOnUiThread(new Runnable() {
-							     
-							         @Override
-							         public void run() {
-								              if(media != null){
-									                   int mCurrentPosition = media.getCurrentPosition() / 90;
-									                   seek.setProgress(mCurrentPosition);
-									               }
-								              mHandler.postDelayed(this, 90);
-								          }
-							    });
-						    seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-							     
-							             @Override
-							             public void onStopTrackingTouch(SeekBar seekBar) {
-								      
-								              }
-							     
-							             @Override
-							             public void onStartTrackingTouch(SeekBar seekBar) {
-								      
-								              }
-							     
-							                 @Override
-							                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {                
-								                      if(media != null && fromUser){
-									                           media.seekTo(progress * 90);
-									                       }
-								                  }
-							         });
-						     
-						    btn.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)500, 0xFFFF9800));
-						    btn2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)500, 0xFFFF9800));
-						    btn3.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)500, 0xFFFF9800));
-						   
-						  btn3.setOnTouchListener(new View.OnTouchListener() {
-							     @Override
-							     public boolean onTouch(View v, MotionEvent event) {
-								      switch (event.getAction()){
-									       case MotionEvent.ACTION_DOWN:{
-										        ObjectAnimator scaleX = new ObjectAnimator();
-										        scaleX.setTarget(btn3);
-										        scaleX.setPropertyName("scaleX");
-										        scaleX.setFloatValues(0.9f);
-										        scaleX.setDuration((int)5);
-										        scaleX.start();
-										        
-										        ObjectAnimator scaleY = new ObjectAnimator();
-										        scaleY.setTarget(btn3);
-										        scaleY.setPropertyName("scaleY");
-										        scaleY.setFloatValues(0.9f);
-										        scaleY.setDuration((int)5);
-										        scaleY.start();
-										        break;
-										       }
-									       case MotionEvent.ACTION_UP:{
-										        
-										        ObjectAnimator scaleX = new ObjectAnimator();
-										        scaleX.setTarget(btn3);
-										scaleX.setPropertyName("scaleX");
-										scaleX.setFloatValues((float)1);
-										        scaleX.setDuration((int)5);
-										scaleX.
-										start();
-										        
-										        ObjectAnimator scaleY = new ObjectAnimator();
-										        scaleY.setTarget(btn3);
-										        scaleY.setPropertyName("scaleY");
-										        scaleY.setFloatValues((float)1);
-										        scaleY.setDuration((int)5);
-										        scaleY.start();
-										        
-										        break;
-										       }
-									      }
-								      return false;
-								     }
-							    });
-						    btn.setOnTouchListener(new View.OnTouchListener() {
-							     @Override
-							     public boolean onTouch(View v, MotionEvent event) {
-								      switch (event.getAction()){
-									       case MotionEvent.ACTION_DOWN:{
-										        ObjectAnimator scaleX = new ObjectAnimator();
-										        scaleX.setTarget(btn);
-										        scaleX.setPropertyName("scaleX");
-										        scaleX.setFloatValues(0.9f);
-										        scaleX.setDuration((int)5);
-										        scaleX.start();
-										        
-										        ObjectAnimator scaleY = new ObjectAnimator();
-										        scaleY.setTarget(btn);
-										        scaleY.setPropertyName("scaleY");
-										        scaleY.setFloatValues(0.9f);
-										        scaleY.setDuration((int)5);
-										        scaleY.start();
-										        break;
-										       }
-									       case MotionEvent.ACTION_UP:{
-										        
-										        ObjectAnimator scaleX = new ObjectAnimator();
-										        scaleX.setTarget(btn);
-										        scaleX.setPropertyName("scaleX");
-										        scaleX.setFloatValues((float)1);
-										        scaleX.setDuration((int)5);
-										        scaleX.start();
-										        
-										        ObjectAnimator scaleY = new ObjectAnimator();
-										        scaleY.setTarget(btn);
-										        scaleY.setPropertyName("scaleY");
-										        scaleY.setFloatValues((float)1);
-										        scaleY.setDuration((int)5);
-										        scaleY.start();
-										        
-										        break;
-										       }
-									      }
-								      return false;
-								     }
-							    });
-						    btn2.setOnTouchListener(new View.OnTouchListener() {
-							     @Override
-							     public boolean onTouch(View v, MotionEvent event) {
-								      switch (event.getAction()){
-									       case MotionEvent.ACTION_DOWN:{
-										        ObjectAnimator scaleX = new ObjectAnimator();
-										        scaleX.setTarget(btn2);
-										        scaleX.setPropertyName("scaleX");
-										        scaleX.setFloatValues(0.9f);
-										        scaleX.setDuration((int)5);
-										        scaleX.start();
-										        
-										        ObjectAnimator scaleY = new ObjectAnimator();
-										        scaleY.setTarget(btn2);
-										        scaleY.setPropertyName("scaleY");
-										        scaleY.setFloatValues(0.9f);
-										        scaleY.setDuration((int)5);
-										        scaleY.start();
-										        break;
-										       }
-									       case MotionEvent.ACTION_UP:{
-										        
-										        ObjectAnimator scaleX = new ObjectAnimator();
-										        scaleX.setTarget(btn2);
-										        scaleX.setPropertyName("scaleX");
-										        scaleX.setFloatValues((float)1);
-										        scaleX.setDuration((int)5);
-										        scaleX.start();
-										        
-										        ObjectAnimator scaleY = new ObjectAnimator();
-										        scaleY.setTarget(btn2);
-										        scaleY.setPropertyName("scaleY");
-										        scaleY.setFloatValues((float)1);
-										        scaleY.setDuration((int)5);
-										        scaleY.start();
-										        
-										        break;
-										       }
-									      }
-								      return false;
-								     }
-							    });
-						    if (media.isPlaying()) {
-							     btn3.setText("⏸");
-							    }
-						    else {
-							     btn3.setText("▶️");
-							    }
-						    btn.setOnClickListener(new View.OnClickListener() {
-							     @Override
-							     public void onClick(View _view) {
-								      media.release();
-								     }
-							    });
-						    
-						    btn2.setOnClickListener(new View.OnClickListener() {
-							     @Override
-							     public void onClick(View _view) {
-								      media.reset();
-								     }
-							    });
-						    btn3.setOnClickListener(new View.OnClickListener() {
-							     @Override
-							     public void onClick(View _view) {
-								      if (media.isPlaying()) {
-									       btn3.setText("▶️");
-									       media.pause();
-									      }
-								      else {
-									       btn3.setText("⏸");
-									       media.start();
-									      }
-								     }
-							    });
-						    final String _btn9 = ("Exit");
-						    alert.setPositiveButton(_btn9, new DialogInterface.OnClickListener() {
-							          @Override
-							          public void onClick(DialogInterface _dialog, int _which) {
-								           media.reset();
-								      
-								     }
-							         });
-						    seek.setProgressTintList(ColorStateList.valueOf(0xFFFF9800));
-						    
-						    seek.getThumb().setColorFilter((0xFFFF9800), PorterDuff.Mode.MULTIPLY);
-						    
-						    alert.setView(parent);
-						    final AlertDialog bb = alert.create();
-						    bb.show();
+					if (File_map.get((int)_position).get("file").toString().endsWith(".mp3")) {
+						np3.setClass(getApplicationContext(), Mp3Activity.class);
+						np3.putExtra("title", File_map.get((int)_position).get("file").toString());
+						np3.putExtra("path", File_map.get((int)_position).get("file").toString());
+						startActivity(np3);
 					}
-					if (liststring.get((int)(_position)).endsWith(".apk")) {
-						try {
-							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-													Uri uri = androidx.core.content.FileProvider.getUriForFile(getApplicationContext(),
-															CodegomainActivity.this.getPackageName() + ".provider", new java.io.File(liststring.get((int)(_position))));
-													Intent intent = new Intent(Intent.ACTION_VIEW);
-													intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-													intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-													intent.setDataAndType(uri, "application/vnd.android.package-archive");
-													startActivity(intent);
-								
-											} else {
-													Intent intent = new Intent(Intent.ACTION_VIEW);
-													intent.setDataAndType(Uri.fromFile( new java.io.File(liststring.get((int)(_position)))),
-															"application/vnd.android.package-archive");
-													intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-													startActivity(intent);
-											}
-							
-						} catch (Exception rr) {
-							showMessage (rr.toString());
-						}
-					}
-					if (liststring.get((int)(_position)).endsWith(".rb")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".apk")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("apk", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("icon", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
-					if (liststring.get((int)(_position)).endsWith(".pas")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".rb")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("path", liststring.get((int)(_position)));
-						hhhh.putExtra("save", liststring.get((int)(_position)));
-						hhhh.putExtra("title", Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
+						startActivity(hhhh);
+					}
+					if (File_map.get((int)_position).get("file").toString().endsWith(".pas")) {
+						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
+						startActivity(hhhh);
+					}
+					if (File_map.get((int)_position).get("file").toString().endsWith("LICENSE")) {
+						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
+						startActivity(hhhh);
+					}
+					if (File_map.get((int)_position).get("file").toString().endsWith(".py")) {
+						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
+						startActivity(hhhh);
+					}
+					if (File_map.get((int)_position).get("file").toString().endsWith(".html")) {
+						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
+						hhhh.putExtra("path", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
+						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
 					}
 				}
@@ -820,7 +601,123 @@ public class CodegomainActivity extends AppCompatActivity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> _param1, View _param2, int _param3, long _param4) {
 				final int _position = _param3;
-				
+				dismis.setTitle("ایجاد پروژه");
+				dismis.setIcon(R.drawable.project);
+				dismis.setMessage("لطفان دقت کنید کدام گزینه را انتخاب میکنید");
+				dismis.setPositiveButton("folder", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface _dialog, int _which) {
+						coproject.setTitle("ساخت پروژه Co?");
+						coproject.setIcon(R.drawable.codegol);
+						final EditText edittext23= new EditText(CodegomainActivity.this);
+						LinearLayout.LayoutParams lparr = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+						edittext23.setHint("name file...");
+						edittext23.setHintTextColor(0xFF000000);
+						edittext23.setText("/sdcard/htmlgo/main.co");
+						edittext23.setTextSize((float)16);
+						edittext23.setTextColor(0xFFF44336);
+						///((EditText)edittext23).setError("Error plestype text");
+						edittext23.setLayoutParams(lparr);
+						coproject.setView(edittext23);
+						coproject.setMessage("ایا میخواهید یک پروژه ایجاد کنید؟ برای فایل ها");
+						coproject.setPositiveButton("تایید", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								dialogcompers = new ProgressDialog(CodegomainActivity.this);
+								dialogcompers.setTitle("در حال ایجاد");
+								dialogcompers.setCanceledOnTouchOutside(false);
+								context11 = edittext23.getText().toString();
+								dialogcompers.setMessage("میتونی پروژه هاتو توی پوشه html go ببینی");
+								g2 = new TimerTask() {
+									@Override
+									public void run() {
+										runOnUiThread(new Runnable() {
+											@Override
+											public void run() {
+												while(true) {
+													try {
+														new ZipperFF().zipFile(new java.io.File(File_map.get((int)_position).get("file").toString()), new java.io.File(context11));
+													} catch (Exception e) {
+														SketchwareUtil.CustomToast(getApplicationContext(), e.toString(), 0xFFF44336, 16, 0xFFFFFFFF, 25, SketchwareUtil.BOTTOM);
+													}
+													dialogcompers.dismiss();
+													break;
+												}
+											}
+										});
+									}
+								};
+								_timer.schedule(g2, (int)(3000));
+								dialogcompers.show();
+							}
+						});
+						coproject.setNegativeButton("لغو", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								
+							}
+						});
+						coproject.create().show();
+					}
+				});
+				dismis.setNegativeButton("file", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface _dialog, int _which) {
+						cofolder.setTitle("ساخت پروژه Co?");
+						cofolder.setIcon(R.drawable.codegol);
+						final EditText edittext25= new EditText(CodegomainActivity.this);
+						LinearLayout.LayoutParams lparr = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+						edittext25.setHint("name file...");
+						edittext25.setHintTextColor(0xFF000000);
+						edittext25.setTextSize((float)16);
+						edittext25.setText("/sdcard/htmlgo/ninjacoder.co");
+						edittext25.setTextColor(0xFFF44336);
+						//((EditText)edittext25).setError("Error plestype text");
+						edittext25.setLayoutParams(lparr);
+						cofolder.setView(edittext25);
+						cofolder.setMessage("ایا میخواهید یک پروژه ایجاد کنید؟ برای فایل ها");
+						cofolder.setPositiveButton("تایید", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								cofolder2 = new ProgressDialog(CodegomainActivity.this);
+								getpath = edittext25.getText().toString();
+								cofolder2.setTitle("در حال ایجاد");
+								cofolder2.setMessage("میتونی پروژه هاتو توی پوشه html go ببینی");
+								cofolder2.setCanceledOnTouchOutside(false);
+								g1 = new TimerTask() {
+									@Override
+									public void run() {
+										runOnUiThread(new Runnable() {
+											@Override
+											public void run() {
+												while(true) {
+													try {
+														_zip(File_map.get((int)_position).get("file").toString(), getpath);
+														SketchwareUtil.CustomToast(getApplicationContext(), "FileSaved!", 0xFFFF9800, 16, 0xFF424242, 25, SketchwareUtil.BOTTOM);
+													} catch (Exception e) {
+														SketchwareUtil.CustomToast(getApplicationContext(), e.toString(), 0xFFF44336, 16, 0xFFFFFFFF, 25, SketchwareUtil.BOTTOM);
+													}
+													cofolder2.dismiss();
+													break;
+												}
+											}
+										});
+									}
+								};
+								_timer.schedule(g1, (int)(3000));
+								cofolder2.show();
+							}
+						});
+						cofolder.setNegativeButton("لغو", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								
+							}
+						});
+						cofolder.create().show();
+					}
+				});
+				dismis.create().show();
 				return true;
 			}
 		});
@@ -853,8 +750,8 @@ public class CodegomainActivity extends AppCompatActivity {
 				projectCo1.setText(getResources().getString(R.string.project));
 				makefolder.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
 								
-							_folder();
-						dialog1.dismiss();
+							dialog1.dismiss();
+						_folder();
 						
 						}
 				});
@@ -1204,6 +1101,7 @@ public class CodegomainActivity extends AppCompatActivity {
 		ninja = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		cdm = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		keyboard = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+		dialogandroid11 = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		Assasssincreed = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		_fab.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("0xFFE65100".replace("0xFF" , "#"))));
 		_drawer_linear1.setBackgroundColor(0xFF212121);
@@ -1216,6 +1114,63 @@ public class CodegomainActivity extends AppCompatActivity {
 		_drawer_stingicon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		_drawer_iconkey.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		_drawer_imageview1.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		try {
+			 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+					      
+				if (persefone.getString("one", "").equals("")) {
+					persefone.edit().putString("one", "1").commit();
+					dialogandroid11.setTitle("دستگاه شما اندروید 11 است.");
+					dialogandroid11.setIcon(R.drawable.codegol);
+					dialogandroid11.setMessage("لطفان مجوز وارداتی اندروید 11 را صادر کنید تا ما به راحتی به فایل های شما دست رسی داشته باشیم");
+					dialogandroid11.setPositiveButton("تایید", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface _dialog, int _which) {
+							seris = "/sdcard/htmlgo";
+							if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+								    try {
+									        
+									       if (permission()) {	   
+										if (FileUtil.isExistFile(seris)) {
+											FileUtil.makeDir(seris);
+										}          
+												                } else {
+												                  RequestPermission_Dialog();
+										
+												                }
+									        
+									        
+									    } catch (Exception e) {
+									               
+									    }
+										                
+									         } else {
+								
+								if (FileUtil.isExistFile(seris)) {
+									FileUtil.makeDir(seris);
+								}
+								
+							}
+						}
+					});
+					dialogandroid11.setNeutralButton("لغو", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface _dialog, int _which) {
+							
+						}
+					});
+					dialogandroid11.create().show();
+				}
+				else {
+					
+				}
+						        
+					    } else {
+					      
+					       
+					    }
+		} catch (Exception e) {
+			 
+		}
 	}
 	
 	@Override
@@ -1233,6 +1188,7 @@ public class CodegomainActivity extends AppCompatActivity {
 	@Override
 	public void onStart() {
 		super.onStart();
+		setTheme(android.R.style.Theme_Material);
 		_Assassincreeddatamain(Assasssincreed);
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =this.getWindow();
@@ -1251,39 +1207,44 @@ public class CodegomainActivity extends AppCompatActivity {
 	}
 	
 	public void _RefreshData() {
-		try {
-			listview1.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); listview1.setItemsCanFocus(false);
-			File_map.clear();
-			subtitle = Folder;
-			
-			FileUtil.listDir(Folder, liststring);
-			Collections.sort(liststring, String.CASE_INSENSITIVE_ORDER);
-			position = 0;
-			for(int _repeat14 = 0; _repeat14 < (int)(liststring.size()); _repeat14++) {
-				{
-					HashMap<String, Object> _item = new HashMap<>();
-					_item.put("file", liststring.get((int)(position)));
-					File_map.add(_item);
-				}
-				
-				position++;
+		liststring.clear();
+		folderList.clear();
+		File_map.clear();
+		filelist.clear();
+		FileUtil.listDir(Folder, liststring);
+		Collections.sort(liststring, String.CASE_INSENSITIVE_ORDER);
+		position = 0;
+		for(int _repeat87 = 0; _repeat87 < (int)(liststring.size()); _repeat87++) {
+			if (FileUtil.isDirectory(liststring.get((int)(position)))) {
+				folderList.add(liststring.get((int)(position)));
 			}
-			final class FileComparator implements Comparator<String> {
-				public int compare(String f1, String f2) {
-					if(f1 == f2) return 0;
-					if(FileUtil.isDirectory(f1) && FileUtil.isFile(f2))
-					return -1;
-					if(FileUtil.isFile(f1) && FileUtil.isDirectory(f2))
-					return 1;
-					return f1.compareToIgnoreCase(f2);
-				}
+			else {
+				filelist.add(liststring.get((int)(position)));
 			}
-			Collections.sort(liststring, new FileComparator());
-			listview1.setAdapter(new Listview1Adapter(File_map));
-			((BaseAdapter)listview1.getAdapter()).notifyDataSetChanged();
-		} catch (Exception e) {
-			 
+			position++;
 		}
+		position = 0;
+		for(int _repeat101 = 0; _repeat101 < (int)(folderList.size()); _repeat101++) {
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("file", folderList.get((int)(position)));
+				File_map.add(_item);
+			}
+			
+			position++;
+		}
+		position = 0;
+		for(int _repeat108 = 0; _repeat108 < (int)(filelist.size()); _repeat108++) {
+			{
+				HashMap<String, Object> _item = new HashMap<>();
+				_item.put("file", filelist.get((int)(position)));
+				File_map.add(_item);
+			}
+			
+			position++;
+		}
+		listview1.setAdapter(new Listview1Adapter(File_map));
+		((BaseAdapter)listview1.getAdapter()).notifyDataSetChanged();
 	}
 	
 	
@@ -1554,7 +1515,6 @@ public class CodegomainActivity extends AppCompatActivity {
 					CreateFolder = edittext12.getText().toString();
 					if (!FileUtil.isFile(Folder.concat("/".concat(CreateFolder.concat("/"))))) {
 						FileUtil.makeDir(Folder.concat("/".concat(CreateFolder.concat("/"))));
-						FileUtil.writeFile(".nomedia", "");
 						_RefreshData();
 					}
 					else {
@@ -1863,6 +1823,515 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 		}
 	}
 	
+	
+	public void _zup() {
+	}
+	public final class ZipperFF {
+		
+		        private  java.io.FileOutputStream fos;
+		        private  java.util.zip.ZipOutputStream zos;
+		        private  java.io.BufferedOutputStream bos;
+		        private  java.util.zip.ZipEntry entry;
+		
+		        private  java.io.FileInputStream fis;
+		        private  java.io.BufferedInputStream bis;
+		
+		        private  final int BUFFER_CAPACITY = 1024;
+		        private  byte[] buffer;
+		        private  int buffer_size;
+		
+		
+		        public  boolean zipFile(java.io.File source, java.io.File target) {
+			            boolean check = true;
+			            try {
+				                fos = new java.io.FileOutputStream(target);
+				                zos = new java.util.zip.ZipOutputStream(fos);
+				                zos.setMethod(java.util.zip.ZipOutputStream.DEFLATED);
+				                zos.setLevel(java.util.zip.Deflater.DEFAULT_COMPRESSION);
+				                bos = new java.io.BufferedOutputStream(zos);
+				            } catch (java.io.IOException e) {
+				                System.out.println("ZipperFF.zipFile() says: " + e);
+				                check = false;
+				            }
+			            if (source.isDirectory()) {
+				                buffer = new byte[BUFFER_CAPACITY];
+				                if (manageFolder(source, ""))
+				
+				                    check = false;
+				            } else {
+				                buffer = new byte[BUFFER_CAPACITY];
+				                if (writeFileToZipStream(source, ""))
+				                    check = false;
+				            }
+			            try {
+				                zos.finish();
+				                bos.close();
+				                zos.close();
+				                fos.close();
+				            } catch (Exception e) {
+				                System.out.println("While closing streams (final), the following happend: " + e);
+				            }
+			            return true;
+			        }
+		
+		        private  boolean manageFolder(java.io.File source_folder, String name) {
+			            boolean check = true;
+			            java.io.File[] all_files = source_folder.listFiles();
+			            for (java.io.File single_file : all_files) {
+				                if (single_file.isDirectory()) {
+					                    manageFolder(single_file, name + java.io.File.separator + single_file.getName());
+					                } else {
+					                    if (!writeFileToZipStream(single_file, name +java.io.File.separator + single_file.getName()))
+					                        check = false;
+					                }
+				            }
+			            return check;
+			        }
+		
+		        private  boolean writeFileToZipStream(java.io.File source_file, String entry_name) {
+			            entry_name = entry_name.equals("") ? entry_name : entry_name.substring(1);
+			            boolean check = true;
+			            try {
+				                fis = new java.io.FileInputStream(source_file);
+				                bis = new java.io.BufferedInputStream(fis, BUFFER_CAPACITY);
+				                entry = new java.util.zip.ZipEntry(entry_name.equals("") ? source_file.getName() : entry_name);
+				                zos.putNextEntry(entry);
+				                while ((buffer_size = bis.read(buffer, 0, BUFFER_CAPACITY)) != -1) {
+					                    bos.write(buffer, 0, buffer_size);
+					                }
+				            } catch (java.io.IOException e) {
+				                System.out.println("ZipperFF.writeFileToZipStream() says: " + e);
+				                check = false;
+				            }
+			            try {
+				                bos.flush();
+				                zos.closeEntry();
+				                bis.close();
+				                fis.close();
+				            } catch (java.io.IOException e) {
+				                System.out.println("While closing streams (file), the following happend: " + e);
+				            }
+			            return check;
+			        }
+		    }
+	    {
+	}
+	
+	
+	public void _zip(final String _source, final String _destination) {
+		FileUtil.writeFile("Don't Remove it Thanks.\nModified By: AauraParti", "This Block Added for Manage Permission");
+		try {
+			java.util.zip.ZipOutputStream os = new java.util.zip.ZipOutputStream(new java.io.FileOutputStream(_destination));
+					zip(os, _source, null);
+					os.close();
+		}
+		
+		catch(java.io.IOException e) {}
+	}
+	private void zip(java.util.zip.ZipOutputStream os, String filePath, String name) throws java.io.IOException
+		{
+				java.io.File file = new java.io.File(filePath);
+				java.util.zip.ZipEntry entry = new java.util.zip.ZipEntry((name != null ? name + java.io.File.separator : "") + file.getName() + (file.isDirectory() ? java.io.File.separator : ""));
+				os.putNextEntry(entry);
+				
+				if(file.isFile()) {
+						java.io.InputStream is = new java.io.FileInputStream(file);
+						int size = is.available();
+						byte[] buff = new byte[size];
+						int len = is.read(buff);
+						os.write(buff, 0, len);
+						return;
+				}
+				
+				java.io.File[] fileArr = file.listFiles();
+				for(java.io.File subFile : fileArr) {
+						zip(os, subFile.getAbsolutePath(), entry.getName());
+				}
+	}
+	
+	
+	public void _contextandroid() {
+	}
+	/*
+Code Edited by Hichem Soft
+youtube channel : Hichem Soft
+support me if you like my work
+*/
+	@Override
+	    protected void onActivityResult(int _requestCode, int _resultCode, Intent _data) {
+		  super.onActivityResult(_requestCode, _resultCode, _data);
+		            
+		if (_requestCode == new_folder){
+			    if (_resultCode == Activity.RESULT_OK) {
+				            if (_data != null) {
+					              final Uri uri2 = _data.getData();
+					if (Uri.decode(uri2.toString()).endsWith(":")) {
+						SketchwareUtil.showMessage(getApplicationContext(), "⛔");
+						askPermission(uri2.toString());
+					}
+					else {
+						final int takeFlags = i.getFlags()
+						            & (Intent.FLAG_GRANT_READ_URI_PERMISSION
+						            | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+						// Check for the freshest data.
+						getContentResolver().takePersistableUriPermission(uri2, takeFlags);
+						
+						
+						 
+						
+						
+					}
+					
+					       } else {
+					        
+					   }
+				       } else {
+				      
+				 
+				 
+				   }
+		}
+		
+		
+		if (_requestCode == 2000) {
+				      if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+						        if (Environment.isExternalStorageManager()) {
+								          
+								        } else {
+								
+								        }
+						      }
+				    
+		}
+		
+		
+		
+		       
+		
+	}
+	
+	// solve android 11 sdcard permissions
+	
+	
+	 public void RequestPermission_Dialog() {
+		    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+				      try {
+						        Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+						        intent.addCategory("android.intent.category.DEFAULT");
+						        intent.setData(Uri.parse(String.format("package: ", new Object[]{getApplicationContext().getPackageName()})));
+						        startActivityForResult(intent, 2000);
+						      } catch (Exception e) {
+						        Intent obj = new Intent();
+						        obj.setAction(android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+						        startActivityForResult(obj, 2000);
+						      }
+				    } else {
+				      androidx.core.app.ActivityCompat.requestPermissions(CodegomainActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
+				    }
+		  }
+	
+	  public boolean permission() {
+		    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) { // R is Android 11
+				      return Environment.isExternalStorageManager();
+				    } else {
+				      int write = androidx.core.content.ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+				      int read = androidx.core.content.ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE);
+				
+				      return write == android.content.pm.PackageManager.PERMISSION_GRANTED
+				          && read == android.content.pm.PackageManager.PERMISSION_GRANTED;
+				    }
+	} 
+	
+	// ask permissions request
+	
+	    
+	    public void askPermission(final String _uri) {
+			
+		
+			i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION |  Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+					
+			i.setAction(Intent.ACTION_OPEN_DOCUMENT_TREE);				    i.putExtra(android.provider.DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(_uri));
+						        startActivityForResult(i, new_folder);
+		}
+	
+	// check permissions of path if accepted 
+	
+	
+	public boolean checkPermission(final String _uri) {
+				Uri muri = Uri.parse(_uri);
+				    dFile = androidx.documentfile.provider.DocumentFile.fromTreeUri(getApplicationContext(), muri);
+				                    
+				if (dFile.canRead() && dFile.canWrite()) {
+						return true ;
+				}
+				return false ;
+		}
+	
+	// simple path to UriTree path
+	
+	
+	public String pathToRealUri( String _path) {
+				uriFor1 = "content://com.android.externalstorage.documents/tree/primary%3A";
+		
+		if ( _path.endsWith("/")) {
+			_path = _path.substring(0, _path.length()-1);
+		}
+		
+		
+				if (_path.contains("/sdcard/")) {
+						uriFor2 = _path.replace("/sdcard/", "").replace("/", "%2F");
+						
+						if (uriFor2.substring(uriFor2.length()-1, uriFor2.length()).equals("/")) {
+								
+								uriFor2 = uriFor1.substring(0, uriFor1.length()-1);
+								
+						}
+						
+				}
+				else {
+						if (_path.contains("/storage/") && _path.contains("/emulated/")) {
+								uriFor2 = _path.replace("/storage/emulated/0/", "").replace("/", "%2F");
+								
+								if (uriFor2.substring(uriFor2.length()-1, uriFor2.length()).equals("/")) {
+										
+										uriFor2 = uriFor1.substring(0, uriFor1.length()-1);
+										
+								}	
+								
+						}
+						else {
+								
+						}
+				}
+				return uriFor1 = uriFor1 + uriFor2;
+		}
+	
+	
+	// simple path to UriTree path 2
+	
+	public String pathToUri( String _path) {
+				uriFor1 = "content://com.android.externalstorage.documents/tree/primary%3AAndroid/document/primary%3A";
+		
+		if ( _path.endsWith("/")) {
+			_path = _path.substring(0, _path.length()-1);
+		}
+		
+				if (_path.contains("/sdcard/")) {
+						uriFor2 = _path.replace("/sdcard/", "").replace("/", "%2F");
+						
+						if (uriFor2.substring(uriFor2.length()-1, uriFor2.length()).equals("/")) {
+								
+								uriFor2 = uriFor1.substring(0, uriFor1.length()-1);
+								
+						}
+						
+						
+				}
+				else {
+						if (_path.contains("/storage/") && _path.contains("/emulated/")) {
+								uriFor2 = _path.replace("/storage/emulated/0/", "").replace("/", "%2F");
+								
+								if (uriFor2.substring(uriFor2.length()-1, uriFor2.length()).equals("/")) {
+										
+										uriFor2 = uriFor1.substring(0, uriFor1.length()-1);
+										
+								}
+								
+						}
+						else {
+								
+						}
+				}
+				return uriFor1 = uriFor1 + uriFor2;
+		}
+	
+	// ccopy file from path to path
+	
+	private boolean copyAsset(final String assetFilename, final Uri targetUri) {
+		  			try{
+			  				int count;
+			  				InputStream input = null;
+					OutputStream output = null;
+			  				
+			  				ContentResolver content = getApplicationContext().getContentResolver();
+						  
+			            input = getApplicationContext().getAssets().open(assetFilename);
+						
+			            output = content.openOutputStream(targetUri);
+			            
+			            
+			  				byte data[] = new byte[1024];
+			  				while ((count = input.read(data))>0) {
+				  					output.write(data, 0, count);
+				  			}
+			  				output.flush();
+			  				output.close();
+			  				input.close();
+			  				
+			  				SketchwareUtil.showMessage(getApplicationContext(), "success ✔️ نجاح ");
+							 
+			  		}catch(Exception e){
+			  				
+			  		FileUtil.writeFile("/sdcard/log.txt", "\n"+ "3   " +e.toString());		SketchwareUtil.showMessage(getApplicationContext(), e.toString());
+							  return false;
+			  		}
+		
+		return true;
+	}
+	
+	
+	
+	
+	
+	private void copyAssetFolder(String  _folder, String _out ) {
+		
+		
+		AssetManager assetManager = getAssets();
+		int sizeList = 0;
+		    String[] files = null;
+		    try {
+				        files = assetManager.list(_folder);
+				
+				    } catch (java.io.IOException e) {
+				        
+				    }
+		final ArrayList<String> str = new ArrayList<>(Arrays.asList(files));
+		
+		
+		
+		int nn = 0;
+		for(int _repeat12 = 0; _repeat12 < (int)(str.size()); _repeat12++) {
+				
+				try {
+							Uri mUri = Uri.parse(pathToRealUri(_out));
+							
+							String fileName = str.get((int)nn);
+					sizeList = str.size()-1;		
+						
+						androidx.documentfile.provider.DocumentFile dFile = androidx.documentfile.provider.DocumentFile.fromTreeUri(getApplicationContext(), mUri);
+							           Uri mUri2 = Uri.parse(mUri.toString()+ "%2" + fileName);
+							          androidx.documentfile.provider.DocumentFile  dFile2 = androidx.documentfile.provider.DocumentFile.fromTreeUri(getApplicationContext(), mUri2);
+							            
+							  
+							
+							try {              
+										
+										androidx.documentfile.provider.DocumentFile file = dFile.findFile(fileName);
+										   android.provider.DocumentsContract.deleteDocument(getApplicationContext().getContentResolver(), file.getUri());
+										
+								    android.provider.DocumentsContract.deleteDocument(getApplicationContext().getContentResolver(), mUri2);
+										
+										
+							} catch (FileNotFoundException e) {
+										                } catch (Exception e2) {
+										                }
+							
+							
+							
+							dFile2 = dFile.createFile("*/*", fileName);
+							            mUri = dFile2.getUri();
+							        
+							        
+							        
+							        if (copyAsset(_folder+"/"+fileName, mUri)) {
+										    
+						if (nn >= sizeList){				    SketchwareUtil.showMessage(getApplicationContext(), "️😎✔️");       
+					}					        
+						} else {
+										            
+										        
+								SketchwareUtil.showMessage(getApplicationContext(), "😓❌");
+								break;
+						}
+							
+							                
+							      } catch (Exception re){}      
+				            
+				nn++;
+		}
+		
+	}
+	
+	
+	public boolean copy(java.io.File copy, String directory, Context con) {
+		     java.io.FileInputStream inStream = null;
+		     java.io.OutputStream outStream = null;
+		    androidx.documentfile.provider.DocumentFile  dir= androidx.documentfile.provider.DocumentFile.fromTreeUri(getApplicationContext(), Uri.parse(pathToRealUri(directory)));
+		    
+		 
+		try {   
+			  String fileN = Uri.parse(copy.getPath()).getLastPathSegment();  
+			
+			    androidx.documentfile.provider.DocumentFile file = dir.findFile(fileN);
+			   android.provider.DocumentsContract.deleteDocument(getApplicationContext().getContentResolver(), file.getUri());
+			    
+			 } catch (Exception e){
+			e.printStackTrace();
+		}   
+		    String mim = mime(copy.toURI().toString());
+		    androidx.documentfile.provider.DocumentFile  copy1= dir.createFile(mim, copy.getName());
+		    try {
+			        inStream = new java.io.FileInputStream(copy);
+			        outStream =
+			                con.getContentResolver().openOutputStream(copy1.getUri());
+			        byte[] buffer = new byte[16384];
+			        int bytesRead;
+			        while ((bytesRead = inStream.read(buffer)) != -1) {
+				            outStream.write(buffer, 0, bytesRead);
+				
+				        }
+			    } catch (java.io.FileNotFoundException e) {
+			        e.printStackTrace();
+			    } catch (java.io.IOException e) {
+			        e.printStackTrace();
+			    } finally {
+			        try {
+				
+				            inStream.close();
+				
+				            outStream.close();
+				
+				
+				            return true;
+				
+				
+				        } catch (java.io.IOException e) {
+				            e.printStackTrace();
+				        }
+			    }
+		    return false;
+	}
+	
+	
+	
+	public  String mime(String URI) {
+		       String type = "";
+		       String extention = android.webkit.MimeTypeMap.getFileExtensionFromUrl(URI);
+		       if (extention != null) {
+			           type = android.webkit.MimeTypeMap.getSingleton().getMimeTypeFromExtension(extention);
+			       }
+		       return type;
+		   }
+	
+	
+	
+	
+	
+	private boolean fromStorage = false;
+	  final static int REQUEST_CODE = 333;
+	  final static  int OLD_REQUEST = 2000;
+	  private SharedPreferences sha;
+	private Intent i = new Intent();
+		private  Uri muri;
+		private String uriFor1 = "";
+		private String uriFor2 = "";
+		private  
+		androidx.documentfile.provider.DocumentFile dFile;
+		private double PermissionNumber;
+		private  static final int new_folder = 43;
+	{
+	}
+	
 	public class Listview1Adapter extends BaseAdapter {
 		
 		ArrayList<HashMap<String, Object>> _data;
@@ -1902,7 +2371,7 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 			final TextView textview1 = _view.findViewById(R.id.textview1);
 			final TextView textview2 = _view.findViewById(R.id.textview2);
 			
-			textview1.setText(Uri.parse(liststring.get((int)(_position))).getLastPathSegment());
+			textview1.setText(Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 			textview1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/myfont.ttf"), 0);
 			cardview1.setRadius((float)18);
 			cardview1.setCardElevation((float)2);
@@ -1910,135 +2379,141 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 			_textcolor(textview1, "#FF77F5FF", "#FF1BFFB9");
 			_textcolor(textview2, "#FF77F5FF", "#FF1BFFB9");
 			cardview1.setCardBackgroundColor(0xFF616161);
-			if (FileUtil.isDirectory(liststring.get((int)(_position)))) {
+			if (FileUtil.isDirectory(File_map.get((int)_position).get("file").toString())) {
 				imageview1.setImageResource(R.drawable.folder);
 				itemback.setBackgroundColor(0xFFF44336);
 			}
 			else {
-				if (liststring.get((int)(_position)).endsWith(".html")) {
+				if (File_map.get((int)_position).get("file").toString().endsWith(".html")) {
 					imageview1.setImageResource(R.drawable.myiconsvg_7);
 					itemback.setBackgroundColor(0xFF3F51B5);
 				}
 				else {
-					if (liststring.get((int)(_position)).endsWith(".js")) {
+					if (File_map.get((int)_position).get("file").toString().endsWith(".js")) {
 						imageview1.setImageResource(R.drawable.myiconsvg_9);
 						itemback.setBackgroundColor(0xFFFFEB3B);
 					}
 					else {
-						if (liststring.get((int)(_position)).endsWith(".lua")) {
+						if (File_map.get((int)_position).get("file").toString().endsWith(".lua")) {
 							itemback.setBackgroundColor(0xFF7B1FA2);
 							imageview1.setImageResource(R.drawable.myiconsvg_6);
 						}
 						else {
-							if (liststring.get((int)(_position)).endsWith(".cpp")) {
+							if (File_map.get((int)_position).get("file").toString().endsWith(".cpp")) {
 								itemback.setBackgroundColor(0xFFD81B60);
 								imageview1.setImageResource(R.drawable.myiconsvg_13);
 							}
 							else {
-								if (liststring.get((int)(_position)).endsWith(".sh")) {
+								if (File_map.get((int)_position).get("file").toString().endsWith(".sh")) {
 									imageview1.setImageResource(R.drawable.myiconsvg_4);
 									itemback.setBackgroundColor(0xFF512DA8);
 								}
 								else {
-									if (liststring.get((int)(_position)).endsWith(".py")) {
+									if (File_map.get((int)_position).get("file").toString().endsWith(".py")) {
 										imageview1.setImageResource(R.drawable.myiconsvg_5);
 										itemback.setBackgroundColor(0xFFFF9800);
 									}
 									else {
-										if (liststring.get((int)(_position)).endsWith(".css")) {
+										if (File_map.get((int)_position).get("file").toString().endsWith(".css")) {
 											imageview1.setImageResource(R.drawable.myiconsvg_11);
 											itemback.setBackgroundColor(0xFF1A237E);
 										}
 										else {
-											if (liststring.get((int)(_position)).endsWith(".php")) {
+											if (File_map.get((int)_position).get("file").toString().endsWith(".php")) {
 												imageview1.setImageResource(R.drawable.myiconfuntom_2);
 												itemback.setBackgroundColor(0xFF8BC34A);
 											}
 											else {
-												if (liststring.get((int)(_position)).endsWith(".xml")) {
+												if (File_map.get((int)_position).get("file").toString().endsWith(".xml")) {
 													imageview1.setImageResource(R.drawable.myiconsvg_3);
 													itemback.setBackgroundColor(0xFF000000);
 												}
 												else {
-													if (liststring.get((int)(_position)).endsWith(".svg")) {
+													if (File_map.get((int)_position).get("file").toString().endsWith(".svg")) {
 														imageview1.setImageResource(R.drawable.myiconsvg_1);
 														itemback.setBackgroundColor(0xFFF9A825);
 													}
 													else {
-														if (liststring.get((int)(_position)).endsWith(".java")) {
+														if (File_map.get((int)_position).get("file").toString().endsWith(".java")) {
 															imageview1.setImageResource(R.drawable.myiconsvg_8);
 															itemback.setBackgroundColor(0xFFF9A825);
 														}
 														else {
-															if (liststring.get((int)(_position)).endsWith(".co")) {
+															if (File_map.get((int)_position).get("file").toString().endsWith(".co")) {
 																imageview1.setImageResource(R.drawable.project);
 																itemback.setBackgroundColor(0xFF000000);
 															}
 															else {
-																if (liststring.get((int)(_position)).endsWith(".dart")) {
+																if (File_map.get((int)_position).get("file").toString().endsWith(".dart")) {
 																	imageview1.setImageResource(R.drawable.myicondart);
 																	itemback.setBackgroundColor(0xFF0D47A1);
 																}
 																else {
-																	if (liststring.get((int)(_position)).endsWith(".png") || liststring.get((int)(_position)).endsWith(".jpg")) {
+																	if (File_map.get((int)_position).get("file").toString().endsWith(".png") || File_map.get((int)_position).get("file").toString().endsWith(".jpg")) {
 																		itemback.setBackgroundColor(0xFF0D47A1);
-																		imageview1.setImageBitmap(FileUtil.decodeSampleBitmapFromPath(liststring.get((int)(_position)), 1024, 1024));
+																		imageview1.setImageBitmap(FileUtil.decodeSampleBitmapFromPath(File_map.get((int)_position).get("file").toString(), 1024, 1024));
 																	}
 																	else {
-																		if (liststring.get((int)(_position)).endsWith(".vue")) {
+																		if (File_map.get((int)_position).get("file").toString().endsWith(".vue")) {
 																			itemback.setBackgroundColor(0xFF006064);
 																			imageview1.setImageResource(R.drawable.myiconsvg_2);
 																		}
 																		else {
-																			if (liststring.get((int)(_position)).endsWith(".fun")) {
+																			if (File_map.get((int)_position).get("file").toString().endsWith(".fun")) {
 																				itemback.setBackgroundColor(0xFF00BCD4);
 																				imageview1.setImageResource(R.drawable.myiconfuntom_1);
 																			}
 																			else {
-																				if (liststring.get((int)(_position)).endsWith(".c")) {
+																				if (File_map.get((int)_position).get("file").toString().endsWith(".c")) {
 																					itemback.setBackgroundColor(0xFF757575);
 																					imageview1.setImageResource(R.drawable.myiconsvg_12);
 																				}
 																				else {
-																					if (liststring.get((int)(_position)).endsWith(".go")) {
+																					if (File_map.get((int)_position).get("file").toString().endsWith(".go")) {
 																						itemback.setBackgroundColor(0xFF039BE5);
 																						imageview1.setImageResource(R.drawable.myiconsvg_10);
 																					}
 																					else {
-																						if (liststring.get((int)(_position)).endsWith(".mp3")) {
+																						if (File_map.get((int)_position).get("file").toString().endsWith(".mp3")) {
 																							itemback.setBackgroundColor(0xFFFFEB3B);
-																							hsi = liststring.get((int)(_position));
+																							hsi = File_map.get((int)_position).get("file").toString();
 																							Bitmap bMap = ThumbnailUtils.createVideoThumbnail(hsi,
 																							android.provider.MediaStore.Video.Thumbnails.FULL_SCREEN_KIND);
 																							imageview1.setImageBitmap(bMap);
 																						}
 																						else {
-																							if (liststring.get((int)(_position)).endsWith(".swb")) {
+																							if (File_map.get((int)_position).get("file").toString().endsWith(".swb")) {
 																								itemback.setBackgroundColor(0xFF3F51B5);
 																								imageview1.setImageResource(R.drawable.swbfile);
 																							}
 																							else {
-																								if (liststring.get((int)(_position)).endsWith(".apk")) {
-																									_getApkIcon(liststring.get((int)(_position)), imageview1);
+																								if (File_map.get((int)_position).get("file").toString().endsWith(".apk")) {
+																									_getApkIcon(File_map.get((int)_position).get("file").toString(), imageview1);
 																								}
 																								else {
-																									if (liststring.get((int)(_position)).endsWith(".jks")) {
+																									if (File_map.get((int)_position).get("file").toString().endsWith(".jks")) {
 																										imageview1.setImageResource(R.drawable.key);
 																										itemback.setBackgroundColor(0xFF00BCD4);
 																									}
 																									else {
-																										if (liststring.get((int)(_position)).endsWith(".rb")) {
+																										if (File_map.get((int)_position).get("file").toString().endsWith(".rb")) {
 																											imageview1.setImageResource(R.drawable.ruby_2);
 																											itemback.setBackgroundColor(0xFFB71C1C);
 																										}
 																										else {
-																											if (liststring.get((int)(_position)).endsWith(".pas")) {
+																											if (File_map.get((int)_position).get("file").toString().endsWith(".pas")) {
 																												imageview1.setImageResource(R.drawable.pascal_2);
 																												itemback.setBackgroundColor(0xFF9C27B0);
 																											}
 																											else {
-																												itemback.setBackgroundColor(0xFFF44336);
-																												imageview1.setImageResource(R.drawable.file);
+																												if (File_map.get((int)_position).get("file").toString().endsWith("LICENSE")) {
+																													imageview1.setImageResource(R.drawable.lisens);
+																													itemback.setBackgroundColor(0xFFFBC02D);
+																												}
+																												else {
+																													itemback.setBackgroundColor(0xFFF44336);
+																													imageview1.setImageResource(R.drawable.file);
+																												}
 																											}
 																										}
 																									}
@@ -2063,6 +2538,23 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 						}
 					}
 				}
+			}
+			if (liststring.get((int)(_position)).equals("data")) {
+				aqules = liststring.get((int)(_position));
+				if (checkPermission(pathToRealUri(aqules))) {
+					if (FileUtil.isDirectory(aqules)) {
+						FileUtil.makeDir("/sdcard/android/data/com.ninjacoder.codegomain");
+					}
+					else {
+						
+					}
+				}
+				else {
+					askPermission(pathToUri(aqules));
+				}
+			}
+			else {
+				
 			}
 			
 			return _view;

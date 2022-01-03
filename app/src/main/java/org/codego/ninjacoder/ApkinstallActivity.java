@@ -28,7 +28,11 @@ import java.util.regex.*;
 import java.text.*;
 import org.json.*;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import androidx.cardview.widget.CardView;
 import android.widget.ImageView;
+import android.widget.Button;
+import android.view.View;
 import org.antlr.v4.runtime.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
@@ -51,39 +55,28 @@ import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
-import androidx.core.content.ContextCompat;
-import androidx.core.app.ActivityCompat;
-import android.Manifest;
-import android.content.pm.PackageManager;
 
-public class ImageviewActivity extends AppCompatActivity {
+public class ApkinstallActivity extends AppCompatActivity {
 	
 	private Toolbar _toolbar;
 	private AppBarLayout _app_bar;
 	private CoordinatorLayout _coordinator;
+	private String install = "";
 	
 	private LinearLayout linear1;
+	private LinearLayout linear2;
+	private TextView apkpath;
+	private LinearLayout linear3;
+	private CardView cardview1;
 	private ImageView imageview1;
+	private Button btn;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
-		setContentView(R.layout.imageview);
+		setContentView(R.layout.apkinstall);
 		initialize(_savedInstanceState);
-		
-		if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-			ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, 1000);
-		} else {
-			initializeLogic();
-		}
-	}
-	
-	@Override
-	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		if (requestCode == 1000) {
-			initializeLogic();
-		}
+		initializeLogic();
 	}
 	
 	private void initialize(Bundle _savedInstanceState) {
@@ -100,28 +93,73 @@ public class ImageviewActivity extends AppCompatActivity {
 			}
 		});
 		linear1 = findViewById(R.id.linear1);
+		linear2 = findViewById(R.id.linear2);
+		apkpath = findViewById(R.id.apkpath);
+		linear3 = findViewById(R.id.linear3);
+		cardview1 = findViewById(R.id.cardview1);
 		imageview1 = findViewById(R.id.imageview1);
+		btn = findViewById(R.id.btn);
+		
+		btn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				install = getIntent().getStringExtra("apk");
+				try {
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+											Uri uri = androidx.core.content.FileProvider.getUriForFile(getApplicationContext(),
+													ApkinstallActivity.this.getPackageName() + ".provider", new java.io.File(install));
+											Intent intent = new Intent(Intent.ACTION_VIEW);
+											intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+											intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+											intent.setDataAndType(uri, "application/vnd.android.package-archive");
+											startActivity(intent);
+						
+									} else {
+											Intent intent = new Intent(Intent.ACTION_VIEW);
+											intent.setDataAndType(Uri.fromFile( new java.io.File(install)),
+													"application/vnd.android.package-archive");
+											intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+											startActivity(intent);
+									}
+					
+				} catch (Exception rr) {
+					showMessage (rr.toString());
+				}
+			}
+		});
 	}
 	
 	private void initializeLogic() {
-		setTitle(getIntent().getStringExtra("ti"));
-		imageview1.setImageBitmap(FileUtil.decodeSampleBitmapFromPath(getIntent().getStringExtra("im"), 1024, 1024));
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			Window w =ImageviewActivity.this.getWindow();
-			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+		{
+			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
+			SketchUi.setColor(0xFFFF9800);SketchUi.setCornerRadius(getDip(22));
+			SketchUi.setStroke((int)getDip(2) ,0xFFE91E63);
+			btn.setElevation(getDip(5));
+			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFFFFFFFF}), SketchUi, null);
+			btn.setBackground(SketchUi_RD);
+		}
+		apkpath.setText(getIntent().getStringExtra("title"));
+		_getApkIcon(getIntent().getStringExtra("icon"), imageview1);
+	}
+	
+	public void _getApkIcon(final String _path, final ImageView _imageview) {
+		try { 
+			
+			
+				
+			android.content.pm.PackageManager packageManager = this.getPackageManager();
+			android.content.pm.PackageInfo packageInfo = packageManager.getPackageArchiveInfo(_path, 0);
+			packageInfo.applicationInfo.sourceDir = _path;
+			packageInfo.applicationInfo.publicSourceDir = _path;
+			_imageview.setImageDrawable(packageInfo.applicationInfo.loadIcon(packageManager));
+			packageInfo = null;
+			packageManager = null;
+			
+		} catch (Exception e){
+			e.printStackTrace();
 		}
 	}
 	
-	@Override
-	public void onStart() {
-		super.onStart();
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			Window w =this.getWindow();
-			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
-		}
-	}
 	
 	@Deprecated
 	public void showMessage(String _s) {

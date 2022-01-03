@@ -51,14 +51,14 @@ import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
 import io.github.rosemoe.sora.langs.python.*;
+import com.android.tools.r8.*;
+import io.reactivex.*;
+import s4u.restore.swb.*;
+import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
 import com.zip4j.*;
-import com.example.myapp.*;
-import s4u.restore.swb.*;
-import io.reactivex.*;
-import com.android.tools.r8.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -96,6 +96,7 @@ import io.github.rosemoe.sora.langs.desc.DartDescription;
 import io.github.rosemoe.sora.langs.desc.FuntomDescription;
 import io.github.rosemoe.sora.langs.desc.RubyDescription;
 import io.github.rosemoe.sora.langs.desc.PasDescription;
+import io.github.rosemoe.sora.langs.desc.CssDescription;
 import android.content.pm.PackageManager;
 import io.github.rosemoe.sora.widget.CodeEditor;
 import org.codego.ninjacoders.SchemeAndroidXml;
@@ -140,6 +141,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 	private SharedPreferences c;
 	private SharedPreferences d;
 	private SharedPreferences f;
+	private SharedPreferences bar;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -190,6 +192,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 		c = getSharedPreferences("c", Activity.MODE_PRIVATE);
 		d = getSharedPreferences("d", Activity.MODE_PRIVATE);
 		f = getSharedPreferences("f", Activity.MODE_PRIVATE);
+		bar = getSharedPreferences("bar", Activity.MODE_PRIVATE);
 		
 		undo.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
@@ -745,7 +748,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF212121);
 		}
-		editor.setTypefaceText(Typeface.createFromAsset(getAssets(), "ninjacoder.ttf"));
+		editor.setTypefaceText(Typeface.createFromAsset(getAssets(), "mainjsfont.ttf"));
 		_editordark();
 		_themedrak();
 		SymbolInputView inputView = findViewById(R.id.sysbar);
@@ -853,6 +856,17 @@ public class CodeeditorActivity extends AppCompatActivity {
 				
 			}
 		}
+		if (bar.getString("br", "").equals("1")) {
+			hscroll1.setVisibility(View.GONE);
+		}
+		else {
+			if (bar.getString("br", "").equals("2")) {
+				hscroll1.setVisibility(View.VISIBLE);
+			}
+			else {
+				
+			}
+		}
 	}
 	
 	
@@ -884,6 +898,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 			} catch (Exception rt) {
 				rt.printStackTrace();
 			}
+			
 		}
 		else {
 			if (getIntent().getStringExtra("title").contains(".lua")) {
@@ -1000,7 +1015,6 @@ public class CodeeditorActivity extends AppCompatActivity {
 								}
 								else {
 									if (getIntent().getStringExtra("title").contains(".css")) {
-										editor.setEditorLanguage(new CSS3Language()); 
 										StringBuilder cssmod = new StringBuilder();
 										
 										try {
@@ -1014,6 +1028,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 											rt.printStackTrace();
 										}
 										editor.setColorScheme(new SchemeAndroidXml());
+										editor.setEditorLanguage(new UniversalLanguage(new CssDescription()));
 										icon.setImageResource(R.drawable.languagecss3);
 									}
 									else {
@@ -1090,6 +1105,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 														editor.setEditorLanguage(new JavaLanguage()); 
 														icon.setImageResource(R.drawable.greadliconpack_10);
 														editor.setColorScheme(new SchemeAndroidXml());
+														
 													}
 													else {
 														if (getIntent().getStringExtra("title").contains(".dart")) {
@@ -1218,7 +1234,26 @@ public class CodeeditorActivity extends AppCompatActivity {
 																					editor.setEditorLanguage(new UniversalLanguage(new PasDescription()));	
 																				}
 																				else {
-																					
+																					if (getIntent().getStringExtra("title").contains("LICENSE")) {
+																						StringBuilder androidLICENSE = new StringBuilder();
+																						
+																						try {
+																							
+																							Scanner scanner = new Scanner(new java.io.File(getIntent().getStringExtra("path"))).useDelimiter("\\Z");
+																							while (scanner.hasNext()) {
+																								androidLICENSE .append(scanner.next());
+																							}
+																							editor.setText(androidLICENSE );
+																						} catch (Exception rt) {
+																							rt.printStackTrace();
+																						}
+																						editor.setColorScheme(new SchemeAndroidXml());
+																						icon.setImageResource(R.drawable.lisens);
+																						/////editor.setEditorLanguage(new UniversalLanguage(new PasDescription()));	
+																					}
+																					else {
+																						
+																					}
 																				}
 																			}
 																		}

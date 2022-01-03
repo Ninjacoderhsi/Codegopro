@@ -31,6 +31,8 @@ import android.content.Intent;
 import android.net.Uri;
 import java.util.Timer;
 import java.util.TimerTask;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import org.antlr.v4.runtime.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
@@ -42,14 +44,14 @@ import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
 import io.github.rosemoe.sora.langs.python.*;
+import com.android.tools.r8.*;
+import io.reactivex.*;
+import s4u.restore.swb.*;
+import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
 import com.zip4j.*;
-import com.example.myapp.*;
-import s4u.restore.swb.*;
-import io.reactivex.*;
-import com.android.tools.r8.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 	
 	private Intent intent = new Intent();
 	private TimerTask timer;
+	private AlertDialog.Builder dialog;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -77,22 +80,48 @@ public class MainActivity extends AppCompatActivity {
 		linear1 = findViewById(R.id.linear1);
 		imageview1 = findViewById(R.id.imageview1);
 		textview1 = findViewById(R.id.textview1);
+		dialog = new AlertDialog.Builder(this);
 	}
 	
 	private void initializeLogic() {
-		timer = new TimerTask() {
-			@Override
-			public void run() {
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						intent.setClass(getApplicationContext(), CodegomainActivity.class);
-						startActivity(intent);
-					}
-				});
-			}
-		};
-		_timer.schedule(timer, (int)(2000));
+		if (!getApplicationContext().getPackageName().equals("org.codego.ninjacoder")) {
+			
+			dialog.setTitle("حریم خصوصی و امنیت");
+			dialog.setIcon(R.drawable.lisens);
+			dialog.setMessage("شما حریم خصوصی برنامه را نقض کردید و امضا برنامه را عوض کردید لطفا نسخه اصلی را از مایکت نصب کنید ");
+			dialog.setPositiveButton("خروج", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface _dialog, int _which) {
+					finishAffinity();
+				}
+			});
+			dialog.create().show();
+			
+		}else{
+			
+			    timer = new TimerTask() {
+				@Override
+				public void run() {
+					runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							intent.setClass(getApplicationContext(), CodegomainActivity.class);
+							startActivity(intent);
+						}
+					});
+				}
+			};
+			_timer.schedule(timer, (int)(2000));
+			
+		}
+		dialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+		textview1.setText(getResources().getString(R.string.lego));
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+			Window w =MainActivity.this.getWindow();
+			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+		}
+		imageview1.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		textview1.setText(textview1.getText().toString());
 		
 		TextPaint paint = textview1.getPaint();
@@ -117,13 +146,6 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 		/* By EPIC Technical Tricks YT */
 		
 		textview1.getPaint().setShader(textShader);
-		textview1.setText(getResources().getString(R.string.lego));
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			Window w =MainActivity.this.getWindow();
-			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
-		}
-		imageview1.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 	}
 	
 	@Override

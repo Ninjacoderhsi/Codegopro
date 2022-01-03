@@ -45,14 +45,14 @@ import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
 import io.github.rosemoe.sora.langs.python.*;
+import com.android.tools.r8.*;
+import io.reactivex.*;
+import s4u.restore.swb.*;
+import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
 import com.zip4j.*;
-import com.example.myapp.*;
-import s4u.restore.swb.*;
-import io.reactivex.*;
-import com.android.tools.r8.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -71,6 +71,7 @@ public class SettingsActivity extends AppCompatActivity {
 	private LinearLayout linear5;
 	private LinearLayout linear6;
 	private LinearLayout linear7;
+	private LinearLayout linear8;
 	private TextView textview1;
 	private Switch switch1;
 	private TextView textview2;
@@ -80,6 +81,8 @@ public class SettingsActivity extends AppCompatActivity {
 	private TextView textview4;
 	private Switch switch4;
 	private TextView textview5;
+	private Switch switch5;
+	private TextView textview6;
 	
 	private SharedPreferences n;
 	private SharedPreferences b;
@@ -87,6 +90,7 @@ public class SettingsActivity extends AppCompatActivity {
 	private SharedPreferences c;
 	private SharedPreferences d;
 	private SharedPreferences f;
+	private SharedPreferences bar;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -117,6 +121,7 @@ public class SettingsActivity extends AppCompatActivity {
 		linear5 = findViewById(R.id.linear5);
 		linear6 = findViewById(R.id.linear6);
 		linear7 = findViewById(R.id.linear7);
+		linear8 = findViewById(R.id.linear8);
 		textview1 = findViewById(R.id.textview1);
 		switch1 = findViewById(R.id.switch1);
 		textview2 = findViewById(R.id.textview2);
@@ -126,12 +131,15 @@ public class SettingsActivity extends AppCompatActivity {
 		textview4 = findViewById(R.id.textview4);
 		switch4 = findViewById(R.id.switch4);
 		textview5 = findViewById(R.id.textview5);
+		switch5 = findViewById(R.id.switch5);
+		textview6 = findViewById(R.id.textview6);
 		n = getSharedPreferences("n", Activity.MODE_PRIVATE);
 		b = getSharedPreferences("b", Activity.MODE_PRIVATE);
 		myweb = getSharedPreferences("myweb", Activity.MODE_PRIVATE);
 		c = getSharedPreferences("c", Activity.MODE_PRIVATE);
 		d = getSharedPreferences("d", Activity.MODE_PRIVATE);
 		f = getSharedPreferences("f", Activity.MODE_PRIVATE);
+		bar = getSharedPreferences("bar", Activity.MODE_PRIVATE);
 		
 		switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
@@ -192,46 +200,59 @@ public class SettingsActivity extends AppCompatActivity {
 				}
 			}
 		});
+		
+		switch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
+				final boolean _isChecked = _param2;
+				if (_isChecked) {
+					bar.edit().putString("br", "1").commit();
+					textview6.setText("مخفی کردن بار روشن");
+				}
+				else {
+					bar.edit().putString("br", "2").commit();
+					textview6.setText("مخفی کردن بار خاموش");
+				}
+			}
+		});
 	}
 	
 	private void initializeLogic() {
 		setTitle("تنظیمات برنامه");
-		if (n.getString("lin", "").equals("1")) {
-			switch1.setChecked(true);
-			switch1.getThumbDrawable().setColorFilter(Color.parseColor("#0ECAFF"), PorterDuff.Mode.SRC_IN);
-		}
-		else {
-			switch1.setChecked(false);
-			switch1.getTrackDrawable().setColorFilter(Color.parseColor("#FF0013"), PorterDuff.Mode.SRC_IN);
-		}
-		if (c.getString("lin2", "").equals("5")) {
-			switch3.setChecked(true);
-			switch3.getThumbDrawable().setColorFilter(Color.parseColor("#0ECAFF"), PorterDuff.Mode.SRC_IN);
-		}
-		else {
-			switch3.setChecked(false);
-			switch3.getTrackDrawable().setColorFilter(Color.parseColor("#FF0013"), PorterDuff.Mode.SRC_IN);
-		}
-		if (d.getString("lin3", "").equals("7")) {
-			switch4.setChecked(true);
-			switch4.getThumbDrawable().setColorFilter(Color.parseColor("#0ECAFF"), PorterDuff.Mode.SRC_IN);
-		}
-		else {
-			switch4.setChecked(false);
-			switch4.getTrackDrawable().setColorFilter(Color.parseColor("#06DEFF"), PorterDuff.Mode.SRC_IN);
-		}
-		if (f.getString("lin1", "").equals("3")) {
-			switch2.setChecked(true);
-			switch2.getThumbDrawable().setColorFilter(Color.parseColor("#FF0013"), PorterDuff.Mode.SRC_IN);
-		}
-		else {
-			switch2.setChecked(false);
-			switch2.getTrackDrawable().setColorFilter(Color.parseColor("#FF0013"), PorterDuff.Mode.SRC_IN);
-		}
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =SettingsActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+		}
+		if (n.getString("lin", "").equals("1")) {
+			switch1.setChecked(true);
+		}
+		else {
+			switch1.setChecked(false);
+		}
+		if (c.getString("lin2", "").equals("5")) {
+			switch3.setChecked(true);
+		}
+		else {
+			switch3.setChecked(false);
+		}
+		if (d.getString("lin3", "").equals("7")) {
+			switch4.setChecked(true);
+		}
+		else {
+			switch4.setChecked(false);
+		}
+		if (f.getString("lin1", "").equals("3")) {
+			switch2.setChecked(true);
+		}
+		else {
+			switch2.setChecked(false);
+		}
+		if (bar.getString("br", "").equals("1")) {
+			switch5.setChecked(true);
+		}
+		else {
+			switch5.setChecked(false);
 		}
 	}
 	
