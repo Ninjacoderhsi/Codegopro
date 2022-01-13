@@ -33,15 +33,15 @@ import android.content.Intent;
 import android.content.ClipData;
 import android.webkit.WebViewClient;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -50,7 +50,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -171,8 +170,29 @@ public class HtmlrunerActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =HtmlrunerActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000027);
 		}
+		 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+				      
+			/////webview drak mod on
+			if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK));
+			WebSettingsCompat.setForceDark(mWebView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+			////dont edit code ples
+			///add library webkit
+					        
+				    } else {
+				      
+				    ////this code webview dark mod of
+			////used library webkit 
+			if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK));
+			WebSettingsCompat.setForceDark(mWebView.getSettings(), WebSettingsCompat.FORCE_DARK_OFF);
+			////the code not work android 4~9
+			///used android 10 up ples add block if sdk android 10 up
+			////the code by google 
+			///add block by ninja coder.ir
+			///dont edit code
+			////dont used block try  
+				    }
 	}
 	
 	@Override
@@ -211,8 +231,77 @@ public class HtmlrunerActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF000027".replace("0xFF" , "#")));
 		}
+		
+		/*
+add library com.github.angads25:filepicker:1.1.1
+*/
+		
+		mWebView.getSettings().setDisplayZoomControls(true);
+		mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+		mWebView.getSettings().setAppCacheMaxSize(5*1024*1024); 
+		mWebView.getSettings().setAppCachePath(getApplicationContext().getCacheDir().getAbsolutePath()); 
+		mWebView.getSettings().setAllowFileAccess(true);
+		mWebView.getSettings().setAppCacheEnabled(true);
+		mWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+		mWebView.getSettings().setLoadWithOverviewMode(true);
+		mWebView.getSettings().setUseWideViewPort(true);
+		mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+		mWebView.getSettings().setDomStorageEnabled(true);
+		mWebView.getSettings().setSaveFormData(true);mWebView.setWebChromeClient(new WebChromeClient());
+		mWebView.getSettings().setDomStorageEnabled(true);
+		
+		mWebView.setWebChromeClient(new WebChromeClient() {
+				
+							private ValueCallback<Uri[]> mFilePathCallback;
+			
+							public boolean onShowFileChooser(WebView mWebView, final ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
+													
+								com.github.angads25.filepicker.model.DialogProperties filePickerp = new com.github.angads25.filepicker.model.DialogProperties();
+										
+										filePickerp.selection_mode = com.github.angads25.filepicker.model.DialogConfigs.MULTI_MODE;
+										
+										filePickerp.selection_type = com.github.angads25.filepicker.model.DialogConfigs.FILE_SELECT;
+										
+										filePickerp.root = new java.io.File(FileUtil.getExternalStorageDir());
+										
+										filePickerp.error_dir = new java.io.File(FileUtil.getExternalStorageDir());
+										
+										filePickerp.offset = new java.io.File(FileUtil.getExternalStorageDir());
+										
+										filePickerp.extensions = null;
+										
+										final com.github.angads25.filepicker.view.FilePickerDialog filePicker = new com.github.angads25.filepicker.view.FilePickerDialog(HtmlrunerActivity.this,filePickerp);
+										
+										filePicker.setTitle("pick what you want!!!");
+										
+										filePicker.setPositiveBtnName("Pick File");
+										
+										filePicker.setNegativeBtnName("cancel");
+										filePicker.setDialogSelectionListener(new com.github.angads25.filepicker.controller.DialogSelectionListener() {
+															@Override public void onSelectedFilePaths(String[] files) {
+														
+											java.io.File file = new java.io.File(new String (files[0]));
+											
+											Uri uri = Uri.fromFile(file);
+											
+											
+											
+											if (mFilePathCallback != null) {
+												                    mFilePathCallback.onReceiveValue(null);
+												                }
+										                mFilePathCallback = filePathCallback;
+										                mFilePathCallback.onReceiveValue(new Uri[]{uri});
+										                mFilePathCallback = null;			
+																		
+												} 
+										});
+										filePicker.show();
+								
+								return true; }
+		});
+		
 	}
 	
 	

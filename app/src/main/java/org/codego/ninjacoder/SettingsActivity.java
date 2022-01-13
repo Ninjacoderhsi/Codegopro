@@ -35,15 +35,15 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.widget.CompoundButton;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -52,7 +52,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -222,7 +221,7 @@ public class SettingsActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =SettingsActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000027);
 		}
 		if (n.getString("lin", "").equals("1")) {
 			switch1.setChecked(true);
@@ -262,7 +261,7 @@ public class SettingsActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF000027".replace("0xFF" , "#")));
 		}
 		textview1.setText(getResources().getString(R.string.publics));
 		textview2.setText(getResources().getString(R.string.lineshowOFF));

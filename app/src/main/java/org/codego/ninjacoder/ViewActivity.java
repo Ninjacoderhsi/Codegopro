@@ -48,15 +48,15 @@ import android.view.View;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -65,11 +65,11 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
-import io.github.rosemoe.sora.widget.CodeEditor;
+import io.github.rosemoe.sora.widget.CodeEditor;
+import org.codego.ninjacoders.SchemeAndroidXml;
 
 public class ViewActivity extends AppCompatActivity {
 	
@@ -125,11 +125,11 @@ public class ViewActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =ViewActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000027);
 		}
-		linear1.setBackgroundColor(0xFF424242);
-		editor.setColorScheme(new SchemeVS2019());
-		_fab.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("0xFFFF9800".replace("0xFF" , "#"))));
+		linear1.setBackgroundColor(0xFF000027);
+		editor.setColorScheme(new SchemeAndroidXml());
+		_fab.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("0xFF2196F3".replace("0xFF" , "#"))));
 	}
 	
 	@Override
@@ -138,7 +138,7 @@ public class ViewActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF000027".replace("0xFF" , "#")));
 		}
 	}
 	

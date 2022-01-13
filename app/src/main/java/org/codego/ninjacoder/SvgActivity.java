@@ -31,15 +31,15 @@ import android.widget.LinearLayout;
 import android.webkit.WebView;
 import android.webkit.WebSettings;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -48,7 +48,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -117,7 +116,7 @@ public class SvgActivity extends AppCompatActivity {
 	}
 	
 	private void initializeLogic() {
-		webview1.loadUrl("file:///".concat(getIntent().getStringExtra("path")));
+		webview1.loadUrl(getIntent().getStringExtra("path"));
 	}
 	
 	

@@ -56,15 +56,15 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.graphics.Typeface;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -73,7 +73,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -82,7 +81,16 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.view.inputmethod.InputMethodManager;
-import java.io.File.*;;
+import java.io.File.*;
+import com.googlecode.dex2jar.v3.Dex2jar;
+import java.lang.reflect.Method;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.security.spec.PKCS8EncodedKeySpec;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 
 public class CodegomainActivity extends AppCompatActivity {
 	
@@ -112,6 +120,7 @@ public class CodegomainActivity extends AppCompatActivity {
 	private String dddddd = "";
 	private String cold = "";
 	private String aqules = "";
+	private String mydexfilepath = "";
 	
 	private ArrayList<String> liststring = new ArrayList<>();
 	private ArrayList<HashMap<String, Object>> File_map = new ArrayList<>();
@@ -124,37 +133,42 @@ public class CodegomainActivity extends AppCompatActivity {
 	private LinearLayout _drawer_linear1;
 	private LinearLayout _drawer_linear2;
 	private ScrollView _drawer_vscroll1;
+	private LinearLayout _drawer_exit;
 	private LottieAnimationView _drawer_lottie3;
 	private LinearLayout _drawer_linear3;
-	private LinearLayout _drawer_linear4;
+	private LinearLayout _drawer_myjavatosmaill;
 	private LinearLayout _drawer_javacode;
-	private LinearLayout _drawer_websya;
-	private LinearLayout _drawer_bord;
-	private LinearLayout _drawer_likey;
-	private LinearLayout _drawer_mygithub;
-	private LinearLayout _drawer_myket;
-	private LinearLayout _drawer_rubikalinear;
+	private LinearLayout _drawer_keyboard;
+	private LinearLayout _drawer_fastweb;
+	private LinearLayout _drawer_github;
+	private LinearLayout _drawer_keystone;
+	private LinearLayout _drawer_ter;
+	private LinearLayout _drawer_dex;
 	private LinearLayout _drawer_sting;
-	private LinearLayout _drawer_exit;
-	private DigitalClock _drawer_digitalclock1;
-	private ImageView _drawer_jaricon;
-	private TextView _drawer_javacode1;
-	private ImageView _drawer_fastweb;
-	private TextView _drawer_fastweb1;
-	private ImageView _drawer_keyicon;
-	private TextView _drawer_key;
-	private ImageView _drawer_iconkey;
-	private TextView _drawer_key11;
+	private LinearLayout _drawer_myket;
+	private LinearLayout _drawer_myexit;
 	private ImageView _drawer_imageview1;
 	private TextView _drawer_textview1;
-	private ImageView _drawer_googlep;
-	private TextView _drawer_myket1;
-	private ImageView _drawer_myicon;
-	private TextView _drawer_rubikatextview1;
-	private ImageView _drawer_stingicon;
-	private TextView _drawer_stingtext;
-	private ImageView _drawer_myexit;
-	private TextView _drawer_exit1;
+	private ImageView _drawer_imageview2;
+	private TextView _drawer_textview2;
+	private ImageView _drawer_imageview3;
+	private TextView _drawer_textview3;
+	private ImageView _drawer_imageview4;
+	private TextView _drawer_textview4;
+	private ImageView _drawer_imageview8;
+	private TextView _drawer_textview8;
+	private ImageView _drawer_imageview9;
+	private TextView _drawer_textview9;
+	private ImageView _drawer_imageview10;
+	private TextView _drawer_textview10;
+	private ImageView _drawer_imageview11;
+	private TextView _drawer_textview11;
+	private ImageView _drawer_imageview5;
+	private TextView _drawer_textview5;
+	private ImageView _drawer_imageview6;
+	private TextView _drawer_textview6;
+	private ImageView _drawer_imageview12;
+	private TextView _drawer_textview12;
 	
 	private Intent intent = new Intent();
 	private AlertDialog.Builder dialogmain;
@@ -193,6 +207,12 @@ public class CodegomainActivity extends AppCompatActivity {
 	private AlertDialog.Builder android11folderpath;
 	private Intent np3 = new Intent();
 	private Intent apkinstall = new Intent();
+	private AlertDialog.Builder apkinstallpath;
+	private Intent wh = new Intent();
+	private Intent dex = new Intent();
+	private AlertDialog.Builder mydexdialog;
+	private ProgressDialog dexprograssbardialog;
+	private TimerTask dg;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -243,37 +263,42 @@ public class CodegomainActivity extends AppCompatActivity {
 		_drawer_linear1 = _nav_view.findViewById(R.id.linear1);
 		_drawer_linear2 = _nav_view.findViewById(R.id.linear2);
 		_drawer_vscroll1 = _nav_view.findViewById(R.id.vscroll1);
+		_drawer_exit = _nav_view.findViewById(R.id.exit);
 		_drawer_lottie3 = _nav_view.findViewById(R.id.lottie3);
 		_drawer_linear3 = _nav_view.findViewById(R.id.linear3);
-		_drawer_linear4 = _nav_view.findViewById(R.id.linear4);
+		_drawer_myjavatosmaill = _nav_view.findViewById(R.id.myjavatosmaill);
 		_drawer_javacode = _nav_view.findViewById(R.id.javacode);
-		_drawer_websya = _nav_view.findViewById(R.id.websya);
-		_drawer_bord = _nav_view.findViewById(R.id.bord);
-		_drawer_likey = _nav_view.findViewById(R.id.likey);
-		_drawer_mygithub = _nav_view.findViewById(R.id.mygithub);
-		_drawer_myket = _nav_view.findViewById(R.id.myket);
-		_drawer_rubikalinear = _nav_view.findViewById(R.id.rubikalinear);
-		_drawer_sting = _nav_view.findViewById(R.id.sting);
-		_drawer_exit = _nav_view.findViewById(R.id.exit);
-		_drawer_digitalclock1 = _nav_view.findViewById(R.id.digitalclock1);
-		_drawer_jaricon = _nav_view.findViewById(R.id.jaricon);
-		_drawer_javacode1 = _nav_view.findViewById(R.id.javacode1);
+		_drawer_keyboard = _nav_view.findViewById(R.id.keyboard);
 		_drawer_fastweb = _nav_view.findViewById(R.id.fastweb);
-		_drawer_fastweb1 = _nav_view.findViewById(R.id.fastweb1);
-		_drawer_keyicon = _nav_view.findViewById(R.id.keyicon);
-		_drawer_key = _nav_view.findViewById(R.id.key);
-		_drawer_iconkey = _nav_view.findViewById(R.id.iconkey);
-		_drawer_key11 = _nav_view.findViewById(R.id.key11);
+		_drawer_github = _nav_view.findViewById(R.id.github);
+		_drawer_keystone = _nav_view.findViewById(R.id.keystone);
+		_drawer_ter = _nav_view.findViewById(R.id.ter);
+		_drawer_dex = _nav_view.findViewById(R.id.dex);
+		_drawer_sting = _nav_view.findViewById(R.id.sting);
+		_drawer_myket = _nav_view.findViewById(R.id.myket);
+		_drawer_myexit = _nav_view.findViewById(R.id.myexit);
 		_drawer_imageview1 = _nav_view.findViewById(R.id.imageview1);
 		_drawer_textview1 = _nav_view.findViewById(R.id.textview1);
-		_drawer_googlep = _nav_view.findViewById(R.id.googlep);
-		_drawer_myket1 = _nav_view.findViewById(R.id.myket1);
-		_drawer_myicon = _nav_view.findViewById(R.id.myicon);
-		_drawer_rubikatextview1 = _nav_view.findViewById(R.id.rubikatextview1);
-		_drawer_stingicon = _nav_view.findViewById(R.id.stingicon);
-		_drawer_stingtext = _nav_view.findViewById(R.id.stingtext);
-		_drawer_myexit = _nav_view.findViewById(R.id.myexit);
-		_drawer_exit1 = _nav_view.findViewById(R.id.exit1);
+		_drawer_imageview2 = _nav_view.findViewById(R.id.imageview2);
+		_drawer_textview2 = _nav_view.findViewById(R.id.textview2);
+		_drawer_imageview3 = _nav_view.findViewById(R.id.imageview3);
+		_drawer_textview3 = _nav_view.findViewById(R.id.textview3);
+		_drawer_imageview4 = _nav_view.findViewById(R.id.imageview4);
+		_drawer_textview4 = _nav_view.findViewById(R.id.textview4);
+		_drawer_imageview8 = _nav_view.findViewById(R.id.imageview8);
+		_drawer_textview8 = _nav_view.findViewById(R.id.textview8);
+		_drawer_imageview9 = _nav_view.findViewById(R.id.imageview9);
+		_drawer_textview9 = _nav_view.findViewById(R.id.textview9);
+		_drawer_imageview10 = _nav_view.findViewById(R.id.imageview10);
+		_drawer_textview10 = _nav_view.findViewById(R.id.textview10);
+		_drawer_imageview11 = _nav_view.findViewById(R.id.imageview11);
+		_drawer_textview11 = _nav_view.findViewById(R.id.textview11);
+		_drawer_imageview5 = _nav_view.findViewById(R.id.imageview5);
+		_drawer_textview5 = _nav_view.findViewById(R.id.textview5);
+		_drawer_imageview6 = _nav_view.findViewById(R.id.imageview6);
+		_drawer_textview6 = _nav_view.findViewById(R.id.textview6);
+		_drawer_imageview12 = _nav_view.findViewById(R.id.imageview12);
+		_drawer_textview12 = _nav_view.findViewById(R.id.textview12);
 		dialogmain = new AlertDialog.Builder(this);
 		dialog = new AlertDialog.Builder(this);
 		ninja = new AlertDialog.Builder(this);
@@ -290,6 +315,8 @@ public class CodegomainActivity extends AppCompatActivity {
 		persefone = getSharedPreferences("perafone", Activity.MODE_PRIVATE);
 		dialogandroid11 = new AlertDialog.Builder(this);
 		android11folderpath = new AlertDialog.Builder(this);
+		apkinstallpath = new AlertDialog.Builder(this);
+		mydexdialog = new AlertDialog.Builder(this);
 		
 		listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
@@ -552,11 +579,42 @@ public class CodegomainActivity extends AppCompatActivity {
 						startActivity(np3);
 					}
 					if (File_map.get((int)_position).get("file").toString().endsWith(".apk")) {
-						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
-						hhhh.putExtra("apk", File_map.get((int)_position).get("file").toString());
-						hhhh.putExtra("icon", File_map.get((int)_position).get("file").toString());
-						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
-						startActivity(hhhh);
+						apkinstallpath.setTitle("ایا میخواهید این برنامه را نصب کنید؟");
+						apkinstallpath.setMessage("install apk file ".concat(": ".concat(Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment())));
+						apkinstallpath.setIcon(R.drawable.keys);
+						apkinstallpath.setPositiveButton("بله", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								try {
+									if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+															Uri uri = androidx.core.content.FileProvider.getUriForFile(getApplicationContext(),
+																	CodegomainActivity.this.getPackageName() + ".provider", new java.io.File(File_map.get((int)_position).get("file").toString()));
+															Intent intent = new Intent(Intent.ACTION_VIEW);
+															intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+															intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+															intent.setDataAndType(uri, "application/vnd.android.package-archive");
+															startActivity(intent);
+										
+													} else {
+															Intent intent = new Intent(Intent.ACTION_VIEW);
+															intent.setDataAndType(Uri.fromFile( new java.io.File(File_map.get((int)_position).get("file").toString())),
+																	"application/vnd.android.package-archive");
+															intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+															startActivity(intent);
+													}
+									
+								} catch (Exception rr) {
+									showMessage (rr.toString());
+								}
+							}
+						});
+						apkinstallpath.setNegativeButton("خیر", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								
+							}
+						});
+						apkinstallpath.create().show();
 					}
 					if (File_map.get((int)_position).get("file").toString().endsWith(".rb")) {
 						hhhh.setClass(getApplicationContext(), CodeeditorActivity.class);
@@ -592,6 +650,67 @@ public class CodegomainActivity extends AppCompatActivity {
 						hhhh.putExtra("save", File_map.get((int)_position).get("file").toString());
 						hhhh.putExtra("title", Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment());
 						startActivity(hhhh);
+					}
+					if (File_map.get((int)_position).get("file").toString().endsWith(".dex")) {
+						mydexfilepath = Uri.parse(File_map.get((int)_position).get("file").toString()).getLastPathSegment();
+						mydexdialog.setTitle("ایا میخواهید کلاس دکس راه به جاوا تبدیل کنید؟");
+						mydexdialog.setIcon(R.drawable.dextojar);
+						mydexdialog.setMessage(Html.fromHtml("<font color=\"RED\">ایا میخواهید dexرا بهjar تغییر دهید؟</font>"));
+						mydexdialog.setPositiveButton(Html.fromHtml("<font color=\"GREEN\">Ok</font>"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								dexprograssbardialog = new ProgressDialog(CodegomainActivity.this);
+								dexprograssbardialog.setTitle("Dex To Jar");
+								dexprograssbardialog.setMessage(Html.fromHtml("<font color=\"#FFA406\">در حال تغییر کلاس به جاوا صبر کنید</font>"));
+								dexprograssbardialog.setCanceledOnTouchOutside(false);
+								dg = new TimerTask() {
+									@Override
+									public void run() {
+										runOnUiThread(new Runnable() {
+											@Override
+											public void run() {
+												while(true) {
+													try {
+														
+														if (FileUtil.isExistFile(File_map.get((int)_position).get("file").toString())) {
+															new _BackgroundTaskClass(CodegomainActivity.this) {
+																	        @Override
+																	        public void doInBackground() {
+																	_ConvertDexToJar(File_map.get((int)_position).get("file").toString(), File_map.get((int)_position).get("file").toString().substring((int)(0), (int)(File_map.get((int)_position).get("file").toString().lastIndexOf(".dex"))).concat(".jar"));
+																	
+																			        }
+																	
+																	        @Override
+																	        public void onPostExecute() {
+																			 
+																	SketchwareUtil.showMessage(getApplicationContext(), "Success to convert - ".concat(mydexfilepath.substring((int)(0), (int)(mydexfilepath.lastIndexOf(".dex"))).concat(".jar")));
+																			        }
+																	    }.execute();
+														}
+														else {
+															
+														}
+													} catch (Exception e) {
+														SketchwareUtil.showMessage(getApplicationContext(), e.toString());
+													}
+													dexprograssbardialog.show();
+													break;
+												}
+											}
+										});
+									}
+								};
+								_timer.schedule(dg, (int)(2000));
+								dexprograssbardialog.show();
+							}
+						});
+						mydexdialog.setNegativeButton(Html.fromHtml("<font color=\"#FF8F33\">NO</font>"), new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface _dialog, int _which) {
+								
+							}
+						});
+						mydexdialog.create().show();
 					}
 				}
 			}
@@ -781,6 +900,14 @@ public class CodegomainActivity extends AppCompatActivity {
 			}
 		});
 		
+		_drawer_myjavatosmaill.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				mykey.setClass(getApplicationContext(), JavaActivity.class);
+				startActivity(mykey);
+			}
+		});
+		
 		_drawer_javacode.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
@@ -824,47 +951,38 @@ public class CodegomainActivity extends AppCompatActivity {
 			}
 		});
 		
-		_drawer_websya.setOnClickListener(new View.OnClickListener() {
+		_drawer_keyboard.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				u8.setClass(getApplicationContext(), FastwebserisActivity.class);
-				startActivity(u8);
-			}
-		});
-		
-		_drawer_bord.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				keyboard.setTitle("GoBord");
-				keyboard.setIcon(R.drawable.mylego);
-				keyboard.setMessage("لطفان یکی از گزینه های زیر را انتخاب کنید");
-				keyboard.setPositiveButton("تایید کیبورد", new DialogInterface.OnClickListener() {
+				keyboard.setTitle("Keybord Go!");
+				keyboard.setIcon(R.drawable.keyboard);
+				keyboard.setMessage("نوع عمل کرد را انتخاب کنید");
+				keyboard.setPositiveButton("انتخاب کیبورد", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface _dialog, int _which) {
+						((InputMethodManager) CodegomainActivity.this.getApplicationContext().getSystemService("input_method")).showInputMethodPicker();
+					}
+				});
+				keyboard.setNeutralButton("تایید کیبورد", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface _dialog, int _which) {
 						Intent callSettingIntent= new Intent(android.provider.Settings.ACTION_INPUT_METHOD_SETTINGS);
 						 startActivity(callSettingIntent);
 					}
 				});
-				keyboard.setNeutralButton("انتخاب کیبورد", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface _dialog, int _which) {
-						
-						((InputMethodManager) CodegomainActivity.this.getApplicationContext().getSystemService("input_method")).showInputMethodPicker();
-					}
-				});
 				keyboard.create().show();
 			}
 		});
 		
-		_drawer_likey.setOnClickListener(new View.OnClickListener() {
+		_drawer_fastweb.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				mykey.setClass(getApplicationContext(), KeystoneActivity.class);
-				startActivity(mykey);
+				intentrubikagp.setClass(getApplicationContext(), FastwebserisActivity.class);
+				startActivity(intentrubikagp);
 			}
 		});
 		
-		_drawer_mygithub.setOnClickListener(new View.OnClickListener() {
+		_drawer_github.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
 				intentmygithub.setAction(Intent.ACTION_VIEW);
@@ -873,35 +991,27 @@ public class CodegomainActivity extends AppCompatActivity {
 			}
 		});
 		
-		_drawer_myket.setOnClickListener(new View.OnClickListener() {
+		_drawer_keystone.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				hhhh.setAction(Intent.ACTION_VIEW);
-				hhhh.setData(Uri.parse("myket://comment?id=org.codego.ninjacoder"));
-				startActivity(hhhh);
+				mykey.setClass(getApplicationContext(), KeystoneActivity.class);
+				startActivity(mykey);
 			}
 		});
 		
-		_drawer_rubikalinear.setOnClickListener(new View.OnClickListener() {
+		_drawer_ter.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				rubikajoined.setTitle("روبیکا");
-				rubikajoined.setMessage("برای سوالات و حمایت از ما یک گزینه را انتخاب کنید.");
-				rubikajoined.setNegativeButton("گروه روبیکا", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface _dialog, int _which) {
-						Intent jjjjjjjjjjjhhhggfff = new Intent();
-						jjjjjjjjjjjhhhggfff.setAction(Intent.ACTION_VIEW);
-						 jjjjjjjjjjjhhhggfff.setData(Uri.parse("rubika://g.rubika.ir/".concat("BHFBIFJE0HFRQUYDGNWNSAWFBMVBBPVW"))); startActivity(jjjjjjjjjjjhhhggfff);
-					}
-				});
-				rubikajoined.setNeutralButton("لغو", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface _dialog, int _which) {
-						
-					}
-				});
-				rubikajoined.create().show();
+				wh.setClass(getApplicationContext(), TerminalActivity.class);
+				startActivity(wh);
+			}
+		});
+		
+		_drawer_dex.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				dex.setClass(getApplicationContext(), DextojarActivity.class);
+				startActivity(dex);
 			}
 		});
 		
@@ -913,7 +1023,16 @@ public class CodegomainActivity extends AppCompatActivity {
 			}
 		});
 		
-		_drawer_exit.setOnClickListener(new View.OnClickListener() {
+		_drawer_myket.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				mykey.setAction(Intent.ACTION_VIEW);
+				mykey.setData(Uri.parse("myket://comment?id=org.codego.ninjacoder"));
+				startActivity(mykey);
+			}
+		});
+		
+		_drawer_myexit.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
 				finishAffinity();
@@ -922,12 +1041,16 @@ public class CodegomainActivity extends AppCompatActivity {
 	}
 	
 	private void initializeLogic() {
+		
 		try {
 			Folder = FileUtil.getExternalStorageDir();
 			_RefreshData();
 			listview1.setHorizontalScrollBarEnabled(false);
 			listview1.setVerticalScrollBarEnabled(false);
 			listview1.setOverScrollMode(ListView.OVER_SCROLL_NEVER);
+			_drawer_vscroll1.setHorizontalScrollBarEnabled(false);
+			_drawer_vscroll1.setVerticalScrollBarEnabled(false);
+			_drawer_vscroll1.setOverScrollMode(ListView.OVER_SCROLL_NEVER);
 		} catch (Exception e) {
 			 
 		}
@@ -985,135 +1108,20 @@ public class CodegomainActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =CodegomainActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF212121);
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000027);
 		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_javacode.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_javacode.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_myket.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_myket.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_exit.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_exit.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_websya.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_websya.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_bord.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_bord.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_sting.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_sting.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_rubikalinear.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_rubikalinear.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_likey.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_likey.setBackground(SketchUi_RD);
-		}
-		{
-			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-			SketchUi.setColor(0xFF424242);float lt = getDip(0);
-			float rt = getDip(12);
-			float rb = getDip(12);
-			float lb = getDip(0);
-			SketchUi.setCornerRadii(new float[]{
-					lt,lt,rt ,rt,rb,rb ,lb,lb });
-			_drawer_mygithub.setElevation(getDip(5));
-			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF65BFFF}), SketchUi, null);
-			_drawer_mygithub.setBackground(SketchUi_RD);
-		}
-		linear1.setBackgroundColor(0xFF424242);
+		linear1.setBackgroundColor(0xFF000027);
 		dialogmain = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		dialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		ninja = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		cdm = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		keyboard = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		dialogandroid11 = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+		android11folderpath = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+		apkinstallpath = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+		mydexdialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		Assasssincreed = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
-		_fab.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("0xFFE65100".replace("0xFF" , "#"))));
-		_drawer_linear1.setBackgroundColor(0xFF212121);
-		_drawer_jaricon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_googlep.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_myexit.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_myicon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_fastweb.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_keyicon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_stingicon.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_iconkey.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
-		_drawer_imageview1.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
+		_fab.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("0xFF1565C0".replace("0xFF" , "#"))));
 		try {
 			 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 					      
@@ -1193,17 +1201,8 @@ public class CodegomainActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF000027".replace("0xFF" , "#")));
 		}
-		_drawer_key.setText(getResources().getString(R.string.keyboard));
-		_drawer_rubikatextview1.setText(getResources().getString(R.string.rubi));
-		_drawer_myket1.setText(getResources().getString(R.string.myket));
-		_drawer_stingtext.setText(getResources().getString(R.string.sting));
-		_drawer_exit1.setText(getResources().getString(R.string.by));
-		_drawer_javacode1.setText(getResources().getString(R.string.myjava));
-		_drawer_fastweb1.setText(getResources().getString(R.string.web));
-		_drawer_key11.setText(getResources().getString(R.string.key11));
-		_drawer_textview1.setText(getResources().getString(R.string.github));
 	}
 	
 	public void _RefreshData() {
@@ -1261,109 +1260,108 @@ public class CodegomainActivity extends AppCompatActivity {
 		((EditText)edittext2).setError("Error plestype text");
 		edittext2.setLayoutParams(lparr);
 		dialogmain.setView(edittext2);
+		edittext2.addTextChangedListener(new TextWatcher() {
+			
+			  ColorScheme keywords = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(transient|Activity|View|Log|MotionEvent|void|const|static|volatile|interface|native|protected|final|abstract|synchronized|enum|instanceof|assert|break|goto|return|new|throw|throws|super|extends|implements|import)\\b"),
+			      Color.parseColor("#FFD84315") //brown
+			  );
+			
+			ColorScheme keywordskeywords = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(class|private|public|this|arg|args|out)\\b"),
+			      Color.parseColor("#FFFF1744") //rose
+			  );
+			
+			ColorScheme keywords2 = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(package|strictfp|char|short|int|long|double|String|float|byte|boolean|default|do|continue)\\b"),
+			      Color.parseColor("#FF4DB6AC") 
+			  );
+			
+			ColorScheme keywords3 = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(if|else|switch|case|for|while)\\b"),
+			      Color.parseColor("#FFD500F9") //mauve
+			  );
+			
+			ColorScheme keywords4 = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(try|catch|finally|true|false|null|IOException|java.io.IOException)\\b"),
+			      Color.parseColor("#FFFFC400") // jaune foncé
+			  );
+			
+			ColorScheme keywords5 = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(BroadcastReceiver|Intent|Integer|CharSequence|Dialog|OnFocusChangeListener|OnCreateContextMenuListener|OnKeyListener|WifiManager|StringBuffer|StringBuilder|OnClickListener|OnTouchListener|OnLongClickListener|OnCheckedChanged|addTextChangedListener|Color.parseColor|parseColor|Color|ColorScheme|ProcessBuilder|Process|PackageManager|)\\b"),
+			      Color.parseColor("#FF2196F3") //Blue
+			  );
+			
+			ColorScheme keywords6 = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(LinearLayout|LinearParams|CheckboxGroup|CheckBox|Button|Switch|Spannable|EditText|TextView|ImageView|CircleImageView|RadioButton|TabLayout|SwipRefreshLayout)\\b"),
+			      Color.parseColor("#FFC0CA33") //Lime foncé
+			  );
+			
+			ColorScheme newtypes = new ColorScheme(
+			      Pattern.compile(
+			          "\\b(onTextChanged|isSelected|isChecked|CheckBox|Button|Switch|Spannable|EditText|TextView|ImageView|CircleImageView|RadioButton|TabLayout|SwipRefreshLayout)\\b"),
+			      Color.parseColor("#76ff03") //green claire
+			  );
+			
+			ColorScheme keywords7 = new ColorScheme(    
+			      Pattern.compile(
+			          "\\b(java.io.|BufferedReader|InputStream|BufferedWriter|InputStreamReader|File|FileReader|java.io.BufferedReader|java.io.InputStream|java.io.BufferedWriter|java.io.InputStreamReader|java.io.File|java.io.FileReader)\\b"),
+			      Color.parseColor("#FFBA68C8") 
+			  );
+			
+			
+			  final ColorScheme[] schemes = {newtypes, keywordskeywords , keywords4, keywords3, keywords2, keywords, keywords5, keywords6, keywords7 };
+			
+			  @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				
+				  }
+			
+			  @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+				
+				  }
+			
+			  @Override public void afterTextChanged(Editable s) {
+				    removeSpans(s, ForegroundColorSpan.class);
+				    for (ColorScheme scheme : schemes) {
+					      for(Matcher m = scheme.pattern.matcher(s); m.find();) {
+						        s.setSpan(new ForegroundColorSpan(scheme.color),
+						            m.start(),
+						            m.end(),
+						            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+						      }
+					    }
+				  }
+			
+			  void removeSpans(Editable e, Class<? extends CharacterStyle> type) {
+				    CharacterStyle[] spans = e.getSpans(0, e.length(), type);
+				    for (CharacterStyle span : spans) {
+					      e.removeSpan(span);
+					    }
+				  }
+			
+			  class ColorScheme {
+				    final Pattern pattern;
+				    final int color;
+				
+				     ColorScheme(Pattern pattern, int color) {
+					      this.pattern = pattern;
+					      this.color = color;
+					    }
+				  }
+			
+		});
+		
 		dialogmain.setPositiveButton(getResources().getString(R.string.dialog_ok), new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface _dialog, int _which) {
 				try {
-					
-					edittext2.addTextChangedListener(new TextWatcher() {
-						
-						  ColorScheme keywords = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(transient|Activity|View|Log|MotionEvent|void|const|static|volatile|interface|native|protected|final|abstract|synchronized|enum|instanceof|assert|break|goto|return|new|throw|throws|super|extends|implements|import)\\b"),
-						      Color.parseColor("#FFD84315") //brown
-						  );
-						
-						ColorScheme keywordskeywords = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(class|private|public|this|arg|args|out)\\b"),
-						      Color.parseColor("#FFFF1744") //rose
-						  );
-						
-						ColorScheme keywords2 = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(package|strictfp|char|short|int|long|double|String|float|byte|boolean|default|do|continue)\\b"),
-						      Color.parseColor("#FF4DB6AC") 
-						  );
-						
-						ColorScheme keywords3 = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(if|else|switch|case|for|while)\\b"),
-						      Color.parseColor("#FFD500F9") //mauve
-						  );
-						
-						ColorScheme keywords4 = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(try|catch|finally|true|false|null|IOException|java.io.IOException)\\b"),
-						      Color.parseColor("#FFFFC400") // jaune foncé
-						  );
-						
-						ColorScheme keywords5 = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(BroadcastReceiver|Intent|Integer|CharSequence|Dialog|OnFocusChangeListener|OnCreateContextMenuListener|OnKeyListener|WifiManager|StringBuffer|StringBuilder|OnClickListener|OnTouchListener|OnLongClickListener|OnCheckedChanged|addTextChangedListener|Color.parseColor|parseColor|Color|ColorScheme|ProcessBuilder|Process|PackageManager|)\\b"),
-						      Color.parseColor("#FF2196F3") //Blue
-						  );
-						
-						ColorScheme keywords6 = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(LinearLayout|LinearParams|CheckboxGroup|CheckBox|Button|Switch|Spannable|EditText|TextView|ImageView|CircleImageView|RadioButton|TabLayout|SwipRefreshLayout)\\b"),
-						      Color.parseColor("#FFC0CA33") //Lime foncé
-						  );
-						
-						ColorScheme newtypes = new ColorScheme(
-						      Pattern.compile(
-						          "\\b(onTextChanged|isSelected|isChecked|CheckBox|Button|Switch|Spannable|EditText|TextView|ImageView|CircleImageView|RadioButton|TabLayout|SwipRefreshLayout)\\b"),
-						      Color.parseColor("#76ff03") //green claire
-						  );
-						
-						ColorScheme keywords7 = new ColorScheme(    
-						      Pattern.compile(
-						          "\\b(java.io.|BufferedReader|InputStream|BufferedWriter|InputStreamReader|File|FileReader|java.io.BufferedReader|java.io.InputStream|java.io.BufferedWriter|java.io.InputStreamReader|java.io.File|java.io.FileReader)\\b"),
-						      Color.parseColor("#FFBA68C8") 
-						  );
-						
-						
-						  final ColorScheme[] schemes = {newtypes, keywordskeywords , keywords4, keywords3, keywords2, keywords, keywords5, keywords6, keywords7 };
-						
-						  @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-							
-							  }
-						
-						  @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-							
-							  }
-						
-						  @Override public void afterTextChanged(Editable s) {
-							    removeSpans(s, ForegroundColorSpan.class);
-							    for (ColorScheme scheme : schemes) {
-								      for(Matcher m = scheme.pattern.matcher(s); m.find();) {
-									        s.setSpan(new ForegroundColorSpan(scheme.color),
-									            m.start(),
-									            m.end(),
-									            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-									      }
-								    }
-							  }
-						
-						  void removeSpans(Editable e, Class<? extends CharacterStyle> type) {
-							    CharacterStyle[] spans = e.getSpans(0, e.length(), type);
-							    for (CharacterStyle span : spans) {
-								      e.removeSpan(span);
-								    }
-							  }
-						
-						  class ColorScheme {
-							    final Pattern pattern;
-							    final int color;
-							
-							     ColorScheme(Pattern pattern, int color) {
-								      this.pattern = pattern;
-								      this.color = color;
-								    }
-							  }
-						
-					});
-					
 					mainfile = edittext2.getText().toString();
 					if (mainfile.equals("")) {
 						_file();
@@ -1382,6 +1380,7 @@ public class CodegomainActivity extends AppCompatActivity {
 							}
 						}
 					}
+					
 				} catch (Exception e) {
 					 
 				}
@@ -2332,6 +2331,51 @@ support me if you like my work
 	{
 	}
 	
+	
+	public void _ConvertDexToJar(final String _DexPath, final String _JarPath) {
+		try {
+			Dex2jar.from(new java.io.File(_DexPath)).to(new java.io.File(_JarPath));
+		} catch(java.io.IOException e) {
+		}
+	}
+	public static abstract class _BackgroundTaskClass {
+		
+		    private Activity activity;
+		    public _BackgroundTaskClass(Activity activity) {
+				        this.activity = activity;
+				    }
+		public _BackgroundTaskClass(Fragment activity) {
+				        this.activity = activity.getActivity();
+				    }
+		public _BackgroundTaskClass(DialogFragment activity) {
+				        this.activity = activity.getActivity();
+				    }
+		
+		    private void startBackground() {
+				        new Thread(new Runnable() {
+						            public void run() {
+								Looper.prepare();
+								                doInBackground();
+								                activity.runOnUiThread(new Runnable() {
+										                    public void run() {
+												
+												                        onPostExecute();
+												                    }
+										                });
+								            }
+						        }).start();
+				    }
+		    public void execute(){
+				        startBackground();
+				    }
+		
+		    public abstract void doInBackground();
+		    public abstract void onPostExecute();
+		
+	}
+	{
+	}
+	
 	public class Listview1Adapter extends BaseAdapter {
 		
 		ArrayList<HashMap<String, Object>> _data;
@@ -2378,7 +2422,7 @@ support me if you like my work
 			
 			_textcolor(textview1, "#FF77F5FF", "#FF1BFFB9");
 			_textcolor(textview2, "#FF77F5FF", "#FF1BFFB9");
-			cardview1.setCardBackgroundColor(0xFF616161);
+			cardview1.setCardBackgroundColor(0xB7001341);
 			if (FileUtil.isDirectory(File_map.get((int)_position).get("file").toString())) {
 				imageview1.setImageResource(R.drawable.folder);
 				itemback.setBackgroundColor(0xFFF44336);
@@ -2511,8 +2555,14 @@ support me if you like my work
 																													itemback.setBackgroundColor(0xFFFBC02D);
 																												}
 																												else {
-																													itemback.setBackgroundColor(0xFFF44336);
-																													imageview1.setImageResource(R.drawable.file);
+																													if (File_map.get((int)_position).get("file").toString().endsWith(".dex")) {
+																														imageview1.setImageResource(R.drawable.dexmanager);
+																														itemback.setBackgroundColor(0xFF43A047);
+																													}
+																													else {
+																														itemback.setBackgroundColor(0xFFF44336);
+																														imageview1.setImageResource(R.drawable.file);
+																													}
 																												}
 																											}
 																										}
@@ -2538,23 +2588,6 @@ support me if you like my work
 						}
 					}
 				}
-			}
-			if (liststring.get((int)(_position)).equals("data")) {
-				aqules = liststring.get((int)(_position));
-				if (checkPermission(pathToRealUri(aqules))) {
-					if (FileUtil.isDirectory(aqules)) {
-						FileUtil.makeDir("/sdcard/android/data/com.ninjacoder.codegomain");
-					}
-					else {
-						
-					}
-				}
-				else {
-					askPermission(pathToUri(aqules));
-				}
-			}
-			else {
-				
 			}
 			
 			return _view;

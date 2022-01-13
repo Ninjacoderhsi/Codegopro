@@ -41,15 +41,15 @@ import android.view.View;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -58,7 +58,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -83,7 +82,6 @@ import io.github.rosemoe.sora.widget.schemes.SchemeVS2019;
 import io.github.rosemoe.sora.langs.universal.*;
 import io.github.rosemoe.sora.langs.html.*;
 import io.github.rosemoe.sora.langs.desc.GoDescription;
-import io.github.rosemoe.sora.langs.vue.*;
  import io.github.rosemoe.sora.langs.xml.*;
 import io.github.rosemoe.sora.langs.desc.ShellDescription;
 import io.github.rosemoe.sora.langs.desc.SmaillDescription;
@@ -91,12 +89,13 @@ import io.github.rosemoe.sora.langs.desc.PhpDescription;
 import io.github.rosemoe.sora.langs.desc.AndroidXmlDescription;
 import io.github.rosemoe.sora.langs.xml.XMLLanguage;
 import io.github.rosemoe.sora.langs.desc.LuaDescription;
-import io.github.rosemoe.sora.langs.vue.VueLanguage;
 import io.github.rosemoe.sora.langs.desc.DartDescription;
 import io.github.rosemoe.sora.langs.desc.FuntomDescription;
 import io.github.rosemoe.sora.langs.desc.RubyDescription;
 import io.github.rosemoe.sora.langs.desc.PasDescription;
 import io.github.rosemoe.sora.langs.desc.CssDescription;
+import io.github.rosemoe.sora.langs.vue.*;
+import io.github.rosemoe.sora.langs.vue.VueLanguage;
 import android.content.pm.PackageManager;
 import io.github.rosemoe.sora.widget.CodeEditor;
 import org.codego.ninjacoders.SchemeAndroidXml;
@@ -111,6 +110,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 	private String currentWord = "";
 	private String get = "";
 	private boolean chack = false;
+	private String hex = "";
 	
 	private LinearLayout linear1;
 	private LinearLayout panel;
@@ -301,6 +301,10 @@ public class CodeeditorActivity extends AppCompatActivity {
 				
 				 
 				
+				 LinearLayout   texttolink = popupView.findViewById(R.id.texttolink);
+				
+				 
+				
 				next.setOnClickListener(new OnClickListener() { public void onClick(View view) {
 								try {
 							            editor.getSearcher().gotoNext();
@@ -319,6 +323,99 @@ public class CodeeditorActivity extends AppCompatActivity {
 								popup.dismiss();
 						} });
 				
+				texttolink.setOnClickListener(new OnClickListener() { public void onClick(View view) {
+								final LinearLayout lin = new LinearLayout(getApplicationContext()); 
+						lin.setLayoutParams(new LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.MATCH_PARENT));
+						lin.setOrientation(LinearLayout.VERTICAL);
+						
+						final Button btn = new Button(getApplicationContext()); 
+						btn.setLayoutParams(new LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT));
+						btn.setTextSize((int)16);
+						btn.setTextColor(0xFFFFFFFF);
+						lin.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+						lin.setPadding(12,12,12,12);
+						////start grapic
+						
+						{
+							android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
+							SketchUi.setColor(0xFF424242);lin.setElevation(getDip(5));
+							android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFFE0E0E0}), SketchUi, null);
+							lin.setBackground(SketchUi_RD);
+						}
+						{
+							android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
+							SketchUi.setColor(0xFF000000);SketchUi.setCornerRadius(getDip(24));
+							SketchUi.setStroke((int)getDip(2) ,0xFF008DCD);
+							btn.setElevation(getDip(5));
+							android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFFF44336}), SketchUi, null);
+							btn.setBackground(SketchUi_RD);
+						}
+						
+						
+						///end methed grapic
+						if (Locale.getDefault().getDisplayLanguage().equals("فارسی")) {
+								btn.setText(" کپی");
+						}
+						else {
+								btn.setText("copy all");
+						}
+						String[] arr = editor.getText().toString().split(" ");
+						final StringBuilder build = new StringBuilder();
+						
+						
+						final AlertDialog.Builder bui = new AlertDialog.Builder(CodeeditorActivity.this);
+						////bui.setBackgroundDrawableResource(android.R.color.transparent);
+						///bui.setView(inflate);
+						
+						final TextView txt = new TextView(getApplicationContext());
+						
+						txt.setTextIsSelectable(true);
+						txt.setTextColor(0xFFFFFFFF);
+						txt.setTextSize((float)16);
+						
+						for (String one : arr) {
+								if (one.contains("http")|| one.contains("www")){
+										
+										build.append(one).append("\n");
+										
+										
+										
+								}
+								
+						}
+						
+						txt.setText(build.toString().replace("\"", "").replace("\'", "").replace("(", "").replace(")", "").replace("{", "").replace("}", "").replace("[", "").replace("]", ""));
+						
+						lin.addView(txt);
+						
+						lin.addView(btn);
+						
+						bui.setView(lin);
+						
+						bui.show();
+						txt.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+						txt.setPadding(50,50,8,10);
+						btn.setOnClickListener(new View.OnClickListener() {
+								@Override
+								public void onClick(View _view) {
+										try {
+												android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
+												ClipData clip = ClipData.newPlainText("label", txt.getText().toString());
+												clipboard.setPrimaryClip(clip);
+										} catch (Exception e) {
+												e.printStackTrace();
+										}
+										if (Locale.getDefault().getDisplayLanguage().equals("فارسی")) {
+												SketchwareUtil.showMessage(getApplicationContext(), "کپی شد ");
+										}
+										else {
+												SketchwareUtil.showMessage(getApplicationContext(), "کپی شد");
+										}
+								}
+						});
+								popup.dismiss();
+						} });
+				
 				ch.setOnClickListener(new OnClickListener() { public void onClick(View view) {
 								if (chack) {
 							chack = false;
@@ -333,45 +430,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 						} });
 				
 				color.setOnClickListener(new OnClickListener() { public void onClick(View view) {
-								ColorPicker seekColorPicker = new ColorPicker(CodeeditorActivity.this);
-						
-								final AlertDialog.Builder buildPicker = new AlertDialog.Builder(CodeeditorActivity.this);
-						
-								final LinearLayout linPicker = new LinearLayout(getApplicationContext());
-						
-						
-								
-						
-						
-						
-								linPicker.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-						{
-							android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
-							SketchUi.setColor(0xFFFFFFFF);SketchUi.setCornerRadius(getDip(30));
-							SketchUi.setStroke((int)getDip(2) ,0xFF008DCD);
-							linPicker.setElevation(getDip(5));
-							linPicker.setBackground(SketchUi);
-						}
-						
-								linPicker.setOrientation(LinearLayout.VERTICAL);
-						
-								linPicker.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-						
-						
-						
-								buildPicker.setPositiveButton("ColorCopy", new DialogInterface.OnClickListener() {
-										@Override
-										public void onClick(DialogInterface dialogInterface, int i) {
-								((ClipboardManager) getSystemService(getApplicationContext().CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("clipboard", hex.getText().toString()));
-								SketchwareUtil.showMessage(getApplicationContext(), "COLOR:// ".concat(hex.getText().toString().concat(" Copyed!")));
-										}
-								});
-						
-						
-						
-								linPicker.addView(seekColorPicker);
-								buildPicker.setView(linPicker);
-								buildPicker.show();
+								_ColorPickerDialog(hex);
 								popup.dismiss();
 						} });
 				
@@ -423,8 +482,8 @@ public class CodeeditorActivity extends AppCompatActivity {
 						}
 						else {
 							if (getIntent().getStringExtra("path").contains(".svg")) {
-								intent.setClass(getApplicationContext(), HtmlrunerActivity.class);
-								intent.putExtra("send", getIntent().getStringExtra("path"));
+								intent.setClass(getApplicationContext(), SvgActivity.class);
+								intent.putExtra("send", editor.getText().toString().trim());
 								startActivity(intent);
 								_fab.setImageResource(R.drawable.play);
 							}
@@ -435,7 +494,14 @@ public class CodeeditorActivity extends AppCompatActivity {
 									startActivity(intent);
 								}
 								else {
-									
+									if (getIntent().getStringExtra("path").contains(".sh")) {
+										intent.setClass(getApplicationContext(), ShellActivity.class);
+										intent.putExtra("shell", editor.getText().toString().trim());
+										startActivity(intent);
+									}
+									else {
+										
+									}
 								}
 							}
 						}
@@ -446,8 +512,10 @@ public class CodeeditorActivity extends AppCompatActivity {
 	}
 	
 	private void initializeLogic() {
+		hscroll1.setHorizontalScrollBarEnabled(false);
+		hscroll1.setVerticalScrollBarEnabled(false);
+		hscroll1.setOverScrollMode(ListView.OVER_SCROLL_NEVER);
 		editor.setNonPrintablePaintingFlags(CodeEditor.FLAG_DRAW_WHITESPACE_LEADING | CodeEditor.FLAG_DRAW_LINE_SEPARATOR);
-		editor.setOverScrollEnabled(false);
 		undo.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -746,7 +814,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =CodeeditorActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF212121);
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000027);
 		}
 		editor.setTypefaceText(Typeface.createFromAsset(getAssets(), "mainjsfont.ttf"));
 		_editordark();
@@ -757,60 +825,6 @@ public class CodeeditorActivity extends AppCompatActivity {
 		        inputView.addSymbols(new String[]{"->","[","]","{", "}", "(", ")","#","|", "<" , ">" ,  ",", ".", ";", "&","<-","?", "+", "-", "*", "/"},
 		                new String[]{"\t", "{}", "}", "(", ")", ",", ".", ";", "\"", "?", "+", "-", "*", "/"});
 		
-		editor.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				try { 
-					String textSpan = editor.getText().toString();
-					    final int selection = editor.getCursor().getLeft();
-					    final Pattern pattern = Pattern.compile("(#?)(\\w+)");
-					    final Matcher matcher = pattern.matcher(textSpan);
-					    int start = 0;
-					    int end = 0;
-					
-					   String currentWordddddddd = "";
-					   try { 
-							 while (matcher.find()) {
-									        start = matcher.start();
-									        end = matcher.end();
-									        if (start <= selection && selection <= end) {
-											            currentWordddddddd = textSpan.substring(start, end).toString();
-											            currentWord = currentWordddddddd;
-											        }
-									    }
-					} catch (Exception rr) { 
-							rr.printStackTrace();
-					}
-					if (!currentWord.isEmpty()) {
-						if (currentWord.contains("#")) {
-							try {
-								    
-								colorpi.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)50, (int)4, Color.TRANSPARENT, Color.parseColor(currentWord)));
-							} catch (IllegalArgumentException iae) {
-								    
-							}
-						}
-						else {
-							if (currentWord.toLowerCase().contains("0xff")) {
-								try {
-									    
-									currentWord = currentWord.replace("0xff", "#");
-									currentWord = currentWord.replace("0xFF", "#");
-									colorpi.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)55, (int)6, Color.TRANSPARENT, Color.parseColor(currentWord)));
-								} catch (IllegalArgumentException iae) {
-									    
-								}
-							}
-							else {
-								editor.getSearcher().search(currentWord);
-							}
-						}
-					}
-				} catch (Exception e){
-					e.printStackTrace();
-				}
-			}
-		});
 		editor.setPinLineNumber(!editor.isLineNumberPinned());
 		if (n.getString("lin", "").equals("1")) {
 			editor.setLineNumberEnabled(true);
@@ -867,6 +881,60 @@ public class CodeeditorActivity extends AppCompatActivity {
 				
 			}
 		}
+		editor.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				try { 
+					String textSpan = editor.getText().toString();
+					    final int selection = editor.getCursor().getLeft();
+					    final Pattern pattern = Pattern.compile("(#?)(\\w+)");
+					    final Matcher matcher = pattern.matcher(textSpan);
+					    int start = 0;
+					    int end = 0;
+					
+					   String currentWordddddddd = "";
+					   try { 
+							 while (matcher.find()) {
+									        start = matcher.start();
+									        end = matcher.end();
+									        if (start <= selection && selection <= end) {
+											            currentWordddddddd = textSpan.substring(start, end).toString();
+											            currentWord = currentWordddddddd;
+											        }
+									    }
+					} catch (Exception rr) { 
+							rr.printStackTrace();
+					}
+					if (!currentWord.isEmpty()) {
+						if (currentWord.contains("#")) {
+							try {
+								    
+								colorpi.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)55, (int)4, Color.TRANSPARENT, Color.parseColor(currentWord)));
+							} catch (IllegalArgumentException iae) {
+								    
+							}
+						}
+						else {
+							if (currentWord.toLowerCase().contains("0xff")) {
+								try {
+									    
+									currentWord = currentWord.replace("0xff", "#");
+									currentWord = currentWord.replace("0xFF", "#");
+									colorpi.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns((int)55, (int)6, Color.TRANSPARENT, Color.parseColor(currentWord)));
+								} catch (IllegalArgumentException iae) {
+									    
+								}
+							}
+							else {
+								editor.getSearcher().search(currentWord);
+							}
+						}
+					}
+				} catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	
@@ -877,7 +945,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF000027".replace("0xFF" , "#")));
 		}
 	}
 	public void _editordark() {
@@ -992,6 +1060,7 @@ public class CodeeditorActivity extends AppCompatActivity {
 									rt.printStackTrace();
 								}
 								icon.setImageResource(R.drawable.greadliconpack_2);
+								_fab.setImageResource(R.drawable.m_play);
 								editor.setColorScheme(new SchemeAndroidXml());
 							}
 							else {
@@ -1277,9 +1346,9 @@ public class CodeeditorActivity extends AppCompatActivity {
 	
 	
 	public void _themedrak() {
-		linear1.setBackgroundColor(0xFF212121);
-		panel.setBackgroundColor(0xFF212121);
-		linear4.setBackgroundColor(0xFF212121);
+		linear1.setBackgroundColor(0xFF000027);
+		panel.setBackgroundColor(0xFF000027);
+		linear4.setBackgroundColor(0xFF000027);
 		undo.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		cut.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		copy.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
@@ -1287,197 +1356,277 @@ public class CodeeditorActivity extends AppCompatActivity {
 		redo.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		more.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		_fab.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("0xFF2196F3".replace("0xFF" , "#"))));
-		_fab.setColorFilter(0xFFFF5722, PorterDuff.Mode.MULTIPLY);
 	}
 	
 	
 	public void _cil() {
+		
 	}
-		 private Button btnCopy;
-		 private EditText hex;
-		 private EditText hex2;
-		 private boolean isSimleDialog = false;
-		 public static interface OnColorChangedListener
-		 {
-				 public void onColorChanged(ColorPicker picker, int color);
-			 }
-		 class ColorPicker extends LinearLayout
-		 {
-				 private SeekBar r;
-				 private SeekBar g;
-				 private SeekBar b;
-				 private TextView colorShow;
-				 private SeekBar.OnSeekBarChangeListener listener;
-				 private OnColorChangedListener l;
-				 public ColorPicker(Context c)
-				 {
-						 super(c);
-						 init();
-					 }
+	
+	
+	public void _ColorPickerDialog(final String _Hex) {
+		final AlertDialog ColorPicker = new AlertDialog.Builder(CodeeditorActivity.this).create();
+		LayoutInflater ColorPickerLI = getLayoutInflater();
+		View ColorPickerCV = (View) ColorPickerLI.inflate(R.layout.color_picker_view, null);
+		ColorPicker.setView(ColorPickerCV);
+		final SeekBar ska = (SeekBar)
+		ColorPickerCV.findViewById(R.id.seekbar1);
 		
-				 private void init(){
-						 setPadding(16, 16, 16, 16);
-						 setGravity(Gravity.CENTER);
-						 setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-						 colorShow = new TextView(getContext());
-						 colorShow.setLayoutParams(new ViewGroup.LayoutParams(60, 60));
-						 addView(colorShow);
-						 listener = new SeekBar.OnSeekBarChangeListener(){
-								 @Override
-								 public void onProgressChanged(SeekBar p1, int p2, boolean p3)
-								 {
-										 int color = Color.rgb(r.getProgress(), g.getProgress(), b.getProgress());
-										 String temp = String.format("0x%08X", color);
-										 String result = temp.substring(2);
-										 hex.setText("#" + result);
-										 hex2.setText("0x" + result);
-										 hex.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-										 colorShow.setBackgroundColor(color);
-										 btnCopy.setBackgroundColor(color);
-					
-										 double darkness = 1-(0.299*Color.red(color) + 0.587*Color.green(color) + 0.114*Color.blue(color))/255;
-					
-										 if(darkness<0.5){
-												 btnCopy.setTextColor(Color.BLACK);
-											 }else{
-												 btnCopy.setTextColor(Color.WHITE);
-											 }
-					
-					
-					
-										 if(l != null) l.onColorChanged(ColorPicker.this, color);
-									 }
-								 @Override public void onStartTrackingTouch(SeekBar p1){}
-								 @Override public void onStopTrackingTouch(SeekBar p1){}
-							 };
-						 LinearLayout lay2 = new LinearLayout(getContext());
-						 lay2.setOrientation(VERTICAL);
-						 lay2.setPadding(8, 0, 8, 8);
-						 lay2.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-						 hex = new EditText(getContext());
-						 hex2 = new EditText(getContext());
-						 ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-						 params.setMargins(16, 0, 16, 0);
-						 hex.setLayoutParams(params);
-						 hex2.setLayoutParams(params);
-						 hex.setCursorVisible(false);
-			
-						 hex.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);
-						 hex.setText("#000000");
-						 hex2.setText("0xFF000000");
-						 hex.setOnEditorActionListener(new TextView.OnEditorActionListener(){
-								 @Override
-								 public boolean onEditorAction(TextView text, int code, KeyEvent event)
-								 {
-										 try {
-												 int color = Color.parseColor(text.getText().toString());
-												 r.setProgress(Color.red(color));
-												 g.setProgress(Color.green(color));
-												 b.setProgress(Color.blue(color));
-											 } catch(Exception e){
-												 Toast.makeText(getContext(), "Color code is wrong", Toast.LENGTH_SHORT).show();
-											 }
-										 return true;
-									 }
-							 });
-			
-						 btnCopy = new Button(getApplicationContext());
-			
-						 btnCopy.setTextSize(15);
-			
-			if (isSimleDialog) {
-							 if (Locale.getDefault().getDisplayLanguage().equals("العربية")){
-									 btnCopy.setText("نسخ");
-								 } else {
-									 btnCopy.setText("Copy");
-								 }
-							     btnCopy.setClickable(true);
-							 } if (! isSimleDialog) {
-								 btnCopy.setText("");
-								 btnCopy.setClickable(false);
-							 }
-			
-						 btnCopy.setTypeface(Typeface.MONOSPACE);
-			
-						 btnCopy.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-						 
-						 btnCopy.setPadding(0,0,0,0);
-						 
-						 btnCopy.setBackgroundColor(Color.BLACK);
-						 
-						 btnCopy.setTextColor(Color.WHITE);
-			
-						 btnCopy.setOnClickListener(new View.OnClickListener() {
-								 @Override
-								 public void onClick(View view) {
-										 try {
-												 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-												 ClipData clip = ClipData.newPlainText("label", hex.getText().toString());
-												 clipboard.setPrimaryClip(clip);
-												 Toast.makeText(getApplicationContext(), "✓", Toast.LENGTH_SHORT).show();
-											 } catch (Exception e) {
-												 e.printStackTrace();
-											 }
-									 }
-							 });
-			
-						 lay2.addView(hex);
-						 lay2.addView(hex2);
-						 r = new SeekBar(getContext());
-						 setProgressColor(r, 0xffcc5577);
-						 r.setMax(255);
-						 r.setOnSeekBarChangeListener(listener);
-						 lay2.addView(r);
-						 g = new SeekBar(getContext());
-						 setProgressColor(g, 0xff339977);
-						 g.setMax(255);
-						 g.setOnSeekBarChangeListener(listener);
-						 lay2.addView(g);
-						 b = new SeekBar(getContext());
-						 setProgressColor(b, 0xff6077bb);
-						 b.setMax(255);
-						 b.setOnSeekBarChangeListener(listener);
-						 lay2.addView(b);
-						 addView(lay2);
-						 int color = Color.parseColor(hex.getText().toString());
-						 r.setProgress(Color.red(color));
-						 g.setProgress(Color.green(color));
-						 b.setProgress(Color.blue(color));
-						 colorShow.setBackgroundColor(color);
-						 lay2.addView(btnCopy);
-					 }
-				 public void setColor(int color)
-				 {
-						 hex.setText("#" + String.format("0x%08X", color).substring(2));
-						 hex2.setText("0x" + String.format("0x%08X", color).substring(2));
-						 r.setProgress(Color.red(color));
-						 g.setProgress(Color.green(color));
-						 b.setProgress(Color.blue(color));
-			
-			
-			
-					 }
-				 public int getColor(boolean refreshFromSlider)
-				 {
-						 if(refreshFromSlider)
-							 listener.onProgressChanged(null, 0, false);
-						 return Color.parseColor(hex.getText().toString());
-					 }
-				 public int getColor()
-				 {
-						 return getColor(true);
-					 }
-				 public void setOnColorChangedListener(OnColorChangedListener l)
-				 {
-						 this.l = l;
-					 }
-				 private void setProgressColor(AbsSeekBar bar, int color)
-				 {
-						 bar.getProgressDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN); bar.getThumb().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-					 }
-			 }
-		 {
+		final SeekBar skr = (SeekBar)
+		ColorPickerCV.findViewById(R.id.seekbar2);
 		
+		final SeekBar skg = (SeekBar)
+		ColorPickerCV.findViewById(R.id.seekbar3);
+		
+		final SeekBar skb = (SeekBar)
+		ColorPickerCV.findViewById(R.id.seekbar4);
+		
+		final TextView a = (TextView)
+		ColorPickerCV.findViewById(R.id.textview6);
+		
+		final TextView r = (TextView)
+		ColorPickerCV.findViewById(R.id.textview7);
+		
+		final TextView g = (TextView)
+		ColorPickerCV.findViewById(R.id.textview8);
+		
+		final TextView b = (TextView)
+		ColorPickerCV.findViewById(R.id.textview9);
+		
+		final Button cancelar = (Button)
+		ColorPickerCV.findViewById(R.id.button1);
+		
+		final Button confirmar = (Button)
+		ColorPickerCV.findViewById(R.id.button2);
+		
+		final LinearLayout cor = (LinearLayout)
+		ColorPickerCV.findViewById(R.id.linear12);
+		
+		final EditText hex = (EditText)
+		ColorPickerCV.findViewById(R.id.edittext1);
+		InputFilter[] editFiltersHEX = hex.getFilters(); InputFilter[] newFiltersHEX = new InputFilter[editFiltersHEX.length + 1]; System.arraycopy(editFiltersHEX, 0, newFiltersHEX, 0, editFiltersHEX.length); newFiltersHEX[editFiltersHEX.length] = new InputFilter.LengthFilter(8); hex.setFilters(newFiltersHEX);
+		{
+			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
+			SketchUi.setColor(0xFF616161);SketchUi.setCornerRadius(getDip(19));
+			confirmar.setElevation(getDip(1));
+			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFFE0E0E0}), SketchUi, null);
+			confirmar.setBackground(SketchUi_RD);
+		}
+		{
+			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
+			SketchUi.setColor(0xFF616161);SketchUi.setCornerRadius(getDip(19));
+			cancelar.setElevation(getDip(1));
+			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFFE0E0E0}), SketchUi, null);
+			cancelar.setBackground(SketchUi_RD);
+		}
+		ska.getProgressDrawable().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+		ska.getThumb().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+		
+		skr.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+		skr.getThumb().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+		
+		skg.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+		skg.getThumb().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+		
+		skb.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+		skb.getThumb().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+		try{
+				
+			hex.setText(_Hex.replace("#", ""));
+			
+				a.setText(String.valueOf((long)(Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(1), (int)(2)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(0), (int)(1)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+				
+				ska.setProgress((int)Double.parseDouble(a.getText().toString()));
+				
+				r.setText(String.valueOf((long)(Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(3), (int)(4)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(2), (int)(3)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+				
+				skr.setProgress((int)Double.parseDouble(r.getText().toString()));
+				
+				g.setText(String.valueOf((long)(Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(5), (int)(6)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(4), (int)(5)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+				
+				skg.setProgress((int)Double.parseDouble(g.getText().toString()));
+				
+				b.setText(String.valueOf((long)(Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(7), (int)(8)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_Hex.replace("#", "").toLowerCase().substring((int)(6), (int)(7)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+				
+				skb.setProgress((int)Double.parseDouble(b.getText().toString()));
+				
+				cor.setBackground(new android.graphics.drawable.ColorDrawable(Color.parseColor(_Hex)));
+			
+		}catch(Exception e){
+				 
+		}
+		ska.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+						@Override
+						public void onProgressChanged (SeekBar _param1, int _param2, boolean _param3) {
+								final int _progressValue = _param2;
+								
+				a.setText(String.valueOf((long)(_progressValue)));
+				
+				hex.setText("#".concat(String.format("%02X%02X%02X%02X", new Object[]{
+					Integer.valueOf((int)ska.getProgress()),
+						Integer.valueOf((int)skr.getProgress()), Integer.valueOf((int)skg.getProgress()), Integer.valueOf((int)skb.getProgress())
+				})).replace("#", ""));
+				
+						}
+						
+						@Override
+						public void onStartTrackingTouch(SeekBar _param1) {
+								
+						}
+						
+						@Override
+						public void onStopTrackingTouch(SeekBar _param2) {
+								
+						}
+				});
+		skr.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+						@Override
+						public void onProgressChanged (SeekBar _param1, int _param2, boolean _param3) {
+								final int _progressValue = _param2;
+								
+				r.setText(String.valueOf((long)(_progressValue)));
+				
+				hex.setText("#".concat(String.format("%02X%02X%02X%02X", new Object[]{
+					Integer.valueOf((int)ska.getProgress()),
+						Integer.valueOf((int)skr.getProgress()), Integer.valueOf((int)skg.getProgress()), Integer.valueOf((int)skb.getProgress())
+				})).replace("#", ""));
+				
+						}
+						
+						@Override
+						public void onStartTrackingTouch(SeekBar _param1) {
+								
+						}
+						
+						@Override
+						public void onStopTrackingTouch(SeekBar _param2) {
+								
+						}
+				});
+		skg.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+						@Override
+						public void onProgressChanged (SeekBar _param1, int _param2, boolean _param3) {
+								final int _progressValue = _param2;
+								
+				g.setText(String.valueOf((long)(_progressValue)));
+				
+				hex.setText("#".concat(String.format("%02X%02X%02X%02X", new Object[]{
+					Integer.valueOf((int)ska.getProgress()),
+						Integer.valueOf((int)skr.getProgress()), Integer.valueOf((int)skg.getProgress()), Integer.valueOf((int)skb.getProgress())
+				})).replace("#", ""));
+				
+						}
+						
+						@Override
+						public void onStartTrackingTouch(SeekBar _param1) {
+								
+						}
+						
+						@Override
+						public void onStopTrackingTouch(SeekBar _param2) {
+								
+						}
+				});
+		skb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+						@Override
+						public void onProgressChanged (SeekBar _param1, int _param2, boolean _param3) {
+								final int _progressValue = _param2;
+								
+				b.setText(String.valueOf((long)(_progressValue)));
+				
+				hex.setText("#".concat(String.format("%02X%02X%02X%02X", new Object[]{
+					Integer.valueOf((int)ska.getProgress()),
+						Integer.valueOf((int)skr.getProgress()), Integer.valueOf((int)skg.getProgress()), Integer.valueOf((int)skb.getProgress())
+				})).replace("#", ""));
+				
+						}
+						
+						@Override
+						public void onStartTrackingTouch(SeekBar _param1) {
+								
+						}
+						
+						@Override
+						public void onStopTrackingTouch(SeekBar _param2) {
+								
+						}
+				});
+		hex.addTextChangedListener(new TextWatcher() {
+						@Override
+						public void onTextChanged(CharSequence _param1, int _param2, int _param3, int _param4) {
+								final String _charSeq = _param1.toString();
+				hex.setSelection(hex.getText().length());
+				
+							try{
+					if (hex.getText().toString().length() == 8) {
+						
+						a.setText(String.valueOf((long)(Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(1), (int)(2)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(0), (int)(1)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+						
+						ska.setProgress((int)Double.parseDouble(a.getText().toString()));
+						
+						r.setText(String.valueOf((long)(Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(3), (int)(4)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(2), (int)(3)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+						
+						skr.setProgress((int)Double.parseDouble(r.getText().toString()));
+						
+						g.setText(String.valueOf((long)(Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(5), (int)(6)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(4), (int)(5)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+						
+						skg.setProgress((int)Double.parseDouble(g.getText().toString()));
+						
+						b.setText(String.valueOf((long)(Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(7), (int)(8)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) + (Double.parseDouble(_charSeq.replace("#", "").toLowerCase().substring((int)(6), (int)(7)).replace("a", "10").replace("b", "11").replace("c", "12").replace("d", "13").replace("e", "14").replace("f", "15")) * 16))));
+						
+						skb.setProgress((int)Double.parseDouble(b.getText().toString()));
+						
+						cor.setBackground(new android.graphics.drawable.ColorDrawable(Color.parseColor("#".concat(_charSeq))));
+						
+					}
+					
+				}catch(Exception e){
+				}
+			}
+						
+						@Override
+						public void beforeTextChanged(CharSequence _param1, int _param2, int _param3, int _param4) {
+								
+						}
+						
+						@Override
+						public void afterTextChanged(Editable _param1) {
+								
+						}
+				});
+		cancelar.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View _view) {
+								ColorPicker.dismiss();
+				}
+		});
+		
+		confirmar.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View _view) {
+								hex.setText("#".concat(String.format("%02X%02X%02X%02X", new Object[]{
+								Integer.valueOf((int)ska.getProgress()),
+									Integer.valueOf((int)skr.getProgress()), Integer.valueOf((int)skg.getProgress()), Integer.valueOf((int)skb.getProgress())
+						})).replace("#", ""));
+						SketchwareUtil.showMessage(getApplicationContext(), "Color : ".concat(hex.getText().toString().concat(" Copyed!")));
+						//SketchwareUtil.showMessage(getApplicationContext(), "Color : ".concat(Hex.concat(" Copyeid!")));
+					try {
+						android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
+						ClipData clip = ClipData.newPlainText("label", "#".concat(hex.getText().toString()));
+						clipboard.setPrimaryClip(clip);
+				} catch (Exception e) {
+						e.printStackTrace();
+				}
+				
+				
+								ColorPicker.dismiss();
+				}
+		});
+		ColorPicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+		
+		ColorPicker.setCancelable(false);
+		
+		ColorPicker.show();
 	}
 	
 	

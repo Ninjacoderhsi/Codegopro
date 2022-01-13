@@ -34,15 +34,15 @@ import java.util.TimerTask;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -51,7 +51,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -115,13 +114,12 @@ public class MainActivity extends AppCompatActivity {
 			
 		}
 		dialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
-		textview1.setText(getResources().getString(R.string.lego));
+		textview1.setText("CODE GO PRO ");
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =MainActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF424242);
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000027);
 		}
-		imageview1.setColorFilter(0xFFFF9800, PorterDuff.Mode.MULTIPLY);
 		textview1.setText(textview1.getText().toString());
 		
 		TextPaint paint = textview1.getPaint();
@@ -130,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 		
 		Shader textShader = new LinearGradient(0, 0, width,textview1.getTextSize(), new int[]{ 
 			
-			Color.parseColor("#FF00F8F3"), Color.parseColor("#FF0090FF"), 
+			Color.parseColor("#FF00E6FF"), Color.parseColor("#FF19FFCD"), 
 			
 			/*
 
@@ -154,7 +152,7 @@ Color.parseColor("#64B678"), Color.parseColor("#478AEA"), Color.parseColor("#844
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
 			Window w =this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF424242".replace("0xFF" , "#")));
+			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setNavigationBarColor(Color.parseColor("0xFF000027".replace("0xFF" , "#")));
 		}
 	}
 	

@@ -34,15 +34,15 @@ import android.widget.SeekBar;
 import android.media.MediaPlayer;
 import android.view.View;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -51,7 +51,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -115,13 +114,11 @@ public class Mp3Activity extends AppCompatActivity {
 			@Override
 			public void onProgressChanged(SeekBar _param1, int _param2, boolean _param3) {
 				final int _progressValue = _param2;
-				for(int _repeat10 = 0; _repeat10 < (int)(vvv.getDuration()); _repeat10++) {
-					if (vvv.isPlaying()) {
-						vvv.seekTo((int)(_progressValue));
-					}
-					else {
-						
-					}
+				if (vvv.isPlaying()) {
+					vvv.seekTo((int)(_progressValue));
+				}
+				else {
+					
 				}
 			}
 			

@@ -2,9 +2,6 @@ package org.codego.ninjacoder;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.*;
-import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.google.android.material.appbar.AppBarLayout;
 import android.app.*;
 import android.os.*;
 import android.view.*;
@@ -27,8 +24,12 @@ import java.util.*;
 import java.util.regex.*;
 import java.text.*;
 import org.json.*;
+import androidx.cardview.widget.CardView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.Button;
 import org.antlr.v4.runtime.*;
 import org.benf.cfr.reader.*;
 import com.googlecode.d2j.*;
@@ -51,44 +52,87 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
 
-public class LuamjActivity extends AppCompatActivity {
+public class ColorPickerViewActivity extends AppCompatActivity {
 	
-	private Toolbar _toolbar;
-	private AppBarLayout _app_bar;
-	private CoordinatorLayout _coordinator;
-	
+	private CardView cardview1;
 	private LinearLayout linear1;
+	private LinearLayout linear2;
+	private LinearLayout linear5;
+	private LinearLayout linear3;
+	private LinearLayout linear4;
+	private LinearLayout linear10;
+	private LinearLayout linear11;
+	private LinearLayout linear14;
+	private CardView cardview2;
+	private LinearLayout linear12;
+	private LinearLayout linear13;
+	private TextView textview5;
+	private EditText edittext1;
+	private LinearLayout linear6;
+	private LinearLayout linear7;
+	private LinearLayout linear8;
+	private LinearLayout linear9;
 	private TextView textview1;
+	private SeekBar seekbar1;
+	private TextView textview6;
+	private TextView textview2;
+	private SeekBar seekbar2;
+	private TextView textview7;
+	private TextView textview3;
+	private SeekBar seekbar3;
+	private TextView textview8;
+	private TextView textview4;
+	private SeekBar seekbar4;
+	private TextView textview9;
+	private Button button1;
+	private LinearLayout linear15;
+	private Button button2;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
-		setContentView(R.layout.luamj);
+		setContentView(R.layout.color_picker_view);
 		initialize(_savedInstanceState);
 		initializeLogic();
 	}
 	
 	private void initialize(Bundle _savedInstanceState) {
-		_app_bar = findViewById(R.id._app_bar);
-		_coordinator = findViewById(R.id._coordinator);
-		_toolbar = findViewById(R.id._toolbar);
-		setSupportActionBar(_toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportActionBar().setHomeButtonEnabled(true);
-		_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _v) {
-				onBackPressed();
-			}
-		});
+		cardview1 = findViewById(R.id.cardview1);
 		linear1 = findViewById(R.id.linear1);
+		linear2 = findViewById(R.id.linear2);
+		linear5 = findViewById(R.id.linear5);
+		linear3 = findViewById(R.id.linear3);
+		linear4 = findViewById(R.id.linear4);
+		linear10 = findViewById(R.id.linear10);
+		linear11 = findViewById(R.id.linear11);
+		linear14 = findViewById(R.id.linear14);
+		cardview2 = findViewById(R.id.cardview2);
+		linear12 = findViewById(R.id.linear12);
+		linear13 = findViewById(R.id.linear13);
+		textview5 = findViewById(R.id.textview5);
+		edittext1 = findViewById(R.id.edittext1);
+		linear6 = findViewById(R.id.linear6);
+		linear7 = findViewById(R.id.linear7);
+		linear8 = findViewById(R.id.linear8);
+		linear9 = findViewById(R.id.linear9);
 		textview1 = findViewById(R.id.textview1);
+		seekbar1 = findViewById(R.id.seekbar1);
+		textview6 = findViewById(R.id.textview6);
+		textview2 = findViewById(R.id.textview2);
+		seekbar2 = findViewById(R.id.seekbar2);
+		textview7 = findViewById(R.id.textview7);
+		textview3 = findViewById(R.id.textview3);
+		seekbar3 = findViewById(R.id.seekbar3);
+		textview8 = findViewById(R.id.textview8);
+		textview4 = findViewById(R.id.textview4);
+		seekbar4 = findViewById(R.id.seekbar4);
+		textview9 = findViewById(R.id.textview9);
+		button1 = findViewById(R.id.button1);
+		linear15 = findViewById(R.id.linear15);
+		button2 = findViewById(R.id.button2);
 	}
 	
 	private void initializeLogic() {
-		textview1.setText("This.code(\"Error\")(\"null paramment)(\"Type not try\")");
-		textview1.setTextColor(0xFFF44336);
-		textview1.setTextSize((int)18);
 	}
 	
 	

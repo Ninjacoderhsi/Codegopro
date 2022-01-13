@@ -28,22 +28,21 @@ import java.util.regex.*;
 import java.text.*;
 import org.json.*;
 import android.widget.LinearLayout;
-import com.google.android.material.textfield.*;
 import android.widget.EditText;
 import android.widget.Button;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 import org.antlr.v4.runtime.*;
+import org.benf.cfr.reader.*;
+import com.googlecode.d2j.*;
+import org.eclipse.jdt.*;
 import io.github.rosemoe.sora.*;
 import com.github.angads25.filepicker.*;
 import com.google.gson.*;
 import javaxml.*;
-import com.evgenii.jsevaluator.*;
-import org.jetbrains.kotlin.*;
-import io.github.rosemoe.sora.langs.base.*;
-import io.github.rosemoe.sora.langs.css3.*;
 import io.github.rosemoe.sora.langs.java.*;
+import io.github.rosemoe.sora.langs.base.*;
 import io.github.rosemoe.sora.langs.python.*;
 import com.android.tools.r8.*;
 import io.reactivex.*;
@@ -52,7 +51,6 @@ import com.example.myapp.*;
 import com.github.florent37.viewtooltip.*;
 import arabware.libs.getThumbnail.*;
 import androidx.webkit.*;
-import com.zip4j.*;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.DialogFragment;
@@ -82,18 +80,6 @@ public class KeystoneActivity extends AppCompatActivity {
 	private String path = "";
 	
 	private LinearLayout linear1;
-	private TextInputLayout textinputlayout1;
-	private TextInputLayout textinputlayout2;
-	private TextInputLayout textinputlayout3;
-	private TextInputLayout textinputlayout4;
-	private TextInputLayout textinputlayout5;
-	private TextInputLayout textinputlayout6;
-	private TextInputLayout textinputlayout7;
-	private TextInputLayout textinputlayout8;
-	private TextInputLayout textinputlayout9;
-	private TextInputLayout textinputlayout10;
-	private EditText edittext11;
-	private Button mtn;
 	private EditText edittext1;
 	private EditText edittext2;
 	private EditText edittext3;
@@ -104,6 +90,8 @@ public class KeystoneActivity extends AppCompatActivity {
 	private EditText edittext8;
 	private EditText edittext9;
 	private EditText edittext10;
+	private EditText edittext11;
+	private Button mtn;
 	
 	private AlertDialog.Builder dialogmain;
 	
@@ -143,18 +131,6 @@ public class KeystoneActivity extends AppCompatActivity {
 			}
 		});
 		linear1 = findViewById(R.id.linear1);
-		textinputlayout1 = findViewById(R.id.textinputlayout1);
-		textinputlayout2 = findViewById(R.id.textinputlayout2);
-		textinputlayout3 = findViewById(R.id.textinputlayout3);
-		textinputlayout4 = findViewById(R.id.textinputlayout4);
-		textinputlayout5 = findViewById(R.id.textinputlayout5);
-		textinputlayout6 = findViewById(R.id.textinputlayout6);
-		textinputlayout7 = findViewById(R.id.textinputlayout7);
-		textinputlayout8 = findViewById(R.id.textinputlayout8);
-		textinputlayout9 = findViewById(R.id.textinputlayout9);
-		textinputlayout10 = findViewById(R.id.textinputlayout10);
-		edittext11 = findViewById(R.id.edittext11);
-		mtn = findViewById(R.id.mtn);
 		edittext1 = findViewById(R.id.edittext1);
 		edittext2 = findViewById(R.id.edittext2);
 		edittext3 = findViewById(R.id.edittext3);
@@ -165,6 +141,8 @@ public class KeystoneActivity extends AppCompatActivity {
 		edittext8 = findViewById(R.id.edittext8);
 		edittext9 = findViewById(R.id.edittext9);
 		edittext10 = findViewById(R.id.edittext10);
+		edittext11 = findViewById(R.id.edittext11);
+		mtn = findViewById(R.id.mtn);
 		dialogmain = new AlertDialog.Builder(this);
 		
 		mtn.setOnClickListener(new View.OnClickListener() {
@@ -208,17 +186,6 @@ public class KeystoneActivity extends AppCompatActivity {
 	
 	private void initializeLogic() {
 		FileUtil.writeFile("######", "####");
-		textinputlayout1.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout2.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout3.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout4.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout5.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout6.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout7.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout8.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout9.setBoxStrokeColor(0xFFE91E63);
-		textinputlayout10.setBoxStrokeColor(0xFFE91E63);
-		dialogmain = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 		{
 			android.graphics.drawable.GradientDrawable SketchUi = new android.graphics.drawable.GradientDrawable();
 			SketchUi.setColor(0xFF00BCD4);SketchUi.setCornerRadius(getDip(20));
@@ -227,27 +194,7 @@ public class KeystoneActivity extends AppCompatActivity {
 			android.graphics.drawable.RippleDrawable SketchUi_RD = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{0xFF9C27B0}), SketchUi, null);
 			mtn.setBackground(SketchUi_RD);
 		}
-		textinputlayout1.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout2.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout3.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout4.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout5.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout6.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout8.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout9.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout10.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		textinputlayout7.setBoxBackgroundMode(TextInputLayout.BOX_BACKGROUND_OUTLINE);
-		edittext11.setHintTextColor(0xFFFFFFFF);
-		edittext1.setHintTextColor(0xFFFFFFFF);
-		edittext2.setHintTextColor(0xFFFFFFFF);
-		edittext3.setHintTextColor(0xFFFFFFFF);
-		edittext4.setHintTextColor(0xFFFFFFFF);
-		edittext5.setHintTextColor(0xFFFFFFFF);
-		edittext6.setHintTextColor(0xFFFFFFFF);
-		edittext7.setHintTextColor(0xFFFFFFFF);
-		edittext8.setHintTextColor(0xFFFFFFFF);
-		edittext9.setHintTextColor(0xFFFFFFFF);
-		edittext10.setHintTextColor(0xFFFFFFFF);
+		dialogmain = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK);
 	}
 	
 	
