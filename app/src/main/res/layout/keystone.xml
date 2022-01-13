@@ -27,204 +27,144 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:padding="12dp"
-			android:background="#212121"
+			android:background="#000027"
 			android:gravity="center_horizontal"
 			android:orientation="vertical"
 			android:layout_weight="1">
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout1"
+			<EditText
+				android:id="@+id/edittext1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext1"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="16sp"
-					android:textColor="#FFFFFF"
-					android:hint="alias"
-					android:textColorHint="#FFFFFF"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout2"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="16sp"
+				android:textColor="#FFFFFF"
+				android:hint="alias"
+				android:textColorHint="#FFFFFF"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext2"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext2"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="keyPassword"
-					android:textColorHint="#FFFFFF"
-					android:inputType="textPassword"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout3"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="keyPassword"
+				android:textColorHint="#FFFFFF"
+				android:inputType="textPassword"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext3"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext3"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="storePassword"
-					android:textColorHint="#FFFFFF"
-					android:inputType="textPassword"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout4"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="storePassword"
+				android:textColorHint="#FFFFFF"
+				android:inputType="textPassword"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext4"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext4"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="commonName"
-					android:textColorHint="#FFFFFF"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout5"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="commonName"
+				android:textColorHint="#FFFFFF"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext5"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext5"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="OrganizationUnit"
-					android:textColorHint="#FFFFFF"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout6"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="OrganizationUnit"
+				android:textColorHint="#FFFFFF"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext6"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext6"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="OrganizationName"
-					android:textColorHint="#FFFFFF"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout7"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="OrganizationName"
+				android:textColorHint="#FFFFFF"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext7"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext7"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="stateName"
-					android:textColorHint="#FFFFFF"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout8"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="stateName"
+				android:textColorHint="#FFFFFF"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext8"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext8"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="CountryCode"
-					android:textColorHint="#FFFFFF"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout9"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="CountryCode"
+				android:textColorHint="#FFFFFF"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext9"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext9"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="city"
-					android:textColorHint="#FFFFFF"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
-			<com.google.android.material.textfield.TextInputLayout
-				android:id="@+id/textinputlayout10"
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="city"
+				android:textColorHint="#FFFFFF"
+				android:imeOptions="actionNext" />
+			<EditText
+				android:id="@+id/edittext10"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:layout_marginBottom="5dp"
-				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-				<EditText
-					android:id="@+id/edittext10"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:gravity="left|top"
-					android:text="100"
-					android:textSize="14sp"
-					android:textColor="#FFFFFF"
-					android:hint="expire"
-					android:textColorHint="#FFFFFF"
-					android:inputType="phone"
-					android:imeOptions="actionNext" />
-			</com.google.android.material.textfield.TextInputLayout>
+				android:layout_marginTop="2dp"
+				android:layout_marginBottom="2dp"
+				android:padding="8dp"
+				android:gravity="left|top"
+				android:text="100"
+				android:textSize="14sp"
+				android:textColor="#FFFFFF"
+				android:hint="expire"
+				android:textColorHint="#FFFFFF"
+				android:inputType="phone"
+				android:imeOptions="actionNext" />
 			<EditText
 				android:id="@+id/edittext11"
 				android:layout_width="match_parent"
@@ -246,7 +186,6 @@
 				android:gravity="center_horizontal|center_vertical"
 				android:text="Save key"
 				android:textSize="16sp"
-				android:textStyle="bold|italic"
 				android:textColor="#000000" />
 		</LinearLayout>
 	</LinearLayout>

@@ -26,42 +26,44 @@
 			android:id="@+id/linear1"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:padding="3dp"
-			android:background="#000027"
+			android:padding="8dp"
+			android:background="#212121"
+			android:gravity="center_horizontal"
 			android:orientation="vertical">
+			<EditText
+				android:id="@+id/edittext1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:textSize="18sp"
+				android:textColor="#FFFFFF"
+				android:hint="Dex To jar"
+				android:textColorHint="#FFFFFF" />
+			<Button
+				android:id="@+id/button1"
+				android:layout_width="170dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
+				android:layout_marginBottom="4dp"
+				android:padding="8dp"
+				android:text="Convert"
+				android:textSize="16sp"
+				android:textColor="#FF9800" />
 			<ProgressBar
 				android:id="@+id/progressbar1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:padding="8dp"
-				android:indeterminate="true"
-				style="?android:progressBarStyleHorizontal" />
-			<LinearLayout
-				android:id="@+id/linear2"
-				android:layout_width="match_parent"
-				android:layout_height="200dp"
-				android:padding="8dp"
-				android:gravity="center_horizontal|center_vertical"
-				android:orientation="horizontal">
-				<com.airbnb.lottie.LottieAnimationView
-					android:id="@+id/lottie1"
-					android:layout_width="250dp"
-					android:layout_height="match_parent"
-					android:padding="8dp"
-					android:scaleType="fitCenter"
-					android:layout_centerInParent="true"
-					app:lottie_fileName="java.json"
-					app:lottie_loop="true"
-					app:lottie_autoPlay="true" />
-			</LinearLayout>
-			<ListView
-				android:id="@+id/listview1"
-				android:layout_width="match_parent"
+				android:indeterminate="false"
+				style="?android:progressBarStyle" />
+			<Button
+				android:id="@+id/button2"
+				android:layout_width="150dp"
 				android:layout_height="wrap_content"
 				android:padding="8dp"
-				android:dividerHeight="0dp"
-				android:divider="@null"
-				android:choiceMode="none" />
+				android:text="انتخاب فایل"
+				android:textSize="18sp"
+				android:textColor="#FF9800" />
 		</LinearLayout>
 	</LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

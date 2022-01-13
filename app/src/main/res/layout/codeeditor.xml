@@ -20,7 +20,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="65dp"
 				android:padding="8dp"
-				android:background="#212121"
+				android:background="#000027"
 				android:gravity="center_vertical"
 				android:orientation="horizontal"
 				android:layout_gravity="center_vertical">
@@ -28,6 +28,7 @@
 					android:id="@+id/undo"
 					android:layout_width="40dp"
 					android:layout_height="40dp"
+					android:padding="7dp"
 					android:src="@drawable/cutting_4"
 					android:scaleType="centerInside"
 					android:layout_weight="1" />
@@ -35,6 +36,7 @@
 					android:id="@+id/cut"
 					android:layout_width="40dp"
 					android:layout_height="40dp"
+					android:padding="7dp"
 					android:src="@drawable/cutting_1"
 					android:scaleType="centerInside"
 					android:layout_weight="1" />
@@ -42,6 +44,7 @@
 					android:id="@+id/copy"
 					android:layout_width="40dp"
 					android:layout_height="40dp"
+					android:padding="8dp"
 					android:src="@drawable/cutting_3"
 					android:scaleType="centerInside"
 					android:layout_weight="1" />
@@ -49,6 +52,7 @@
 					android:id="@+id/setall"
 					android:layout_width="40dp"
 					android:layout_height="40dp"
+					android:padding="7dp"
 					android:src="@drawable/cutting_5"
 					android:scaleType="centerInside"
 					android:layout_weight="1" />
@@ -56,6 +60,7 @@
 					android:id="@+id/icon"
 					android:layout_width="40dp"
 					android:layout_height="40dp"
+					android:padding="7dp"
 					android:src="@drawable/rubika"
 					android:scaleType="centerInside"
 					android:layout_weight="1" />
@@ -77,6 +82,7 @@
 					android:id="@+id/redo"
 					android:layout_width="40dp"
 					android:layout_height="40dp"
+					android:padding="7dp"
 					android:src="@drawable/cutting_2"
 					android:scaleType="centerInside"
 					android:layout_weight="1" />
@@ -84,6 +90,7 @@
 					android:id="@+id/more"
 					android:layout_width="40dp"
 					android:layout_height="40dp"
+					android:padding="7dp"
 					android:src="@drawable/cutting_7"
 					android:scaleType="centerInside"
 					android:layout_weight="1" />
@@ -93,7 +100,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:padding="8dp"
-				android:background="#212121"
+				android:background="#000027"
 				android:orientation="horizontal"
 				android:layout_weight="1" />
 			<LinearLayout
@@ -111,7 +118,7 @@
 						android:layout_width="wrap_content"
 						android:layout_height="60dp"
 						android:padding="8dp"
-						android:background="#424242"
+						android:background="#000027"
 						android:orientation="horizontal" />
 				</HorizontalScrollView>
 			</LinearLayout>

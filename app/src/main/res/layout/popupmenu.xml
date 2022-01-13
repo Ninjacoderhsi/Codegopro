@@ -10,7 +10,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="8dp"
-		android:background="#616161"
+		android:background="#424242"
 		android:orientation="vertical">
 		<LinearLayout
 			android:id="@+id/next"
@@ -28,7 +28,7 @@
 				android:padding="8dp"
 				android:text="The next"
 				android:textSize="16sp"
-				android:textColor="#FF5722" />
+				android:textColor="#FFFFFF" />
 		</LinearLayout>
 		<LinearLayout
 			android:id="@+id/prov"
@@ -46,7 +46,7 @@
 				android:padding="8dp"
 				android:text="Go to the previous"
 				android:textSize="16sp"
-				android:textColor="#FF5722" />
+				android:textColor="#FFFFFF" />
 		</LinearLayout>
 		<LinearLayout
 			android:id="@+id/linear4"
@@ -63,7 +63,7 @@
 				android:text="Word Warp"
 				android:textSize="16sp"
 				android:textStyle="bold"
-				android:textColor="#FF5722" />
+				android:textColor="#FFFFFF" />
 		</LinearLayout>
 		<LinearLayout
 			android:id="@+id/color"
@@ -82,7 +82,24 @@
 				android:padding="8dp"
 				android:text="Color selection"
 				android:textSize="16sp"
-				android:textColor="#FF5722" />
+				android:textColor="#FFFFFF" />
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/texttolink"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="8dp"
+			android:orientation="horizontal">
+			<TextView
+				android:id="@+id/textview4"
+				android:focusable="false"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:text="TextToLink"
+				android:textSize="16sp"
+				android:textStyle="bold"
+				android:textColor="#FFFFFF" />
 		</LinearLayout>
 	</LinearLayout>
 </LinearLayout>

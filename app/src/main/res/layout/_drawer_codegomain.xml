@@ -9,7 +9,7 @@
 		android:id="@+id/linear1"
 		android:layout_width="280dp"
 		android:layout_height="match_parent"
-		android:background="@android:color/transparent"
+		android:background="#000027"
 		android:orientation="vertical">
 		<LinearLayout
 			android:id="@+id/linear2"
@@ -37,120 +37,11 @@
 			<LinearLayout
 				android:id="@+id/linear3"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:padding="2dp"
-				android:background="@android:color/transparent"
+				android:layout_height="wrap_content"
+				android:padding="3dp"
 				android:orientation="vertical">
 				<LinearLayout
-					android:id="@+id/linear4"
-					android:layout_width="match_parent"
-					android:layout_height="0dp"
-					android:padding="8dp"
-					android:orientation="horizontal">
-					<DigitalClock
-						android:id="@+id/digitalclock1"
-						android:layout_width="0dp"
-						android:layout_height="0dp"
-						android:padding="8dp" />
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/javacode"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="2dp"
-					android:layout_marginBottom="2dp"
-					android:padding="8dp"
-					android:gravity="center_vertical"
-					android:orientation="horizontal">
-					<ImageView
-						android:id="@+id/jaricon"
-						android:layout_width="42dp"
-						android:layout_height="42dp"
-						android:src="@drawable/newjava"
-						android:scaleType="centerInside" />
-					<TextView
-						android:id="@+id/javacode1"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:padding="8dp"
-						android:text="کد های اماده جاوا"
-						android:textSize="16sp"
-						android:textColor="#FFFFFF" />
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/websya"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="2dp"
-					android:layout_marginBottom="2dp"
-					android:padding="8dp"
-					android:gravity="center_vertical"
-					android:orientation="horizontal">
-					<ImageView
-						android:id="@+id/fastweb"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:src="@drawable/websys"
-						android:scaleType="centerInside" />
-					<TextView
-						android:id="@+id/fastweb1"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:padding="8dp"
-						android:text="fast web sy"
-						android:textSize="14sp"
-						android:textColor="#FFFFFF" />
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/bord"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="2dp"
-					android:layout_marginBottom="2dp"
-					android:padding="8dp"
-					android:gravity="center_vertical"
-					android:orientation="horizontal">
-					<ImageView
-						android:id="@+id/keyicon"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:src="@drawable/keyboard"
-						android:scaleType="centerInside" />
-					<TextView
-						android:id="@+id/key"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:padding="8dp"
-						android:text="کیبورد GO"
-						android:textSize="14sp"
-						android:textColor="#FFFFFF" />
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/likey"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="2dp"
-					android:layout_marginBottom="2dp"
-					android:padding="8dp"
-					android:gravity="center_vertical"
-					android:orientation="horizontal">
-					<ImageView
-						android:id="@+id/iconkey"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:src="@drawable/keys"
-						android:scaleType="centerInside" />
-					<TextView
-						android:id="@+id/key11"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:padding="8dp"
-						android:text="کلید طلایی"
-						android:textSize="16sp"
-						android:textColor="#FFFFFF" />
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/mygithub"
+					android:id="@+id/myjavatosmaill"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="2dp"
@@ -162,43 +53,19 @@
 						android:id="@+id/imageview1"
 						android:layout_width="40dp"
 						android:layout_height="40dp"
-						android:src="@drawable/github"
+						android:src="@drawable/newjava"
 						android:scaleType="centerInside" />
 					<TextView
 						android:id="@+id/textview1"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:padding="8dp"
-						android:text="github view me"
-						android:textSize="14sp"
-						android:textColor="#FFFFFF" />
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/myket"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="2dp"
-					android:layout_marginBottom="2dp"
-					android:padding="8dp"
-					android:gravity="center_vertical"
-					android:orientation="horizontal">
-					<ImageView
-						android:id="@+id/googlep"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:src="@drawable/exit_2"
-						android:scaleType="fitCenter" />
-					<TextView
-						android:id="@+id/myket1"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:padding="8dp"
-						android:text="ثبت نظر در مایکت"
+						android:text="Java to smail"
 						android:textSize="16sp"
-						android:textColor="#FFFFFF" />
+						android:textColor="#FF9800" />
 				</LinearLayout>
 				<LinearLayout
-					android:id="@+id/rubikalinear"
+					android:id="@+id/javacode"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="2dp"
@@ -207,19 +74,163 @@
 					android:gravity="center_vertical"
 					android:orientation="horizontal">
 					<ImageView
-						android:id="@+id/myicon"
+						android:id="@+id/imageview2"
 						android:layout_width="40dp"
 						android:layout_height="40dp"
-						android:src="@drawable/rubika"
+						android:src="@drawable/newjava"
 						android:scaleType="centerInside" />
 					<TextView
-						android:id="@+id/rubikatextview1"
+						android:id="@+id/textview2"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:padding="8dp"
-						android:text="پشتیبانی"
+						android:text="کد های جاوا"
 						android:textSize="16sp"
-						android:textColor="#FFFFFF" />
+						android:textColor="#FF9800" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/keyboard"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview3"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/keyboard"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/textview3"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="کیبورد GO"
+						android:textSize="16sp"
+						android:textColor="#FF9800" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/fastweb"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview4"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/websys"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/textview4"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="وب سریع"
+						android:textSize="16sp"
+						android:textColor="#FF9800" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/github"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview8"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/github"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/textview8"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="منبع را در گیت هاب بیین"
+						android:textSize="16sp"
+						android:textColor="#FF9800" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/keystone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview9"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/keys"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/textview9"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="کلید طلایی"
+						android:textSize="16sp"
+						android:textColor="#FF9800" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/ter"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview10"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/terminal"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/textview10"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="ترمینال"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						android:textColor="#FF9800" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/dex"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:gravity="center_vertical"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview11"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/dextojar"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/textview11"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="Dex To Jar"
+						android:textSize="16sp"
+						android:textStyle="bold"
+						android:textColor="#FF9800" />
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/sting"
@@ -231,22 +242,22 @@
 					android:gravity="center_vertical"
 					android:orientation="horizontal">
 					<ImageView
-						android:id="@+id/stingicon"
+						android:id="@+id/imageview5"
 						android:layout_width="40dp"
 						android:layout_height="40dp"
 						android:src="@drawable/settings"
 						android:scaleType="centerInside" />
 					<TextView
-						android:id="@+id/stingtext"
+						android:id="@+id/textview5"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:padding="8dp"
-						android:text="تنظیمات"
+						android:text="تنظیمات برنامه"
 						android:textSize="16sp"
-						android:textColor="#FFFFFF" />
+						android:textColor="#FF9800" />
 				</LinearLayout>
 				<LinearLayout
-					android:id="@+id/exit"
+					android:id="@+id/myket"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="2dp"
@@ -255,21 +266,53 @@
 					android:gravity="center_vertical"
 					android:orientation="horizontal">
 					<ImageView
-						android:id="@+id/myexit"
+						android:id="@+id/imageview6"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:src="@drawable/exit_2"
+						android:scaleType="centerInside" />
+					<TextView
+						android:id="@+id/textview6"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="ثبت نظر در مایکت"
+						android:textSize="16sp"
+						android:textColor="#FF9800" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/myexit"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:layout_marginBottom="2dp"
+					android:padding="8dp"
+					android:orientation="horizontal">
+					<ImageView
+						android:id="@+id/imageview12"
 						android:layout_width="40dp"
 						android:layout_height="40dp"
 						android:src="@drawable/exit_1"
 						android:scaleType="centerInside" />
 					<TextView
-						android:id="@+id/exit1"
+						android:id="@+id/textview12"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:padding="8dp"
-						android:text="خروج از برنامه"
+						android:text="خروج"
 						android:textSize="16sp"
-						android:textColor="#FFFFFF" />
+						android:textColor="#FF9800" />
 				</LinearLayout>
 			</LinearLayout>
 		</ScrollView>
+		<LinearLayout
+			android:id="@+id/exit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="2dp"
+			android:layout_marginBottom="2dp"
+			android:padding="8dp"
+			android:background="#795548"
+			android:orientation="horizontal" />
 	</LinearLayout>
 </LinearLayout>

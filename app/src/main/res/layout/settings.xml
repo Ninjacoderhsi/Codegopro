@@ -36,6 +36,7 @@
 					android:id="@+id/linear4"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:background="#000027"
 					android:orientation="vertical">
 					<LinearLayout
 						android:id="@+id/linear2"
@@ -52,7 +53,7 @@
 							android:padding="8dp"
 							android:text="عمومی"
 							android:textSize="18sp"
-							android:textColor="#F57C00" />
+							android:textColor="#03A9F4" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear3"
@@ -76,7 +77,7 @@
 							android:padding="8dp"
 							android:text="نمایش اعداد خاموش"
 							android:textSize="16sp"
-							android:textColor="#FF5722" />
+							android:textColor="#2196F3" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear5"
@@ -100,7 +101,7 @@
 							android:padding="8dp"
 							android:text="ثابت کردن متن خاموش"
 							android:textSize="16sp"
-							android:textColor="#FF5722" />
+							android:textColor="#2196F3" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear6"
@@ -122,7 +123,7 @@
 							android:padding="8dp"
 							android:text="پایداری اسکرول بار خاموش"
 							android:textSize="16sp"
-							android:textColor="#FF5722" />
+							android:textColor="#2196F3" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear7"
@@ -146,7 +147,7 @@
 							android:padding="8dp"
 							android:text="تنظیم خط اول همیشه نشان می دهد خاموش"
 							android:textSize="16sp"
-							android:textColor="#FF5722" />
+							android:textColor="#2196F3" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/linear8"
@@ -170,7 +171,7 @@
 							android:padding="8dp"
 							android:text="مخفی کردن بار خاموش"
 							android:textSize="14sp"
-							android:textColor="#FF5722" />
+							android:textColor="#2196F3" />
 					</LinearLayout>
 				</LinearLayout>
 			</ScrollView>
